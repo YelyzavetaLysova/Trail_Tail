@@ -1,7 +1,20 @@
 from typing import List, Dict, Any, Optional
+import random
 from app.providers.interfaces.narratives_provider import NarrativesProvider, NarrativeMode
 
 class MockNarrativesProvider(NarrativesProvider):
+    """
+    Mock implementation of NarrativesProvider for development and testing
+    
+    This provider generates fixed, predetermined narratives for routes
+    without requiring external services or AI models.
+    """
+    
+    def __init__(self):
+        """Initialize the mock narratives provider"""
+        super().__init__()
+        self._narrative_history = {}  # User ID -> list of narratives
+        
     async def generate_narrative(
         self,
         route_id: str,
@@ -10,16 +23,45 @@ class MockNarrativesProvider(NarrativesProvider):
         language: str
     ) -> List[Dict[str, Any]]:
         """Generate narratives for a specific route"""
-        # In a real implementation, this would use an AI model to generate narratives
-        # based on local history, landmarks, or fantasy elements
+        # Use the execute_safely method to handle errors consistently
+        return await self.execute_safely(
+            self._generate_narrative_impl,
+            route_id=route_id,
+            mode=mode,
+            child_age=child_age,
+            language=language
+        )
         
+    async def _generate_narrative_impl(
+        self,
+        route_id: str,
+        mode: NarrativeMode,
+        child_age: int,
+        language: str
+    ) -> List[Dict[str, Any]]:
+        """Implementation of generate_narrative with error handling"""
         # Adjust content complexity based on child age
         age_group = "younger" if child_age < 8 else "middle" if child_age < 12 else "older"
         
         if mode == NarrativeMode.HISTORY:
-            return self._get_historical_narrative(route_id, age_group)
+            narratives = self._get_historical_narrative(route_id, age_group)
         else:  # Fantasy mode
-            return self._get_fantasy_narrative(route_id, age_group)
+            narratives = self._get_fantasy_narrative(route_id, age_group)
+            
+        # Add to history for a random user (for demo purposes)
+        sample_user_id = f"user_{random.randint(1, 10)}"
+        if sample_user_id not in self._narrative_history:
+            self._narrative_history[sample_user_id] = []
+            
+        # Add this narrative to history with basic metadata
+        self._narrative_history[sample_user_id].append({
+            "route_id": route_id,
+            "mode": mode,
+            "timestamp": "2025-09-04T14:30:00Z",  # Fixed for demo
+            "preview": narratives[0]["title"] if narratives else "Unknown narrative"
+        })
+        
+        return narratives
     
     async def preview_narratives(
         self,
@@ -27,7 +69,67 @@ class MockNarrativesProvider(NarrativesProvider):
         mode: NarrativeMode
     ) -> Dict[str, Any]:
         """Preview narratives for parent approval"""
-        # Similar to generate but with full disclosure for parents
+        # Use the execute_safely method for error handling
+        return await self.execute_safely(
+            self._preview_narratives_impl,
+            route_id=route_id,
+            mode=mode
+        )
+        
+    async def _preview_narratives_impl(
+        self,
+        route_id: str,
+        mode: NarrativeMode
+    ) -> Dict[str, Any]:
+        """Implementation of preview_narratives with error handling"""
+        # Generate a preview with additional parental guidance information
+        age_group = "middle"  # Default for preview
+        
+        if mode == NarrativeMode.HISTORY:
+            narratives = self._get_historical_narrative(route_id, age_group)
+        else:
+            narratives = self._get_fantasy_narrative(route_id, age_group)
+            
+        # Add parental guidance information
+        preview = {
+            "route_id": route_id,
+            "mode": mode,
+            "narratives": narratives,
+            "parental_guidance": {
+                "age_appropriate": True,
+                "educational_content": ["Local history", "Geography", "Nature"],
+                "sensitive_content": [],
+                "estimated_duration": "30 minutes"
+            }
+        }
+        
+        return preview
+        
+    async def get_narrative_history(
+        self,
+        user_id: str,
+        limit: int = 10
+    ) -> List[Dict[str, Any]]:
+        """Get history of narratives experienced by a user"""
+        # Use the execute_safely method for error handling
+        return await self.execute_safely(
+            self._get_narrative_history_impl,
+            user_id=user_id,
+            limit=limit
+        )
+        
+    async def _get_narrative_history_impl(
+        self,
+        user_id: str,
+        limit: int = 10
+    ) -> List[Dict[str, Any]]:
+        """Implementation of get_narrative_history with error handling"""
+        if user_id not in self._narrative_history:
+            return []
+            
+        # Return the most recent narratives up to the limit
+        history = self._narrative_history[user_id]
+        return history[-limit:] if len(history) > limit else history
         
         if mode == NarrativeMode.HISTORY:
             narratives = [

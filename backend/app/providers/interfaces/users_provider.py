@@ -1,7 +1,8 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Dict, Any
+from app.providers.interfaces.base_provider import BaseProvider
 
-class UsersProvider(ABC):
+class UsersProvider(BaseProvider):
     @abstractmethod
     async def register_family(self, family: Dict[str, Any]) -> Dict[str, Any]:
         """Register a new family"""

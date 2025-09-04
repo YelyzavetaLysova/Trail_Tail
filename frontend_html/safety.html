@@ -3,16 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safety Features - Trail Tail</title>
+    <title>Safety Features - Trail Tale</title>
+    
+    <!-- Core styles -->
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Enhanced UI Components -->
+    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/guidance.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+    <meta name="description" content="Learn about Trail Tale's comprehensive safety features designed for family hiking adventures">
 </head>
 <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Accessibility controls -->
+    <div id="accessibility-controls" class="accessibility-controls" aria-label="Accessibility options">
+        <button class="a11y-toggle" aria-label="Toggle accessibility menu">
+            <span class="material-symbols-rounded">accessibility_new</span>
+        </button>
+        <div class="a11y-panel">
+            <button class="a11y-option" data-feature="highContrast">
+                <span class="material-symbols-rounded">contrast</span>
+                <span>High Contrast</span>
+            </button>
+            <button class="a11y-option" data-feature="largeText">
+                <span class="material-symbols-rounded">format_size</span>
+                <span>Larger Text</span>
+            </button>
+            <button class="a11y-option" data-feature="reducedMotion">
+                <span class="material-symbols-rounded">animation</span>
+                <span>Reduce Motion</span>
+            </button>
+            <button class="a11y-option" data-feature="improvedReadability">
+                <span class="material-symbols-rounded">visibility</span>
+                <span>Improved Readability</span>
+            </button>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.svg" alt="Trail Tail Logo">
-                <h1>Trail Tail</h1>
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Trail Tale Logo">
+                    <h1>Trail Tale</h1>
+                </a>
             </div>
             <nav>
                 <ul>
@@ -20,94 +62,220 @@
                     <li><a href="explore.html">Explore</a></li>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="register.html">Register</a></li>
+                    <li><button class="help-toggle" aria-label="Open help guide">
+                        <span class="material-symbols-rounded">help</span>
+                    </button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="page-hero safety-hero">
             <div class="container">
                 <h2>Safety Features</h2>
-                <p>Trail Tail prioritizes your family's safety with advanced features designed for worry-free hiking adventures</p>
+                <p>Trail Tale prioritizes your family's safety with advanced features designed for worry-free hiking adventures</p>
+                
+                <!-- Status indicators for safety features -->
+                <div class="status-indicators">
+                    <div class="status-pill active" aria-live="polite">
+                        <span class="status-icon">
+                            <span class="material-symbols-rounded">wifi</span>
+                        </span>
+                        <span class="status-text">Safety Services: Online</span>
+                    </div>
+                    
+                    <div class="status-pill info" aria-live="polite">
+                        <span class="status-icon">
+                            <span class="material-symbols-rounded">shield</span>
+                        </span>
+                        <span class="status-text">Parental Controls: Active</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="safety-features">
             <div class="container">
+                <h3 class="section-title">Interactive Safety Features</h3>
+                <p class="section-subtitle">Click on any feature to see interactive demonstrations and learn more</p>
+                
                 <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
+                    <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
+                        <div class="feature-icon">
+                            <span class="material-symbols-rounded">family_lock</span>
+                        </div>
                         <h3>Parental Content Controls</h3>
                         <p>Preview all AI-generated stories and AR encounters before your children access them. Set age-appropriate filters and content preferences based on your family values.</p>
+                        <div class="feature-badge family-friendly">Family-Friendly</div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">📍</div>
+                    <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
+                        <div class="feature-icon">
+                            <span class="material-symbols-rounded">location_on</span>
+                        </div>
                         <h3>Real-time Location Tracking</h3>
                         <p>Always know where your family members are on the trail. Set boundaries and receive alerts if anyone wanders too far from the designated path.</p>
+                        <div class="feature-badge safety-critical">Safety Critical</div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">⚠️</div>
+                    <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
+                        <div class="feature-icon">
+                            <span class="material-symbols-rounded">analytics</span>
+                        </div>
                         <h3>Trail Safety Ratings</h3>
                         <p>All trails are rated for difficulty, terrain safety, and suitability for children of different ages. Weather alerts and trail condition updates ensure you're always prepared.</p>
+                        <div class="feature-badge age-appropriate">Age Appropriate</div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
+                    <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
+                        <div class="feature-icon">
+                            <span class="material-symbols-rounded">offline_pin</span>
+                        </div>
                         <h3>Offline Mode</h3>
                         <p>All essential safety features and trail navigation work offline, ensuring you're never without guidance even in areas with poor cell coverage.</p>
+                        <div class="feature-badge essential">Essential</div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">🚨</div>
+                    <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
+                        <div class="feature-icon">
+                            <span class="material-symbols-rounded">emergency</span>
+                        </div>
                         <h3>Emergency Assistance</h3>
                         <p>One-touch SOS button connects you with emergency services and shares your precise location coordinates. Automatic check-in prompts ensure someone is always monitoring your status.</p>
+                        <div class="feature-badge safety-critical">Safety Critical</div>
                     </div>
                     
-                    <div class="feature-card">
-                        <div class="feature-icon">🌡️</div>
+                    <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
+                        <div class="feature-icon">
+                            <span class="material-symbols-rounded">thunderstorm</span>
+                        </div>
                         <h3>Weather & Environmental Alerts</h3>
                         <p>Receive real-time alerts about changing weather conditions, potential hazards, or wildlife activity that might affect your hiking experience.</p>
+                        <div class="feature-badge essential">Essential</div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section class="safety-guide">
+        <section class="safety-guide animate-in">
             <div class="container">
-                <h3>Family Safety Guide</h3>
+                <h3>Interactive Family Safety Guide</h3>
+                <p class="section-subtitle">Expand each section to learn more about safe family hiking with Trail Tale</p>
+                
                 <div class="guide-content">
                     <div class="guide-text">
-                        <h4>Before Your Hike</h4>
-                        <ul>
-                            <li>Review trail details and safety ratings</li>
-                            <li>Check weather forecast and trail conditions</li>
-                            <li>Preview AI narratives and set content controls</li>
-                            <li>Pack essentials: water, snacks, first aid kit</li>
-                            <li>Share your hiking plan with a trusted contact</li>
+                        <h4 tabindex="0">Before Your Hike <span class="toggle-indicator"><span class="material-symbols-rounded">expand_more</span></span></h4>
+                        <ul class="expandable-content">
+                            <li class="interactive-item" data-tooltip="View detailed trail information on our Explore page">
+                                <span class="list-icon"><span class="material-symbols-rounded">map</span></span>
+                                Review trail details and safety ratings
+                            </li>
+                            <li class="interactive-item" data-tooltip="Real-time weather updates available in the app">
+                                <span class="list-icon"><span class="material-symbols-rounded">cloud</span></span>
+                                Check weather forecast and trail conditions
+                            </li>
+                            <li class="interactive-item" data-tooltip="Use parental controls to review all content">
+                                <span class="list-icon"><span class="material-symbols-rounded">auto_stories</span></span>
+                                Preview AI narratives and set content controls
+                            </li>
+                            <li class="interactive-item" data-tooltip="View our recommended packing list">
+                                <span class="list-icon"><span class="material-symbols-rounded">backpack</span></span>
+                                Pack essentials: water, snacks, first aid kit
+                            </li>
+                            <li class="interactive-item" data-tooltip="Safety contacts can track your hike progress">
+                                <span class="list-icon"><span class="material-symbols-rounded">share_location</span></span>
+                                Share your hiking plan with a trusted contact
+                            </li>
                         </ul>
                         
-                        <h4>During Your Adventure</h4>
-                        <ul>
-                            <li>Stay on marked trails at all times</li>
-                            <li>Keep the family group together</li>
-                            <li>Use the check-in feature regularly</li>
-                            <li>Monitor weather alerts within the app</li>
-                            <li>Take breaks when needed - especially for younger children</li>
+                        <h4 tabindex="0">During Your Adventure <span class="toggle-indicator"><span class="material-symbols-rounded">expand_more</span></span></h4>
+                        <ul class="expandable-content">
+                            <li class="interactive-item" data-tooltip="Trail Tale highlights marked paths clearly">
+                                <span class="list-icon"><span class="material-symbols-rounded">hiking</span></span>
+                                Stay on marked trails at all times
+                            </li>
+                            <li class="interactive-item" data-tooltip="Location tracking helps prevent family separation">
+                                <span class="list-icon"><span class="material-symbols-rounded">group</span></span>
+                                Keep the family group together
+                            </li>
+                            <li class="interactive-item" data-tooltip="Automatic reminders ensure regular check-ins">
+                                <span class="list-icon"><span class="material-symbols-rounded">update</span></span>
+                                Use the check-in feature regularly
+                            </li>
+                            <li class="interactive-item" data-tooltip="Push notifications for changing conditions">
+                                <span class="list-icon"><span class="material-symbols-rounded">thunderstorm</span></span>
+                                Monitor weather alerts within the app
+                            </li>
+                            <li class="interactive-item" data-tooltip="Trail Tale suggests rest spots suitable for families">
+                                <span class="list-icon"><span class="material-symbols-rounded">breaktime</span></span>
+                                Take breaks when needed - especially for younger children
+                            </li>
                         </ul>
                         
-                        <h4>Emergency Procedures</h4>
-                        <ul>
-                            <li>Use the SOS button for immediate assistance</li>
-                            <li>Follow the offline emergency guide if without service</li>
-                            <li>Activate the location beacon to help rescuers find you</li>
-                            <li>Utilize the built-in first aid instructions</li>
+                        <h4 tabindex="0">Emergency Procedures <span class="toggle-indicator"><span class="material-symbols-rounded">expand_more</span></span></h4>
+                        <ul class="expandable-content">
+                            <li class="interactive-item" data-tooltip="Press and hold for 3 seconds to activate SOS">
+                                <span class="list-icon alert"><span class="material-symbols-rounded">sos</span></span>
+                                Use the SOS button for immediate assistance
+                            </li>
+                            <li class="interactive-item" data-tooltip="Emergency guides are always available offline">
+                                <span class="list-icon alert"><span class="material-symbols-rounded">signal_cellular_off</span></span>
+                                Follow the offline emergency guide if without service
+                            </li>
+                            <li class="interactive-item" data-tooltip="Increases visibility to search teams">
+                                <span class="list-icon alert"><span class="material-symbols-rounded">location_searching</span></span>
+                                Activate the location beacon to help rescuers find you
+                            </li>
+                            <li class="interactive-item" data-tooltip="Visual step-by-step first aid procedures">
+                                <span class="list-icon alert"><span class="material-symbols-rounded">healing</span></span>
+                                Utilize the built-in first aid instructions
+                            </li>
                         </ul>
                     </div>
-                    <div class="guide-image">
-                        <img src="images/safety-guide-placeholder.jpg" alt="Family hiking safely with Trail Tail app">
+                    <div class="guide-image interactive-card">
+                        <img src="images/safety-guide-placeholder.jpg" alt="Family hiking safely with Trail Tale app">
+                        <div class="image-overlay">
+                            <button class="btn btn-sm btn-light demo-button" data-feature="safety-demo">
+                                <span class="material-symbols-rounded">play_circle</span> Watch Safety Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interactive safety checklist -->
+                <div class="safety-checklist animate-in" style="animation-delay: 0.3s;">
+                    <h4>Family Safety Checklist</h4>
+                    <p>Use this interactive checklist to prepare for your next family adventure</p>
+                    
+                    <div class="checklist-items">
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check1" class="interactive-checkbox">
+                            <label for="check1">Review trail safety information</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check2" class="interactive-checkbox">
+                            <label for="check2">Set up family profiles with age settings</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check3" class="interactive-checkbox">
+                            <label for="check3">Download offline maps and guides</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check4" class="interactive-checkbox">
+                            <label for="check4">Configure emergency contacts</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="check5" class="interactive-checkbox">
+                            <label for="check5">Test location sharing with family members</label>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">0 of 5 completed</div>
                     </div>
                 </div>
             </div>
@@ -116,7 +284,7 @@
         <section class="parental-controls">
             <div class="container">
                 <h3>Parental Content Controls</h3>
-                <p class="section-intro">Trail Tail gives parents complete control over the content their children experience during hikes.</p>
+                <p class="section-intro">Trail Tale gives parents complete control over the content their children experience during hikes.</p>
                 
                 <div class="controls-showcase">
                     <div class="control-item">
@@ -181,7 +349,7 @@
                 
                 <div class="cta-box">
                     <h4>Your Family's Safety Is Our Priority</h4>
-                    <p>Join thousands of families enjoying worry-free adventures with Trail Tail's comprehensive safety features.</p>
+                    <p>Join thousands of families enjoying worry-free adventures with Trail Tale's comprehensive safety features.</p>
                     <a href="register.html" class="btn btn-primary">Create Family Account</a>
                 </div>
             </div>
@@ -192,7 +360,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Trail Tail</h4>
+                    <h4>Trail Tale</h4>
                     <p>
                         Making family hikes magical through AI-generated stories and augmented reality experiences.
                     </p>
@@ -218,12 +386,53 @@
             
             <div class="footer-bottom">
                 <p>
-                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                    © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
                 </p>
             </div>
         </div>
     </footer>
 
+    <!-- Help guidance system -->
+    <div class="help-guidance-overlay" aria-modal="true" role="dialog" aria-labelledby="help-title" hidden>
+        <div class="help-panel">
+            <div class="help-header">
+                <h3 id="help-title">Safety Features Help</h3>
+                <button class="close-help" aria-label="Close help">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            
+            <div class="help-content">
+                <div class="help-section">
+                    <h4>Interactive Safety Cards</h4>
+                    <p>Click or tap any safety feature card to reveal more details and interactive demonstrations.</p>
+                </div>
+                
+                <div class="help-section">
+                    <h4>Content Controls Demo</h4>
+                    <p>Try the parental controls demo to see how you can customize content for different age groups.</p>
+                </div>
+                
+                <div class="help-section">
+                    <h4>Accessibility Options</h4>
+                    <p>Use the accessibility button in the top right corner to adjust text size, contrast, and motion preferences.</p>
+                </div>
+                
+                <div class="help-section">
+                    <h4>Family Safety Guide</h4>
+                    <p>Expand or collapse sections in the family safety guide by clicking on the headings.</p>
+                </div>
+            </div>
+            
+            <div class="help-footer">
+                <button class="btn btn-primary close-help">Got it</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast-container" aria-live="polite"></div>
+    
     <script src="js/main.js"></script>
+    <script src="js/safety.js"></script>
 </body>
 </html>

@@ -2,8 +2,19 @@ from typing import Dict, Any, List
 from app.providers.interfaces.safety_provider import SafetyProvider, ContentFilter
 
 class MockSafetyProvider(SafetyProvider):
+    def __init__(self):
+        """Initialize the mock safety provider"""
+        super().__init__()
+        
     async def get_parental_controls(self, family_id: str) -> Dict[str, Any]:
         """Get current parental controls settings"""
+        return await self.execute_safely(
+            self._get_parental_controls_impl,
+            family_id=family_id
+        )
+        
+    async def _get_parental_controls_impl(self, family_id: str) -> Dict[str, Any]:
+        """Implementation of get_parental_controls with error handling"""
         return {
             "narrative_mode": ["history", "fantasy"],
             "content_filter": "mild",
@@ -24,6 +35,14 @@ class MockSafetyProvider(SafetyProvider):
     
     async def update_parental_controls(self, family_id: str, controls: Dict[str, Any]) -> Dict[str, Any]:
         """Update parental control settings"""
+        return await self.execute_safely(
+            self._update_parental_controls_impl,
+            family_id=family_id,
+            controls=controls
+        )
+        
+    async def _update_parental_controls_impl(self, family_id: str, controls: Dict[str, Any]) -> Dict[str, Any]:
+        """Implementation of update_parental_controls with error handling"""
         return {
             "message": "Parental controls updated successfully",
             "family_id": family_id,

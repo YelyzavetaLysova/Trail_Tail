@@ -3,22 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Trails - Trail Tail</title>
+    <title>Explore Trails - Trail Tale</title>
+    
+    <!-- Core styles -->
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/additional-fixed.css">
-    <link rel="stylesheet" href="css/map-enhancements-fixed.css">
     <link rel="stylesheet" href="css/explore-enhancements.css">
+    
+    <!-- Enhanced UI Components -->
+    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/guidance.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/map.css">
+    
+    <!-- Enhanced UI Components -->
+    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/guidance.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
     <meta name="description" content="Discover family-friendly hiking trails with interactive AI-generated stories and AR experiences">
 </head>
 <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Accessibility controls -->
+    <div id="accessibility-controls" class="accessibility-controls" aria-label="Accessibility options">
+        <button class="a11y-toggle" aria-label="Toggle accessibility menu">
+            <span class="material-symbols-rounded">accessibility_new</span>
+        </button>
+        <div class="a11y-panel">
+            <button class="a11y-option" data-feature="highContrast">
+                <span class="material-symbols-rounded">contrast</span>
+                <span>High Contrast</span>
+            </button>
+            <button class="a11y-option" data-feature="largeText">
+                <span class="material-symbols-rounded">format_size</span>
+                <span>Larger Text</span>
+            </button>
+            <button class="a11y-option" data-feature="reducedMotion">
+                <span class="material-symbols-rounded">animation</span>
+                <span>Reduce Motion</span>
+            </button>
+            <button class="a11y-option" data-feature="improvedReadability">
+                <span class="material-symbols-rounded">visibility</span>
+                <span>Improved Readability</span>
+            </button>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/logo.svg" alt="Trail Tail Logo">
-                    <h1>Trail Tail</h1>
+                    <img src="images/logo.svg" alt="Trail Tale Logo">
+                    <h1>Trail Tale</h1>
                 </a>
             </div>
             <nav>
@@ -30,7 +74,7 @@
         </div>
     </header>
 
-    <main class="explore-page">
+    <main id="main-content" class="explore-page">
         <div class="container">
             <section class="explore-hero">
                 <div class="content">
@@ -73,16 +117,50 @@
                 <img src="images/interactive-map.svg" alt="Interactive Trail Map" class="interactive-map" />
                 <div class="map-overlay">
                     <div class="map-controls">
-                        <button class="map-btn zoom-in" title="Zoom In">+</button>
-                        <button class="map-btn zoom-out" title="Zoom Out">-</button>
-                        <button class="map-btn recenter" title="Recenter Map">
+                        <button class="map-btn zoom-in" title="Zoom In" aria-label="Zoom in on map">+</button>
+                        <button class="map-btn zoom-out" title="Zoom Out" aria-label="Zoom out on map">-</button>
+                        <button class="map-btn recenter" title="Recenter Map" aria-label="Recenter map to your location">
                             <span class="material-symbols-rounded">my_location</span>
                         </button>
-                        <button class="map-btn toggle-terrain" title="Toggle Terrain View">
+                        <button class="map-btn toggle-terrain" title="Toggle Terrain View" aria-label="Switch between standard and terrain view">
                             <span class="material-symbols-rounded">terrain</span>
                         </button>
+                        <button class="map-btn family-mode" title="Family Mode" aria-label="Toggle family-friendly mode">
+                            <span class="material-symbols-rounded">family_restroom</span>
+                        </button>
                     </div>
-                    <div class="map-legend">
+                    
+                    <!-- Family-friendly filter toggle -->
+                    <div class="family-filter-container">
+                        <button class="family-filter-toggle" aria-expanded="false">
+                            <span class="material-symbols-rounded">child_care</span>
+                            <span>Family Filters</span>
+                        </button>
+                        <div class="family-filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="stroller-friendly" checked>
+                                <span>Stroller Friendly</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="restrooms" checked>
+                                <span>Restrooms</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="shade" checked>
+                                <span>Shaded Areas</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="water-features" checked>
+                                <span>Water Features</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="picnic" checked>
+                                <span>Picnic Areas</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="map-legend" aria-label="Map legend">
                         <div class="legend-title">Legend</div>
                         <div class="legend-item">
                             <div class="legend-color easy"></div>
@@ -96,76 +174,243 @@
                             <div class="legend-color difficult"></div>
                             <span class="legend-text">Difficult Trail</span>
                         </div>
+                        <div class="legend-item">
+                            <div class="legend-icon story-point"></div>
+                            <span class="legend-text">Story Point</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-icon ar-experience"></div>
+                            <span class="legend-text">AR Experience</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-icon amenity"></div>
+                            <span class="legend-text">Family Amenity</span>
+                        </div>
                     </div>
-                    <div class="map-markers">
+                    
+                    <!-- Progress and Achievements -->
+                    <div class="family-progress">
+                        <div class="achievement-badge" title="Family Explorer Badge">
+                            <span class="material-symbols-rounded">emoji_events</span>
+                            <div class="progress-circle" data-progress="35"></div>
+                        </div>
+                        <div class="achievement-badge" title="Nature Photographer Badge">
+                            <span class="material-symbols-rounded">photo_camera</span>
+                            <div class="progress-circle" data-progress="60"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-markers" aria-live="polite">
                         <!-- Markers will be added by JavaScript -->
+                    </div>
+                    
+                    <!-- Interactive map features status -->
+                    <div class="map-status" role="status">
+                        <span class="status-icon online">
+                            <span class="material-symbols-rounded">wifi</span>
+                        </span>
+                        <span class="status-text">Map data current</span>
                     </div>
                 </div>
             </div>
             
             <!-- Filters -->
-            <div class="filters card">
+            <div class="filters card animate-in" style="animation-delay: 0.1s;">
                 <h2>Filter Trails</h2>
-                <div class="filter-grid">
-                    <div class="filter-group">
-                        <label for="distance">
-                            <span class="material-symbols-rounded">straighten</span>
-                            Distance
-                        </label>
-                        <select id="distance">
-                            <option>Any distance</option>
-                            <option>Under 2 km</option>
-                            <option>2-5 km</option>
-                            <option>5-10 km</option>
-                            <option>Over 10 km</option>
-                        </select>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-tab="basic">Basic Filters</button>
+                    <button class="filter-tab" data-tab="family">Family Options</button>
+                    <button class="filter-tab" data-tab="accessibility">Accessibility</button>
+                </div>
+                
+                <div class="filter-panels">
+                    <!-- Basic Filters Panel -->
+                    <div class="filter-panel active" data-panel="basic">
+                        <div class="filter-grid">
+                            <div class="filter-group">
+                                <label for="distance">
+                                    <span class="material-symbols-rounded">straighten</span>
+                                    Distance
+                                </label>
+                                <select id="distance" aria-label="Select trail distance">
+                                    <option>Any distance</option>
+                                    <option>Under 2 km</option>
+                                    <option>2-5 km</option>
+                                    <option>5-10 km</option>
+                                    <option>Over 10 km</option>
+                                </select>
+                                <div class="filter-help" tabindex="0" role="button" aria-label="Help with distance filter">
+                                    <span class="material-symbols-rounded">help</span>
+                                    <div class="tooltip">Choose a distance range that fits your family's walking ability</div>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="difficulty">
+                                    <span class="material-symbols-rounded">trending_up</span>
+                                    Difficulty
+                                </label>
+                                <select id="difficulty" aria-label="Select trail difficulty">
+                                    <option>Any difficulty</option>
+                                    <option>Easy</option>
+                                    <option>Moderate</option>
+                                    <option>Hard</option>
+                                </select>
+                                <div class="filter-help" tabindex="0" role="button" aria-label="Help with difficulty filter">
+                                    <span class="material-symbols-rounded">help</span>
+                                    <div class="tooltip">Easy trails are flat with even surfaces, moderate have some hills, and hard trails have steep sections</div>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="features">
+                                    <span class="material-symbols-rounded">category</span>
+                                    Features
+                                </label>
+                                <select id="features" aria-label="Select trail features">
+                                    <option>Any Features</option>
+                                    <option>Scenic Views</option>
+                                    <option>Waterfall</option>
+                                    <option>Wildlife</option>
+                                    <option>Lake/River</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="duration">
+                                    <span class="material-symbols-rounded">schedule</span>
+                                    Duration
+                                </label>
+                                <select id="duration" aria-label="Select trail duration">
+                                    <option>Any duration</option>
+                                    <option>Under 30 min</option>
+                                    <option>30-60 min</option>
+                                    <option>1-2 hours</option>
+                                    <option>Over 2 hours</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="filter-group">
-                        <label for="difficulty">
-                            <span class="material-symbols-rounded">trending_up</span>
-                            Difficulty
-                        </label>
-                        <select id="difficulty">
-                            <option>Any difficulty</option>
-                            <option>Easy</option>
-                            <option>Moderate</option>
-                            <option>Hard</option>
-                        </select>
+                    <!-- Family Options Panel -->
+                    <div class="filter-panel" data-panel="family">
+                        <div class="filter-grid">
+                            <div class="filter-group">
+                                <label for="age-range">
+                                    <span class="material-symbols-rounded">child_care</span>
+                                    Age Range
+                                </label>
+                                <select id="age-range" aria-label="Select age range">
+                                    <option>All Ages</option>
+                                    <option>Toddler-friendly (0-3)</option>
+                                    <option>Young children (4-7)</option>
+                                    <option>Older children (8-12)</option>
+                                    <option>Teenagers (13+)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="amenities">
+                                    <span class="material-symbols-rounded">local_cafe</span>
+                                    Amenities
+                                </label>
+                                <select id="amenities" aria-label="Select needed amenities">
+                                    <option>Any Amenities</option>
+                                    <option>Restrooms</option>
+                                    <option>Picnic Areas</option>
+                                    <option>Water Fountains</option>
+                                    <option>Play Areas</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="interactive">
+                                    <span class="material-symbols-rounded">touch_app</span>
+                                    Interactive Features
+                                </label>
+                                <select id="interactive" aria-label="Select interactive features">
+                                    <option>Any Features</option>
+                                    <option>Story Points (5+)</option>
+                                    <option>AR Experiences (3+)</option>
+                                    <option>Scavenger Hunts</option>
+                                    <option>Educational Points</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="safety">
+                                    <span class="material-symbols-rounded">health_and_safety</span>
+                                    Safety Features
+                                </label>
+                                <select id="safety" aria-label="Select safety features">
+                                    <option>Any Safety Feature</option>
+                                    <option>Cell Coverage</option>
+                                    <option>Ranger Stations</option>
+                                    <option>Well-marked Trails</option>
+                                    <option>Fenced Dangerous Areas</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="filter-group">
-                        <label for="family">
-                            <span class="material-symbols-rounded">family_restroom</span>
-                            Family-Friendly
-                        </label>
-                        <select id="family">
-                            <option>All Trails</option>
-                            <option>Family-Friendly Only</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="features">
-                            <span class="material-symbols-rounded">category</span>
-                            Features
-                        </label>
-                        <select id="features">
-                            <option>Any Features</option>
-                            <option>Scenic Views</option>
-                            <option>Waterfall</option>
-                            <option>Wildlife</option>
-                            <option>Lake/River</option>
-                        </select>
+                    <!-- Accessibility Panel -->
+                    <div class="filter-panel" data-panel="accessibility">
+                        <div class="filter-grid">
+                            <div class="filter-group checkbox-group">
+                                <span class="group-label">
+                                    <span class="material-symbols-rounded">accessible</span>
+                                    Trail Surface
+                                </span>
+                                <div class="checkbox-options">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="paved">
+                                        <span>Paved</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="gravel">
+                                        <span>Gravel</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="boardwalk">
+                                        <span>Boardwalk</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group checkbox-group">
+                                <span class="group-label">
+                                    <span class="material-symbols-rounded">stroller</span>
+                                    Access Needs
+                                </span>
+                                <div class="checkbox-options">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="wheelchair">
+                                        <span>Wheelchair Accessible</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="stroller">
+                                        <span>Stroller Friendly</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="service-animals">
+                                        <span>Service Animal Friendly</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
+                <div class="filter-status" role="status" aria-live="polite">
+                    <span class="status-text">12 trails match your filters</span>
+                </div>
+                
                 <div class="actions">
-                    <button class="btn-filter reset">
+                    <button class="btn-filter reset" aria-label="Reset all filters">
                         <span class="material-symbols-rounded">refresh</span>
                         Reset
                     </button>
-                    <button class="btn-filter apply">
+                    <button class="btn-filter apply" aria-label="Apply selected filters">
                         <span class="material-symbols-rounded">filter_alt</span>
                         Apply Filters
                     </button>
@@ -178,7 +423,7 @@
                 
                 <div id="trails-list" class="trails-grid">
                     <!-- Sample Trail Cards (will be replaced by dynamic content) -->
-                    <div class="trail-card">
+                    <div class="trail-card interactive-card animate-in" tabindex="0">
                         <div class="trail-image">
                             <img src="images/trail-preview-1.svg" alt="Woodland Wonder Trail" />
                             <div class="trail-badge">
@@ -186,6 +431,16 @@
                                     <span class="material-symbols-rounded">favorite</span>
                                 </span>
                                 Popular
+                            </div>
+                            <div class="family-rating">
+                                <span class="age-recommendation">Ages 3-10</span>
+                                <div class="stars">
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star_half</span>
+                                </div>
                             </div>
                         </div>
                         <div class="trail-details">
@@ -196,6 +451,10 @@
                                     <span class="material-symbols-rounded">straighten</span>
                                     3.2 km
                                 </span>
+                                <span class="estimated-time">
+                                    <span class="material-symbols-rounded">schedule</span>
+                                    45 min
+                                </span>
                             </div>
                             <div class="trail-features">
                                 <span class="feature">Kid-friendly</span>
@@ -203,11 +462,21 @@
                                 <span class="feature">Shaded</span>
                             </div>
                             <p class="trail-description">Discover a magical woodland path perfect for families with young children. Keep an eye out for local wildlife!</p>
+                            <div class="interactive-preview">
+                                <div class="story-preview">
+                                    <span class="material-symbols-rounded">auto_stories</span>
+                                    <span>5 stories</span>
+                                </div>
+                                <div class="ar-preview">
+                                    <span class="material-symbols-rounded">view_in_ar</span>
+                                    <span>8 AR spots</span>
+                                </div>
+                            </div>
                             <a href="trail.html?id=route_12345" class="btn btn-primary btn-sm">View Trail</a>
                         </div>
                     </div>
 
-                    <div class="trail-card">
+                    <div class="trail-card interactive-card animate-in" tabindex="0" style="animation-delay: 0.1s;">
                         <div class="trail-image">
                             <img src="images/trail-preview-2.svg" alt="Mountain Explorer Path" />
                             <div class="trail-badge">
@@ -215,6 +484,16 @@
                                     <span class="material-symbols-rounded">new_releases</span>
                                 </span>
                                 New
+                            </div>
+                            <div class="family-rating">
+                                <span class="age-recommendation">Ages 8-12</span>
+                                <div class="stars">
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star_outline</span>
+                                </div>
                             </div>
                         </div>
                         <div class="trail-details">
@@ -225,6 +504,10 @@
                                     <span class="material-symbols-rounded">straighten</span>
                                     5.1 km
                                 </span>
+                                <span class="estimated-time">
+                                    <span class="material-symbols-rounded">schedule</span>
+                                    1h 30m
+                                </span>
                             </div>
                             <div class="trail-features">
                                 <span class="feature">Scenic views</span>
@@ -232,13 +515,33 @@
                                 <span class="feature">Picnic area</span>
                             </div>
                             <p class="trail-description">Enjoy breathtaking mountain vistas and a serene lake perfect for a family picnic. Moderate elevation gain makes this suitable for older children.</p>
+                            <div class="interactive-preview">
+                                <div class="story-preview">
+                                    <span class="material-symbols-rounded">auto_stories</span>
+                                    <span>7 stories</span>
+                                </div>
+                                <div class="ar-preview">
+                                    <span class="material-symbols-rounded">view_in_ar</span>
+                                    <span>5 AR spots</span>
+                                </div>
+                            </div>
                             <a href="trail.html?id=route_67890" class="btn btn-primary btn-sm">View Trail</a>
                         </div>
                     </div>
 
-                    <div class="trail-card">
+                    <div class="trail-card interactive-card animate-in" tabindex="0" style="animation-delay: 0.2s;">
                         <div class="trail-image">
                             <img src="images/trail-preview-3.svg" alt="Desert Canyon Trail" />
+                            <div class="family-rating">
+                                <span class="age-recommendation">Ages 12+</span>
+                                <div class="stars">
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star_outline</span>
+                                    <span class="material-symbols-rounded">star_outline</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="trail-details">
                             <h3>Desert Canyon Trail</h3>
@@ -248,6 +551,10 @@
                                     <span class="material-symbols-rounded">straighten</span>
                                     7.8 km
                                 </span>
+                                <span class="estimated-time">
+                                    <span class="material-symbols-rounded">schedule</span>
+                                    3h 15m
+                                </span>
                             </div>
                             <div class="trail-features">
                                 <span class="feature">Desert views</span>
@@ -255,13 +562,39 @@
                                 <span class="feature">Historical site</span>
                             </div>
                             <p class="trail-description">An adventurous hike through dramatic canyon landscapes and unique rock formations. Best for families with teens and experienced hikers.</p>
+                            <div class="interactive-preview">
+                                <div class="story-preview">
+                                    <span class="material-symbols-rounded">auto_stories</span>
+                                    <span>9 stories</span>
+                                </div>
+                                <div class="ar-preview">
+                                    <span class="material-symbols-rounded">view_in_ar</span>
+                                    <span>12 AR spots</span>
+                                </div>
+                            </div>
                             <a href="trail.html?id=route_78901" class="btn btn-primary btn-sm">View Trail</a>
                         </div>
                     </div>
                     
-                    <div class="trail-card">
+                    <div class="trail-card interactive-card animate-in" tabindex="0" style="animation-delay: 0.3s;">
                         <div class="trail-image">
                             <img src="images/trail-preview-1.svg" alt="Lakeside Loop" />
+                            <div class="trail-badge">
+                                <span class="badge-icon">
+                                    <span class="material-symbols-rounded">accessible</span>
+                                </span>
+                                Accessible
+                            </div>
+                            <div class="family-rating">
+                                <span class="age-recommendation">All Ages</span>
+                                <div class="stars">
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                    <span class="material-symbols-rounded">star</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="trail-details">
                             <h3>Lakeside Loop</h3>
@@ -271,6 +604,10 @@
                                     <span class="material-symbols-rounded">straighten</span>
                                     2.5 km
                                 </span>
+                                <span class="estimated-time">
+                                    <span class="material-symbols-rounded">schedule</span>
+                                    30 min
+                                </span>
                             </div>
                             <div class="trail-features">
                                 <span class="feature">Lake views</span>
@@ -278,6 +615,16 @@
                                 <span class="feature">Stroller friendly</span>
                             </div>
                             <p class="trail-description">A gentle loop around a serene lake with plenty of opportunities to spot waterfowl. Perfect for all ages and accessibility needs.</p>
+                            <div class="interactive-preview">
+                                <div class="story-preview">
+                                    <span class="material-symbols-rounded">auto_stories</span>
+                                    <span>6 stories</span>
+                                </div>
+                                <div class="ar-preview">
+                                    <span class="material-symbols-rounded">view_in_ar</span>
+                                    <span>10 AR spots</span>
+                                </div>
+                            </div>
                             <a href="trail.html?id=route_24680" class="btn btn-primary btn-sm">View Trail</a>
                         </div>
                     </div>
@@ -290,7 +637,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Trail Tail</h4>
+                    <h4>Trail Tale</h4>
                     <p>
                         Making family hikes magical through AI-generated stories and augmented reality experiences.
                     </p>
@@ -316,13 +663,44 @@
             
             <div class="footer-bottom">
                 <p>
-                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                    © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
                 </p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/map-interaction.js"></script>
+    <!-- System status indicator -->
+    <div id="system-status" class="system-status" role="status" aria-live="polite">
+        <div class="status-icon"></div>
+        <div class="status-message"></div>
+        <button class="status-close" aria-label="Close status message">×</button>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Help guidance overlay -->
+    <div id="help-overlay" class="help-overlay">
+        <div class="help-content">
+            <button class="help-close" aria-label="Close help">
+                <span class="material-symbols-rounded">close</span>
+            </button>
+            <h2>How to Use Trail Exploration</h2>
+            <div class="help-items"></div>
+        </div>
+    </div>
+
+    <!-- Interactive tooltip container -->
+    <div id="interactive-tooltip" class="interactive-tooltip" role="tooltip"></div>
+
+    <!-- Scripts with ES modules -->
+    <script type="module" src="js/enhanced-main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/map-enhancements.js"></script>
+    <script type="module" src="js/interactive-elements.js"></script>
+    
+    <!-- Utilities that may not be modules yet -->
+    <script src="js/utils/ui.utils.js"></script>
+    <script src="js/utils/map.utils.js"></script>
 </body>
 </html>

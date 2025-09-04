@@ -4,8 +4,19 @@ import random
 from datetime import datetime, timedelta
 
 class MockUsersProvider(UsersProvider):
+    def __init__(self):
+        """Initialize the mock users provider"""
+        super().__init__()
+        
     async def register_family(self, family: Dict[str, Any]) -> Dict[str, Any]:
         """Register a new family"""
+        return await self.execute_safely(
+            self._register_family_impl,
+            family=family
+        )
+        
+    async def _register_family_impl(self, family: Dict[str, Any]) -> Dict[str, Any]:
+        """Implementation of register_family with error handling"""
         return {
             "message": "Family registered successfully",
             "family_id": family.get("id", f"family_{random.randint(1000, 9999)}"),

@@ -1,0 +1,381 @@
+/* 
+* Trail Tale Map Styles
+* Consolidated map styling for Trail Tale
+*
+* TABLE OF CONTENTS:
+* -----------------
+* 1. Basic Map Layout
+* 2. Map Controls
+* 3. Map Legend
+* 4. Map Markers
+* 5. Family-Friendly Features
+* 6. Responsive Adjustments
+*/
+
+/* 
+* SECTION 1: BASIC MAP LAYOUT
+*/
+
+/* Enhanced map container */
+.map-container {
+  height: 65vh !important;
+  min-height: 450px !important;
+  max-height: 800px !important;
+  width: 100% !important;
+  transition: height 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 50vh !important;
+    min-height: 350px !important;
+  }
+}
+
+.interactive-map, .trail-map {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  transition: all 0.5s ease;
+}
+
+/* 
+* SECTION 2: MAP CONTROLS
+*/
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.map-controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.map-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius-circle);
+  background: white;
+  border: none;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.map-btn:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.map-btn:active {
+  transform: translateY(0);
+}
+
+.map-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light), var(--shadow-sm);
+}
+
+/* 
+* SECTION 3: MAP LEGEND
+*/
+
+.map-legend {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background-color: white;
+  padding: 12px;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  max-width: 180px;
+  pointer-events: auto;
+}
+
+.legend-title {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  margin-bottom: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: var(--font-size-xs);
+}
+
+.legend-color {
+  width: 16px;
+  height: 4px;
+  margin-right: 8px;
+  border-radius: 2px;
+}
+
+.legend-color.easy { background-color: var(--success); }
+.legend-color.moderate { background-color: var(--warning); }
+.legend-color.difficult { background-color: var(--error); }
+
+.legend-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: var(--border-radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.legend-icon.story-point {
+  background-color: var(--accent);
+  color: white;
+}
+
+.legend-icon.ar-experience {
+  background-color: var(--primary);
+  color: white;
+}
+
+.legend-icon.amenity {
+  background-color: var(--info);
+  color: white;
+}
+
+/* 
+* SECTION 4: MAP MARKERS
+*/
+
+.map-marker {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.map-marker:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.map-marker.selected {
+  transform: translate(-50%, -50%) scale(1.4);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  z-index: 20;
+}
+
+.map-marker.story-point {
+  background-color: var(--accent);
+}
+
+.map-marker.ar-experience {
+  background-color: var(--primary);
+}
+
+.map-marker.amenity {
+  background-color: var(--info);
+}
+
+.map-marker.family {
+  background-color: #FFA726;
+}
+
+/* 
+* SECTION 5: FAMILY-FRIENDLY FEATURES
+*/
+
+.family-filter-container {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  pointer-events: auto;
+}
+
+.family-filter-toggle {
+  background-color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.family-filter-toggle:hover {
+  background-color: var(--primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+.family-filter-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  padding: 12px;
+  box-shadow: var(--shadow-md);
+  width: 220px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.family-filter-container[data-open="true"] .family-filter-options {
+  display: flex;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.family-progress {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.achievement-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-circle);
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.achievement-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.progress-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.progress-circle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--primary);
+  border-right: 3px solid var(--primary);
+  border-radius: 50%;
+  transform: rotate(calc(var(--progress, 0) * 3.6deg));
+  transform-origin: center;
+  box-sizing: border-box;
+}
+
+.map-status {
+  position: absolute;
+  bottom: 100px;
+  left: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-xs);
+  pointer-events: auto;
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-icon.online {
+  color: var(--success);
+}
+
+.status-icon.offline {
+  color: var(--error);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .map-controls {
+    top: 8px;
+    right: 8px;
+  }
+  
+  .map-legend {
+    bottom: 8px;
+    left: 8px;
+    max-width: 160px;
+    padding: 8px;
+  }
+  
+  .family-filter-container {
+    top: 8px;
+    left: 8px;
+  }
+  
+  .family-progress {
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  .achievement-badge {
+    width: 40px;
+    height: 40px;
+  }
+}

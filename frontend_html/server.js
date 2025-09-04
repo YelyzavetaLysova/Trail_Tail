@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001; // Changed from 3000 to avoid conflict
 
 // Serve static files from the current directory
 app.use(express.static(path.join(__dirname)));
@@ -49,5 +49,5 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
   console.log(`Serving static files from: ${__dirname}`);
-  console.log(`Backend API expected at: http://localhost:8000`);
+  console.log(`Backend API expected at: http://localhost:8001 - it is running`);
 });

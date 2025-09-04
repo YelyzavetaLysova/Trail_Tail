@@ -3,6 +3,10 @@ from app.providers.interfaces.ar_encounters_provider import AREncountersProvider
 import random
 
 class MockAREncountersProvider(AREncountersProvider):
+    def __init__(self):
+        """Initialize the mock AR encounters provider"""
+        super().__init__()
+        
     async def generate_ar_encounters(
         self,
         route_id: str,
@@ -11,6 +15,23 @@ class MockAREncountersProvider(AREncountersProvider):
         count: int
     ) -> List[Dict[str, Any]]:
         """Generate AR encounters for a specific route"""
+        # Use the execute_safely method to handle errors consistently
+        return await self.execute_safely(
+            self._generate_ar_encounters_impl,
+            route_id=route_id,
+            narrative_mode=narrative_mode,
+            child_age=child_age,
+            count=count
+        )
+        
+    async def _generate_ar_encounters_impl(
+        self,
+        route_id: str,
+        narrative_mode: str,
+        child_age: int,
+        count: int
+    ) -> List[Dict[str, Any]]:
+        """Implementation of generate_ar_encounters with error handling"""
         # In a real implementation, this would use an algorithm to place AR encounters
         # at appropriate waypoints along the route, matching the narrative theme
         

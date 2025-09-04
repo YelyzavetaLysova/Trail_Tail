@@ -3,18 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trail Tail - AI-Powered Family Hiking Adventures</title>
+    <title>Trail Tale - AI-Powered Family Hiking Adventures</title>
+    
+    <!-- CSS Structure -->
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/additional-fixed.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layouts.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <!-- Enhanced UI Components -->
+    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/guidance.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/map.css">
+    
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
     <meta name="description" content="Discover family-friendly hiking trails with interactive AI-generated stories and AR experiences">
+    
+    <!-- Open Graph meta tags for better social sharing -->
+    <meta property="og:title" content="Trail Tale - AI-Powered Family Hiking Adventures">
+    <meta property="og:description" content="Discover family-friendly hiking trails with interactive AI-generated stories and AR experiences">
+    <meta property="og:image" content="images/logo.svg">
+    <meta property="og:url" content="https://trailtail.example.com">
+    <meta property="og:type" content="website">
 </head>
 <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Accessibility controls -->
+    <div id="accessibility-controls" class="accessibility-controls" aria-label="Accessibility options">
+        <button class="a11y-toggle" aria-label="Toggle accessibility menu">
+            <span class="material-symbols-rounded">accessibility_new</span>
+        </button>
+        <div class="a11y-panel">
+            <button class="a11y-option" data-feature="highContrast">
+                <span class="material-symbols-rounded">contrast</span>
+                <span>High Contrast</span>
+            </button>
+            <button class="a11y-option" data-feature="largeText">
+                <span class="material-symbols-rounded">format_size</span>
+                <span>Larger Text</span>
+            </button>
+            <button class="a11y-option" data-feature="reducedMotion">
+                <span class="material-symbols-rounded">animation</span>
+                <span>Reduce Motion</span>
+            </button>
+            <button class="a11y-option" data-feature="improvedReadability">
+                <span class="material-symbols-rounded">visibility</span>
+                <span>Improved Readability</span>
+            </button>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.svg" alt="Trail Tail Logo">
-                <h1>Trail Tail</h1>
+                <img src="images/logo.svg" alt="Trail Tale Logo">
+                <h1>Trail Tale</h1>
             </div>
             <nav>
                 <ul>
@@ -25,7 +73,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
@@ -140,7 +188,7 @@
             <div class="container">
                 <h3>Ready to Start Your Adventure?</h3>
                 <p>
-                    Join thousands of families creating magical outdoor memories with Trail Tail. Your next adventure is just a click away!
+                    Join thousands of families creating magical outdoor memories with Trail Tale. Your next adventure is just a click away!
                 </p>
                 <a href="register.html" class="btn btn-white">Create Family Account</a>
             </div>
@@ -151,7 +199,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Trail Tail</h4>
+                    <h4>Trail Tale</h4>
                     <p>
                         Making family hikes magical through AI-generated stories and augmented reality experiences.
                     </p>
@@ -177,23 +225,39 @@
             
             <div class="footer-bottom">
                 <p>
-                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                    © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
                 </p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/map-interaction.js"></script>
-    <script>
-        // Initialize home page map
-        document.addEventListener('DOMContentLoaded', () => {
-            const homeMapContainer = document.querySelector('.map-container#home-map');
-            if (homeMapContainer) {
-                MapInteraction.init('home-map');
-                TrailMarkers.addMarkersToMap(homeMapContainer);
-            }
-        });
-    </script>
+    <!-- System status indicator -->
+    <div id="system-status" class="system-status" role="status" aria-live="polite">
+        <div class="status-icon"></div>
+        <div class="status-message"></div>
+        <button class="status-close" aria-label="Close status message">×</button>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Help guidance overlay -->
+    <div id="help-overlay" class="help-overlay">
+        <div class="help-content">
+            <button class="help-close" aria-label="Close help">
+                <span class="material-symbols-rounded">close</span>
+            </button>
+            <h2>How to Use Trail Tale</h2>
+            <div class="help-items"></div>
+        </div>
+    </div>
+
+    <!-- Scripts with ES modules -->
+    <script type="module" src="js/enhanced-main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Utilities that may not be modules yet -->
+    <script src="js/utils/ui.utils.js"></script>
+    <script src="js/utils/map.utils.js"></script>
 </body>
 </html>

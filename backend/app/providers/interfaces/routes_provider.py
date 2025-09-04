@@ -1,7 +1,8 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import List, Dict, Any, Optional
+from app.providers.interfaces.base_provider import BaseProvider
 
-class RoutesProvider(ABC):
+class RoutesProvider(BaseProvider):
     @abstractmethod
     async def generate_route(
         self,

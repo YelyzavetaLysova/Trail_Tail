@@ -3,28 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Family Account - Trail Tail</title>
+    <title>Create Family Account - Trail Tale</title>
+    
+    <!-- Core styles -->
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Enhanced UI Components -->
+    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/guidance.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+    <meta name="description" content="Create a family account to start your Trail Tale adventures with personalized hiking experiences">
 </head>
 <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Accessibility controls -->
+    <div id="accessibility-controls" class="accessibility-controls" aria-label="Accessibility options">
+        <button class="a11y-toggle" aria-label="Toggle accessibility menu">
+            <span class="material-symbols-rounded">accessibility_new</span>
+        </button>
+        <div class="a11y-panel">
+            <button class="a11y-option" data-feature="highContrast">
+                <span class="material-symbols-rounded">contrast</span>
+                <span>High Contrast</span>
+            </button>
+            <button class="a11y-option" data-feature="largeText">
+                <span class="material-symbols-rounded">format_size</span>
+                <span>Larger Text</span>
+            </button>
+            <button class="a11y-option" data-feature="reducedMotion">
+                <span class="material-symbols-rounded">animation</span>
+                <span>Reduce Motion</span>
+            </button>
+            <button class="a11y-option" data-feature="improvedReadability">
+                <span class="material-symbols-rounded">visibility</span>
+                <span>Improved Readability</span>
+            </button>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.svg" alt="Trail Tail Logo">
-                <h1>Trail Tail</h1>
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Trail Tale Logo">
+                    <h1>Trail Tale</h1>
+                </a>
             </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="login.html">Login</a></li>
+                    <li><button class="help-toggle" aria-label="Open help guide">
+                        <span class="material-symbols-rounded">help</span>
+                    </button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="auth-section">
+    <main id="main-content">
+        <section class="auth-section animate-in">
             <div class="container">
                 <div class="auth-box register">
                     <h2>Create Family Account</h2>
@@ -33,22 +78,35 @@
                     <form id="register-form" class="auth-form">
                         <div class="form-group">
                             <label for="family-name">Family Name</label>
-                            <input type="text" id="family-name" name="familyName" required>
+                            <input type="text" id="family-name" name="familyName" required aria-describedby="family-name-help">
+                            <div class="form-help" id="family-name-help">What would you like to call your family group?</div>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required aria-describedby="email-help">
+                            <div class="form-help" id="email-help">We'll use this for account verification and updates.</div>
                         </div>
                         
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password" required>
+                            <input type="password" id="password" name="password" required aria-describedby="password-help">
+                            <div class="form-help" id="password-help">Use at least 8 characters including a letter and number</div>
+                            <div class="password-strength">
+                                <div class="strength-meter">
+                                    <div class="meter-fill" style="width: 0%"></div>
+                                </div>
+                                <div class="strength-text">Password strength: <span id="strength-value">None</span></div>
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="confirm-password">Confirm Password</label>
                             <input type="password" id="confirm-password" name="confirmPassword" required>
+                            <div class="passwords-match" id="passwords-match" aria-live="polite">
+                                <span class="material-symbols-rounded">check_circle</span>
+                                <span>Passwords match</span>
+                            </div>
                         </div>
                         
                         <div class="family-members">
@@ -86,7 +144,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Trail Tail</h4>
+                    <h4>Trail Tale</h4>
                     <p>
                         Making family hikes magical through AI-generated stories and augmented reality experiences.
                     </p>
@@ -112,7 +170,7 @@
             
             <div class="footer-bottom">
                 <p>
-                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                    © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
                 </p>
             </div>
         </div>

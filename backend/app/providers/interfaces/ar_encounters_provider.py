@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import List, Dict, Any, Optional
 from enum import Enum
+from app.providers.interfaces.base_provider import BaseProvider
 
 class EncounterType(str, Enum):
     ANIMAL = "animal"
@@ -9,7 +10,7 @@ class EncounterType(str, Enum):
     PUZZLE = "puzzle"
     LANDMARK = "landmark"
 
-class AREncountersProvider(ABC):
+class AREncountersProvider(BaseProvider):
     @abstractmethod
     async def generate_ar_encounters(
         self,

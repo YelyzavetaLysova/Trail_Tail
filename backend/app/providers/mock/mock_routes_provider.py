@@ -2,6 +2,10 @@ from typing import List, Dict, Any, Optional
 from app.providers.interfaces.routes_provider import RoutesProvider
 
 class MockRoutesProvider(RoutesProvider):
+    def __init__(self):
+        """Initialize the mock routes provider"""
+        super().__init__()
+        
     async def generate_route(
         self,
         start_lat: float,
@@ -11,6 +15,25 @@ class MockRoutesProvider(RoutesProvider):
         with_children: Optional[bool] = True
     ) -> Dict[str, Any]:
         """Generate a hiking route based on parameters"""
+        # Use the execute_safely method to handle errors consistently
+        return await self.execute_safely(
+            self._generate_route_impl,
+            start_lat=start_lat,
+            start_lng=start_lng,
+            distance=distance,
+            difficulty=difficulty,
+            with_children=with_children
+        )
+        
+    async def _generate_route_impl(
+        self,
+        start_lat: float,
+        start_lng: float,
+        distance: Optional[float] = 3.0,
+        difficulty: Optional[str] = "easy",
+        with_children: Optional[bool] = True
+    ) -> Dict[str, Any]:
+        """Implementation of generate_route with error handling"""
         # In a real implementation, this would use an algorithm to generate a route
         # based on topographic data, trail networks, and safety considerations
         

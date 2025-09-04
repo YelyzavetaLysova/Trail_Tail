@@ -3,20 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Dashboard - Trail Tail</title>
+    <title>Family Dashboard - Trail Tale</title>
+    
+    <!-- Core styles -->
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/additional-fixed.css">
     <link rel="stylesheet" href="css/dashboard-enhancements.css">
     <link rel="stylesheet" href="css/sidebar-animations.css">
+    
+    <!-- Enhanced UI Components -->
+    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/guidance.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/map.css">
+    
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
 </head>
 <body class="dashboard-page">
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Accessibility controls -->
+    <div id="accessibility-controls" class="accessibility-controls" aria-label="Accessibility options">
+        <button class="a11y-toggle" aria-label="Toggle accessibility menu">
+            <span class="material-symbols-rounded">accessibility_new</span>
+        </button>
+        <div class="a11y-panel">
+            <button class="a11y-option" data-feature="highContrast">
+                <span class="material-symbols-rounded">contrast</span>
+                <span>High Contrast</span>
+            </button>
+            <button class="a11y-option" data-feature="largeText">
+                <span class="material-symbols-rounded">format_size</span>
+                <span>Larger Text</span>
+            </button>
+            <button class="a11y-option" data-feature="reducedMotion">
+                <span class="material-symbols-rounded">animation</span>
+                <span>Reduce Motion</span>
+            </button>
+            <button class="a11y-option" data-feature="improvedReadability">
+                <span class="material-symbols-rounded">visibility</span>
+                <span>Improved Readability</span>
+            </button>
+        </div>
+    </div>
+    
     <header class="dashboard-header">
         <div class="container">
             <div class="logo">
-                <img src="images/logo.svg" alt="Trail Tail Logo">
-                <h1>Trail Tail</h1>
+                <img src="images/logo.svg" alt="Trail Tale Logo">
+                <h1>Trail Tale</h1>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -47,7 +86,7 @@
         </div>
     </header>
 
-    <main class="dashboard-main">
+    <main id="main-content" class="dashboard-main">
         <div class="dashboard-sidebar">
             <div class="family-info">
                 <div class="avatar-container">
@@ -229,7 +268,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Trail Tail</h4>
+                    <h4>Trail Tale</h4>
                     <p>
                         Making family hikes magical through AI-generated stories and augmented reality experiences.
                     </p>
@@ -255,7 +294,7 @@
             
             <div class="footer-bottom">
                 <p>
-                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                    © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
                 </p>
             </div>
         </div>
@@ -299,5 +338,29 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
+
+    <!-- System status indicator -->
+    <div id="system-status" class="system-status" role="status" aria-live="polite">
+        <div class="status-icon"></div>
+        <div class="status-message"></div>
+        <button class="status-close" aria-label="Close status message">×</button>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Help guidance overlay -->
+    <div id="help-overlay" class="help-overlay">
+        <div class="help-content">
+            <button class="help-close" aria-label="Close help">
+                <span class="material-symbols-rounded">close</span>
+            </button>
+            <h2>Family Dashboard Help</h2>
+            <div class="help-items"></div>
+        </div>
+    </div>
+    
+    <!-- Enhanced scripts -->
+    <script type="module" src="js/enhanced-main.js"></script>
 </body>
 </html>

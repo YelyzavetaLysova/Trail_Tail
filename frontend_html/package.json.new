@@ -1,0 +1,26 @@
+{
+  "name": "trail-tail-frontend",
+  "version": "1.0.0",
+  "description": "Trail Tail - AI-Powered Family Hiking Adventures",
+  "main": "new-server.js",
+  "scripts": {
+    "start": "node new-server.js",
+    "dev": "nodemon new-server.js",
+    "start:old": "node server.js",
+    "lint": "eslint .",
+    "clean": "rm -rf logs/*.log"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.21.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

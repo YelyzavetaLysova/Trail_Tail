@@ -3,19 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How It Works - Trail Tail</title>
+    <title>How It Works - Trail Tale</title>
+    
+    <!-- Core styles -->
+    <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/additional-fixed.css">
     <link rel="stylesheet" href="css/how-it-works.css">
+    
+    <!-- Enhanced UI Components -->
+    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/guidance.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+    <meta name="description" content="Learn how Trail Tale uses AI technology to create engaging family hiking adventures with interactive stories and AR experiences">
 </head>
 <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Accessibility controls -->
+    <div id="accessibility-controls" class="accessibility-controls" aria-label="Accessibility options">
+        <button class="a11y-toggle" aria-label="Toggle accessibility menu">
+            <span class="material-symbols-rounded">accessibility_new</span>
+        </button>
+        <div class="a11y-panel">
+            <button class="a11y-option" data-feature="highContrast">
+                <span class="material-symbols-rounded">contrast</span>
+                <span>High Contrast</span>
+            </button>
+            <button class="a11y-option" data-feature="largeText">
+                <span class="material-symbols-rounded">format_size</span>
+                <span>Larger Text</span>
+            </button>
+            <button class="a11y-option" data-feature="reducedMotion">
+                <span class="material-symbols-rounded">animation</span>
+                <span>Reduce Motion</span>
+            </button>
+            <button class="a11y-option" data-feature="improvedReadability">
+                <span class="material-symbols-rounded">visibility</span>
+                <span>Improved Readability</span>
+            </button>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.svg" alt="Trail Tail Logo">
-                <h1>Trail Tail</h1>
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Trail Tale Logo">
+                    <h1>Trail Tale</h1>
+                </a>
             </div>
             <nav>
                 <ul>
@@ -28,11 +69,16 @@
         </div>
     </header>
 
-    <main>
-        <section class="page-hero how-it-works-hero">
+    <main id="main-content">
+        <section class="page-hero how-it-works-hero animate-in">
             <div class="container">
-                <h2>How Trail Tail Works</h2>
+                <h2>How Trail Tale Works</h2>
                 <p>Discover how our AI technology transforms ordinary hikes into extraordinary adventures for families</p>
+                
+                <div class="hero-cta">
+                    <a href="register.html" class="btn btn-primary">Get Started</a>
+                    <a href="explore.html" class="btn btn-secondary">Explore Trails</a>
+                </div>
             </div>
             <div class="hero-visual-elements">
                 <img src="images/element-tree.svg" alt="" class="hero-element element-tree" width="100" height="100">
@@ -45,7 +91,7 @@
         <section class="process-overview">
             <div class="container">
                 <div class="process-steps">
-                    <div class="process-step">
+                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.1s;">
                         <div class="step-number">1</div>
                         <div class="step-content">
                             <h3>Create Your Family Profile</h3>
@@ -54,10 +100,13 @@
                                 <img src="images/step1-illustration.svg" alt="Family profile creation screen" class="step-image">
                                 <span class="step-icon"><span class="material-symbols-rounded">group</span></span>
                             </div>
+                            <div class="step-action">
+                                <a href="register.html" class="btn btn-sm btn-primary">Create Profile</a>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="process-step">
+                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.2s;">
                         <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Discover or Generate Trails</h3>
@@ -66,10 +115,13 @@
                                 <img src="images/step2-illustration.svg" alt="Trail discovery map interface" class="step-image">
                                 <span class="step-icon"><span class="material-symbols-rounded">explore</span></span>
                             </div>
+                            <div class="step-action">
+                                <a href="explore.html" class="btn btn-sm btn-primary">Find Trails</a>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="process-step">
+                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.3s;">
                         <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Choose Your Narrative Mode</h3>
@@ -78,10 +130,14 @@
                                 <img src="images/step3-illustration.svg" alt="Narrative mode selection" class="step-image">
                                 <span class="step-icon"><span class="material-symbols-rounded">auto_stories</span></span>
                             </div>
+                            <div class="step-action">
+                                <button class="btn btn-sm btn-outline mode-demo" data-mode="historical">Try Historical</button>
+                                <button class="btn btn-sm btn-outline mode-demo" data-mode="fantasy">Try Fantasy</button>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="process-step">
+                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.4s;">
                         <div class="step-number">4</div>
                         <div class="step-content">
                             <h3>Preview and Customize Content</h3>
@@ -90,22 +146,28 @@
                                 <img src="images/step4-illustration.svg" alt="Content preview screen" class="step-image">
                                 <span class="step-icon"><span class="material-symbols-rounded">visibility</span></span>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3>Embark on Your Adventure</h3>
-                            <p>Head out on your hike with the Trail Tail app guiding you. At specific waypoints, the app will deliver narrative segments and unlock AR experiences designed to engage and educate.</p>
-                            <div class="step-image-container">
-                                <img src="images/step5-illustration.svg" alt="Family hiking with app" class="step-image">
-                                <span class="step-icon"><span class="material-symbols-rounded">hiking</span></span>
+                            <div class="step-action">
+                                <button class="btn btn-sm btn-outline preview-demo">Preview Demo</button>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="process-step">
+                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.5s;">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Embark on Your Adventure</h3>
+                            <p>Head out on your hike with the Trail Tale app guiding you. At specific waypoints, the app will deliver narrative segments and unlock AR experiences designed to engage and educate.</p>
+                            <div class="step-image-container">
+                                <img src="images/step5-illustration.svg" alt="Family hiking with app" class="step-image">
+                                <span class="step-icon"><span class="material-symbols-rounded">hiking</span></span>
+                            </div>
+                            <div class="step-action">
+                                <button class="btn btn-sm btn-outline ar-demo">AR Demo</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.6s;">
                         <div class="step-number">6</div>
                         <div class="step-content">
                             <h3>Collect Memories and Achievements</h3>
@@ -113,6 +175,9 @@
                             <div class="step-image-container">
                                 <img src="images/step6-illustration.svg" alt="Achievements and journal screen" class="step-image">
                                 <span class="step-icon"><span class="material-symbols-rounded">workspace_premium</span></span>
+                            </div>
+                            <div class="step-action">
+                                <button class="btn btn-sm btn-outline achievement-demo">View Achievements</button>
                             </div>
                         </div>
                     </div>
@@ -122,10 +187,10 @@
         
         <section class="technology-behind">
             <div class="container">
-                <h3>The Technology Behind Trail Tail</h3>
+                <h3>The Technology Behind Trail Tale</h3>
                 
                 <div class="tech-features">
-                    <div class="tech-feature">
+                    <div class="tech-feature interactive-card animate-in" tabindex="0">
                         <div class="tech-icon ai-icon">
                             <span class="material-symbols-rounded">psychology</span>
                         </div>
@@ -138,10 +203,16 @@
                                 <li>Personalized storytelling matched to each child</li>
                                 <li>Regular content updates with new themes and topics</li>
                             </ul>
+                            <div class="tech-demo">
+                                <button class="btn btn-sm btn-outline demo-trigger" data-demo="narrative">
+                                    <span class="material-symbols-rounded">smart_toy</span>
+                                    Try Narrative Demo
+                                </button>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="tech-feature">
+                    <div class="tech-feature interactive-card animate-in" tabindex="0" style="animation-delay: 0.1s;">
                         <div class="tech-icon ar-icon">
                             <span class="material-symbols-rounded">view_in_ar</span>
                         </div>
@@ -154,10 +225,16 @@
                                 <li>Educational overlays about flora, fauna, and geology</li>
                                 <li>Photo opportunities with virtual elements</li>
                             </ul>
+                            <div class="tech-demo">
+                                <button class="btn btn-sm btn-outline demo-trigger" data-demo="ar">
+                                    <span class="material-symbols-rounded">view_in_ar</span>
+                                    Try AR Demo
+                                </button>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="tech-feature">
+                    <div class="tech-feature interactive-card animate-in" tabindex="0" style="animation-delay: 0.2s;">
                         <div class="tech-icon routes-icon">
                             <span class="material-symbols-rounded">map</span>
                         </div>
@@ -170,6 +247,12 @@
                                 <li>Integration of points of interest and scenic views</li>
                                 <li>Customization based on family preferences and abilities</li>
                             </ul>
+                            <div class="tech-demo">
+                                <button class="btn btn-sm btn-outline demo-trigger" data-demo="route">
+                                    <span class="material-symbols-rounded">route</span>
+                                    Route Generator Demo
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -237,7 +320,7 @@
                 <div class="testimonial-slider">
                     <div class="testimonial">
                         <div class="testimonial-content">
-                            <p>"Trail Tail has completely transformed our family hikes. My 8-year-old went from complaining about walking to begging us to go hiking every weekend! The fantasy stories captivate her imagination and she's learning so much."</p>
+                            <p>"Trail Tale has completely transformed our family hikes. My 8-year-old went from complaining about walking to begging us to go hiking every weekend! The fantasy stories captivate her imagination and she's learning so much."</p>
                         </div>
                         <div class="testimonial-author">
                             <div class="author-image">
@@ -245,7 +328,7 @@
                             </div>
                             <div class="author-info">
                                 <span class="author-name">Jessica M.</span>
-                                <span class="author-detail">Mother of two, hiking with Trail Tail for 6 months</span>
+                                <span class="author-detail">Mother of two, hiking with Trail Tale for 6 months</span>
                             </div>
                         </div>
                     </div>
@@ -267,7 +350,7 @@
                     
                     <div class="testimonial">
                         <div class="testimonial-content">
-                            <p>"The AR encounters are absolutely magical. Watching my children's faces light up when they discover a virtual fairy or dinosaur on the trail is priceless. Trail Tail has made our outdoor time so much more engaging."</p>
+                            <p>"The AR encounters are absolutely magical. Watching my children's faces light up when they discover a virtual fairy or dinosaur on the trail is priceless. Trail Tale has made our outdoor time so much more engaging."</p>
                         </div>
                         <div class="testimonial-author">
                             <div class="author-image">
@@ -275,7 +358,7 @@
                             </div>
                             <div class="author-info">
                                 <span class="author-name">Sophia and David L.</span>
-                                <span class="author-detail">Parents using Trail Tail for family adventures</span>
+                                <span class="author-detail">Parents using Trail Tale for family adventures</span>
                             </div>
                         </div>
                     </div>
@@ -292,7 +375,7 @@
             <div class="container">
                 <h3>Ready to Transform Your Family Hikes?</h3>
                 <p>
-                    Join thousands of families creating magical outdoor memories with Trail Tail. Your next adventure is just a click away!
+                    Join thousands of families creating magical outdoor memories with Trail Tale. Your next adventure is just a click away!
                 </p>
                 <a href="register.html" class="btn btn-white">
                     <span class="material-symbols-rounded">family_restroom</span>
@@ -306,7 +389,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Trail Tail</h4>
+                    <h4>Trail Tale</h4>
                     <p>
                         Making family hikes magical through AI-generated stories and augmented reality experiences.
                     </p>
@@ -332,13 +415,88 @@
             
             <div class="footer-bottom">
                 <p>
-                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                    © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
                 </p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- System status indicator -->
+    <div id="system-status" class="system-status" role="status" aria-live="polite">
+        <div class="status-icon"></div>
+        <div class="status-message"></div>
+        <button class="status-close" aria-label="Close status message">×</button>
+    </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Help guidance overlay -->
+    <div id="help-overlay" class="help-overlay">
+        <div class="help-content">
+            <button class="help-close" aria-label="Close help">
+                <span class="material-symbols-rounded">close</span>
+            </button>
+            <h2>Trail Tale Help Guide</h2>
+            <div class="help-items">
+                <div class="help-item">
+                    <span class="help-item-icon">
+                        <span class="material-symbols-rounded">touch_app</span>
+                    </span>
+                    <div class="help-item-content">
+                        <h3>Interactive Steps</h3>
+                        <p>Click or tap on any step to see a more detailed explanation and try interactive demos.</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <span class="help-item-icon">
+                        <span class="material-symbols-rounded">accessibility_new</span>
+                    </span>
+                    <div class="help-item-content">
+                        <h3>Accessibility Features</h3>
+                        <p>Use the accessibility panel in the top-right corner to adjust text size, contrast, and animations.</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <span class="help-item-icon">
+                        <span class="material-symbols-rounded">family_restroom</span>
+                    </span>
+                    <div class="help-item-content">
+                        <h3>Family Profiles</h3>
+                        <p>Create profiles for each family member to personalize trail experiences for their age and interests.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive tooltip container -->
+    <div id="interactive-tooltip" class="interactive-tooltip" role="tooltip"></div>
+    
+    <!-- Demo modal for interactive features -->
+    <div id="demo-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close demo">
+                <span class="material-symbols-rounded">close</span>
+            </button>
+            <div class="modal-header">
+                <h2 id="demo-title">Feature Demo</h2>
+            </div>
+            <div class="modal-body" id="demo-content">
+                <!-- Content will be dynamically inserted based on demo type -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary close-demo">Close Demo</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="module" src="js/enhanced-main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/interactive-elements.js"></script>
+    <script src="js/how-it-works.js"></script>
+    
     <script>
         // Simple testimonial slider functionality
         let currentTestimonial = 0;
@@ -358,6 +516,26 @@
             currentTestimonial = (currentTestimonial + 1) % testimonials.length;
             showTestimonial(currentTestimonial);
         }, 8000);
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Add help button for accessibility
+        const headerNav = document.querySelector('header nav ul');
+        if (headerNav) {
+            const helpLi = document.createElement('li');
+            const helpButton = document.createElement('button');
+            helpButton.className = 'help-toggle';
+            helpButton.setAttribute('aria-label', 'Open help guide');
+            helpButton.innerHTML = '<span class="material-symbols-rounded">help</span>';
+            helpLi.appendChild(helpButton);
+            headerNav.appendChild(helpLi);
+            
+            // Add event listener
+            helpButton.addEventListener('click', function() {
+                document.getElementById('help-overlay').classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>

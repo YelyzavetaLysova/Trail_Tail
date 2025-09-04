@@ -1,13 +1,14 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Dict, Any, List
 from enum import Enum
+from app.providers.interfaces.base_provider import BaseProvider
 
 class ContentFilter(str, Enum):
     NONE = "none"
     MILD = "mild"
     STRICT = "strict"
 
-class SafetyProvider(ABC):
+class SafetyProvider(BaseProvider):
     @abstractmethod
     async def get_parental_controls(self, family_id: str) -> Dict[str, Any]:
         """Get current parental controls settings"""
