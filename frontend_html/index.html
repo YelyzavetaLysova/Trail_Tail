@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Tail - AI-Powered Family Hiking Adventures</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/additional-fixed.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <meta name="description" content="Discover family-friendly hiking trails with interactive AI-generated stories and AR experiences">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.svg" alt="Trail Tail Logo">
+                <h1>Trail Tail</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Discover Adventures with <span>AI-Powered Stories</span></h2>
+                    <p>
+                        Explore family-friendly hiking trails enhanced with interactive AI-generated narratives and augmented reality encounters. Make outdoor time educational and magical for your children!
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="explore.html" class="btn btn-primary">Explore Trails</a>
+                        <a href="how-it-works.html" class="btn btn-secondary">How It Works</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="map-container" id="home-map">
+                        <img src="images/interactive-map.svg" alt="Interactive Trail Map" class="interactive-map" />
+                        <div class="map-overlay">
+                            <div class="map-controls">
+                                <button class="map-btn zoom-in" title="Zoom In">+</button>
+                                <button class="map-btn zoom-out" title="Zoom Out">-</button>
+                                <button class="map-btn recenter" title="Recenter Map">
+                                    <svg viewBox="0 0 24 24" width="18" height="18">
+                                        <path fill="currentColor" d="M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M3.05,13H1V11H3.05C3.5,6.83 6.83,3.5 11,3.05V1H13V3.05C17.17,3.5 20.5,6.83 20.95,11H23V13H20.95C20.5,17.17 17.17,20.5 13,20.95V23H11V20.95C6.83,20.5 3.5,17.17 3.05,13M12,5A7,7 0 0,0 5,12A7,7 0 0,0 12,19A7,7 0 0,0 19,12A7,7 0 0,0 12,5Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="map-markers">
+                                <!-- Markers will be added by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h3>Key Features</h3>
+                
+                <div class="feature-cards">
+                    <div class="card">
+                        <div class="icon icon-stories"></div>
+                        <h4>AI-Generated Stories</h4>
+                        <p>
+                            Choose between historical facts or fantasy adventures, all tailored to your child's age and interests.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon icon-ar"></div>
+                        <h4>AR Encounters</h4>
+                        <p>
+                            Discover interactive augmented reality treasures, animals, and characters along your hiking route.
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="icon icon-parental"></div>
+                        <h4>Parental Controls</h4>
+                        <p>
+                            Preview content, set filters, and ensure all stories are appropriate for your family values.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h3>How It Works</h3>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Select a Trail</h4>
+                        <p>
+                            Choose from AI-generated trails based on your location and preferences.
+                        </p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Pick a Story Mode</h4>
+                        <p>
+                            Choose between historical facts or fantasy adventures for your journey.
+                        </p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Hike & Discover</h4>
+                        <p>
+                            Follow the trail and encounter AR experiences at waypoints along the route.
+                        </p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Earn Badges</h4>
+                        <p>
+                            Complete challenges to earn family badges and build your adventure journal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action -->
+        <section class="cta">
+            <div class="container">
+                <h3>Ready to Start Your Adventure?</h3>
+                <p>
+                    Join thousands of families creating magical outdoor memories with Trail Tail. Your next adventure is just a click away!
+                </p>
+                <a href="register.html" class="btn btn-white">Create Family Account</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Trail Tail</h4>
+                    <p>
+                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="explore.html">Explore Trails</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="safety.html">Safety Features</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        Have questions? Reach out to our support team.
+                    </p>
+                    <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/map-interaction.js"></script>
+    <script>
+        // Initialize home page map
+        document.addEventListener('DOMContentLoaded', () => {
+            const homeMapContainer = document.querySelector('.map-container#home-map');
+            if (homeMapContainer) {
+                MapInteraction.init('home-map');
+                TrailMarkers.addMarkersToMap(homeMapContainer);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <!-- Background -->
+  <rect width="300" height="200" fill="#E8F5E9" />
+  
+  <!-- Sky -->
+  <rect width="300" height="70" fill="#BBDEFB" />
+  
+  <!-- Mountains -->
+  <polygon points="0,70 30,40 60,65 90,30 120,55 150,25 180,60 210,35 240,50 270,20 300,70" fill="#81C784" />
+  
+  <!-- Forest -->
+  <rect x="0" y="70" width="300" height="40" fill="#66BB6A" />
+  
+  <!-- Trees in foreground -->
+  <circle cx="30" cy="90" r="10" fill="#2E7D32" />
+  <circle cx="80" cy="85" r="12" fill="#2E7D32" />
+  <circle cx="130" cy="90" r="8" fill="#2E7D32" />
+  <circle cx="170" cy="88" r="11" fill="#2E7D32" />
+  <circle cx="220" cy="86" r="9" fill="#2E7D32" />
+  <circle cx="260" cy="89" r="10" fill="#2E7D32" />
+  
+  <!-- Trail -->
+  <path d="M0,140 C50,130 70,150 120,135 S180,145 220,130 S270,140 300,135" stroke="#A1887F" stroke-width="5" fill="none" />
+  
+  <!-- Hikers -->
+  <circle cx="150" cy="135" r="5" fill="#5D4037" />
+  <circle cx="165" cy="133" r="4" fill="#5D4037" />
+  
+  <!-- Trail Name -->
+  <rect x="20" y="160" width="260" height="30" rx="5" fill="rgba(255,255,255,0.7)" />
+  <text x="150" y="180" font-family="Arial" font-size="14" text-anchor="middle" fill="#1B5E20">Woodland Wonder Trail</text>
+</svg>

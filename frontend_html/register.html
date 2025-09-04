@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Family Account - Trail Tail</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.svg" alt="Trail Tail Logo">
+                <h1>Trail Tail</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-box register">
+                    <h2>Create Family Account</h2>
+                    <p class="auth-subtitle">Start your family adventure journey</p>
+                    
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="family-name">Family Name</label>
+                            <input type="text" id="family-name" name="familyName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirmPassword" required>
+                        </div>
+                        
+                        <div class="family-members">
+                            <h4>Family Members</h4>
+                            <div class="family-member">
+                                <input type="text" placeholder="Name" required>
+                                <select required>
+                                    <option value="" disabled selected>Age</option>
+                                    <option value="adult">Adult</option>
+                                    <option value="teen">Teen (13-17)</option>
+                                    <option value="child">Child (6-12)</option>
+                                    <option value="young">Young Child (3-5)</option>
+                                </select>
+                                <button type="button" class="btn-icon add-member">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                    </form>
+                    
+                    <div class="auth-alt">
+                        <p>Already have an account? <a href="login.html">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Trail Tail</h4>
+                    <p>
+                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="explore.html">Explore Trails</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="safety.html">Safety Features</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        Have questions? Reach out to our support team.
+                    </p>
+                    <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Add family member functionality
+        document.querySelector('.add-member').addEventListener('click', function() {
+            const familyMembersDiv = document.querySelector('.family-members');
+            const newMember = document.createElement('div');
+            newMember.className = 'family-member';
+            newMember.innerHTML = `
+                <input type="text" placeholder="Name">
+                <select>
+                    <option value="" disabled selected>Age</option>
+                    <option value="adult">Adult</option>
+                    <option value="teen">Teen (13-17)</option>
+                    <option value="child">Child (6-12)</option>
+                    <option value="young">Young Child (3-5)</option>
+                </select>
+                <button type="button" class="btn-icon remove-member">-</button>
+            `;
+            familyMembersDiv.appendChild(newMember);
+            
+            // Add event listener to the new remove button
+            newMember.querySelector('.remove-member').addEventListener('click', function() {
+                familyMembersDiv.removeChild(newMember);
+            });
+        });
+        
+        // Handle form submission (non-functional prototype)
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate passwords match
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Show a mock registration success message
+            alert('Registration successful! In a real application, this would create your family profile. Redirecting to dashboard...');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

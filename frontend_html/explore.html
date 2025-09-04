@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Trails - Trail Tail</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/additional-fixed.css">
+    <link rel="stylesheet" href="css/map-enhancements-fixed.css">
+    <link rel="stylesheet" href="css/explore-enhancements.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+    <meta name="description" content="Discover family-friendly hiking trails with interactive AI-generated stories and AR experiences">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Trail Tail Logo">
+                    <h1>Trail Tail</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="explore-page">
+        <div class="container">
+            <section class="explore-hero">
+                <div class="content">
+                    <h1>Explore Trails</h1>
+                    <p>Discover family-friendly hiking trails enhanced with interactive AI-generated stories and augmented reality experiences.</p>
+                    <div class="explore-metrics">
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <span class="material-symbols-rounded">hiking</span>
+                            </div>
+                            <div class="metric-text">
+                                <span class="metric-value">45+</span>
+                                <span class="metric-label">Available Trails</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <span class="material-symbols-rounded">family_restroom</span>
+                            </div>
+                            <div class="metric-text">
+                                <span class="metric-value">28</span>
+                                <span class="metric-label">Family-Friendly</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <span class="material-symbols-rounded">auto_stories</span>
+                            </div>
+                            <div class="metric-text">
+                                <span class="metric-value">120+</span>
+                                <span class="metric-label">Narratives</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Interactive Map -->
+            <div class="map-container" id="explore-map">
+                <img src="images/interactive-map.svg" alt="Interactive Trail Map" class="interactive-map" />
+                <div class="map-overlay">
+                    <div class="map-controls">
+                        <button class="map-btn zoom-in" title="Zoom In">+</button>
+                        <button class="map-btn zoom-out" title="Zoom Out">-</button>
+                        <button class="map-btn recenter" title="Recenter Map">
+                            <span class="material-symbols-rounded">my_location</span>
+                        </button>
+                        <button class="map-btn toggle-terrain" title="Toggle Terrain View">
+                            <span class="material-symbols-rounded">terrain</span>
+                        </button>
+                    </div>
+                    <div class="map-legend">
+                        <div class="legend-title">Legend</div>
+                        <div class="legend-item">
+                            <div class="legend-color easy"></div>
+                            <span class="legend-text">Easy Trail</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color moderate"></div>
+                            <span class="legend-text">Moderate Trail</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color difficult"></div>
+                            <span class="legend-text">Difficult Trail</span>
+                        </div>
+                    </div>
+                    <div class="map-markers">
+                        <!-- Markers will be added by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters card">
+                <h2>Filter Trails</h2>
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label for="distance">
+                            <span class="material-symbols-rounded">straighten</span>
+                            Distance
+                        </label>
+                        <select id="distance">
+                            <option>Any distance</option>
+                            <option>Under 2 km</option>
+                            <option>2-5 km</option>
+                            <option>5-10 km</option>
+                            <option>Over 10 km</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="difficulty">
+                            <span class="material-symbols-rounded">trending_up</span>
+                            Difficulty
+                        </label>
+                        <select id="difficulty">
+                            <option>Any difficulty</option>
+                            <option>Easy</option>
+                            <option>Moderate</option>
+                            <option>Hard</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="family">
+                            <span class="material-symbols-rounded">family_restroom</span>
+                            Family-Friendly
+                        </label>
+                        <select id="family">
+                            <option>All Trails</option>
+                            <option>Family-Friendly Only</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="features">
+                            <span class="material-symbols-rounded">category</span>
+                            Features
+                        </label>
+                        <select id="features">
+                            <option>Any Features</option>
+                            <option>Scenic Views</option>
+                            <option>Waterfall</option>
+                            <option>Wildlife</option>
+                            <option>Lake/River</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn-filter reset">
+                        <span class="material-symbols-rounded">refresh</span>
+                        Reset
+                    </button>
+                    <button class="btn-filter apply">
+                        <span class="material-symbols-rounded">filter_alt</span>
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Trail List -->
+            <section class="trails-section">
+                <h2>Nearby Trails</h2>
+                
+                <div id="trails-list" class="trails-grid">
+                    <!-- Sample Trail Cards (will be replaced by dynamic content) -->
+                    <div class="trail-card">
+                        <div class="trail-image">
+                            <img src="images/trail-preview-1.svg" alt="Woodland Wonder Trail" />
+                            <div class="trail-badge">
+                                <span class="badge-icon">
+                                    <span class="material-symbols-rounded">favorite</span>
+                                </span>
+                                Popular
+                            </div>
+                        </div>
+                        <div class="trail-details">
+                            <h3>Woodland Wonder Trail</h3>
+                            <div class="trail-info">
+                                <span class="trail-difficulty difficulty-easy">Easy</span>
+                                <span class="trail-distance">
+                                    <span class="material-symbols-rounded">straighten</span>
+                                    3.2 km
+                                </span>
+                            </div>
+                            <div class="trail-features">
+                                <span class="feature">Kid-friendly</span>
+                                <span class="feature">Wildlife viewing</span>
+                                <span class="feature">Shaded</span>
+                            </div>
+                            <p class="trail-description">Discover a magical woodland path perfect for families with young children. Keep an eye out for local wildlife!</p>
+                            <a href="trail.html?id=route_12345" class="btn btn-primary btn-sm">View Trail</a>
+                        </div>
+                    </div>
+
+                    <div class="trail-card">
+                        <div class="trail-image">
+                            <img src="images/trail-preview-2.svg" alt="Mountain Explorer Path" />
+                            <div class="trail-badge">
+                                <span class="badge-icon">
+                                    <span class="material-symbols-rounded">new_releases</span>
+                                </span>
+                                New
+                            </div>
+                        </div>
+                        <div class="trail-details">
+                            <h3>Mountain Explorer Path</h3>
+                            <div class="trail-info">
+                                <span class="trail-difficulty difficulty-moderate">Moderate</span>
+                                <span class="trail-distance">
+                                    <span class="material-symbols-rounded">straighten</span>
+                                    5.1 km
+                                </span>
+                            </div>
+                            <div class="trail-features">
+                                <span class="feature">Scenic views</span>
+                                <span class="feature">Lake</span>
+                                <span class="feature">Picnic area</span>
+                            </div>
+                            <p class="trail-description">Enjoy breathtaking mountain vistas and a serene lake perfect for a family picnic. Moderate elevation gain makes this suitable for older children.</p>
+                            <a href="trail.html?id=route_67890" class="btn btn-primary btn-sm">View Trail</a>
+                        </div>
+                    </div>
+
+                    <div class="trail-card">
+                        <div class="trail-image">
+                            <img src="images/trail-preview-3.svg" alt="Desert Canyon Trail" />
+                        </div>
+                        <div class="trail-details">
+                            <h3>Desert Canyon Trail</h3>
+                            <div class="trail-info">
+                                <span class="trail-difficulty difficulty-hard">Hard</span>
+                                <span class="trail-distance">
+                                    <span class="material-symbols-rounded">straighten</span>
+                                    7.8 km
+                                </span>
+                            </div>
+                            <div class="trail-features">
+                                <span class="feature">Desert views</span>
+                                <span class="feature">Rock formations</span>
+                                <span class="feature">Historical site</span>
+                            </div>
+                            <p class="trail-description">An adventurous hike through dramatic canyon landscapes and unique rock formations. Best for families with teens and experienced hikers.</p>
+                            <a href="trail.html?id=route_78901" class="btn btn-primary btn-sm">View Trail</a>
+                        </div>
+                    </div>
+                    
+                    <div class="trail-card">
+                        <div class="trail-image">
+                            <img src="images/trail-preview-1.svg" alt="Lakeside Loop" />
+                        </div>
+                        <div class="trail-details">
+                            <h3>Lakeside Loop</h3>
+                            <div class="trail-info">
+                                <span class="trail-difficulty difficulty-easy">Easy</span>
+                                <span class="trail-distance">
+                                    <span class="material-symbols-rounded">straighten</span>
+                                    2.5 km
+                                </span>
+                            </div>
+                            <div class="trail-features">
+                                <span class="feature">Lake views</span>
+                                <span class="feature">Wheelchair accessible</span>
+                                <span class="feature">Stroller friendly</span>
+                            </div>
+                            <p class="trail-description">A gentle loop around a serene lake with plenty of opportunities to spot waterfowl. Perfect for all ages and accessibility needs.</p>
+                            <a href="trail.html?id=route_24680" class="btn btn-primary btn-sm">View Trail</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Trail Tail</h4>
+                    <p>
+                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="safety.html">Safety Features</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        Have questions? Reach out to our support team.
+                    </p>
+                    <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/map-interaction.js"></script>
+</body>
+</html>

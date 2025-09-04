@@ -1,0 +1,42 @@
+<svg width="400" height="225" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+  <!-- Family hiking illustration -->
+  <rect width="400" height="225" fill="#E8F5E9" rx="8"/>
+  
+  <!-- Sky -->
+  <rect x="0" y="0" width="400" height="100" rx="8" fill="#BBD8EA"/>
+  
+  <!-- Sun -->
+  <circle cx="50" cy="40" r="20" fill="#FFC107"/>
+  <circle cx="50" cy="40" r="30" stroke="#FFC107" stroke-width="3" stroke-dasharray="2,4" fill="none"/>
+  
+  <!-- Hills -->
+  <path d="M0 100 Q 100 60, 200 100 T 400 60 V 225 H 0 Z" fill="#81C784"/>
+  
+  <!-- Path -->
+  <path d="M0 150 Q 100 130, 200 150 T 400 120" stroke="#8D6E63" stroke-width="10" stroke-linecap="round" fill="none"/>
+  
+  <!-- Trees -->
+  <path d="M60 130 L60 160 L50 160 L70 160 L60 160 Z" fill="#795548"/>
+  <circle cx="60" cy="115" r="25" fill="#2E7D32"/>
+  
+  <path d="M330 110 L330 140 L320 140 L340 140 L330 140 Z" fill="#795548"/>
+  <circle cx="330" cy="95" r="25" fill="#2E7D32"/>
+  
+  <path d="M380 100 L380 130 L370 130 L390 130 L380 130 Z" fill="#795548"/>
+  <circle cx="380" cy="85" r="25" fill="#2E7D32"/>
+  
+  <!-- Family -->
+  <circle cx="150" cy="150" r="15" fill="#FFA726"/>
+  <rect x="145" y="165" width="10" height="20" fill="#3949AB"/>
+  <rect x="140" y="185" width="20" height="10" fill="#3949AB"/>
+  
+  <circle cx="180" cy="160" r="10" fill="#FFCC80"/>
+  <rect x="177" y="170" width="6" height="15" fill="#7986CB"/>
+  <rect x="172" y="185" width="16" height="8" fill="#7986CB"/>
+  
+  <!-- Phone with AR -->
+  <rect x="200" y="145" width="20" height="35" rx="3" fill="#212121"/>
+  <rect x="203" y="150" width="14" height="25" fill="#64B5F6"/>
+  <circle cx="210" cy="155" r="3" fill="#F44336"/>
+  <path d="M205 165 Q 210 160, 215 170" stroke="#4CAF50" stroke-width="2" fill="none"/>
+</svg>

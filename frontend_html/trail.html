@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Details - Trail Tail</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/additional-fixed.css">
+    <link rel="stylesheet" href="css/map-enhancements-fixed.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <meta name="description" content="Discover family-friendly hiking trails with interactive AI-generated stories and AR experiences">
+    <style>
+        /* Additional styles specific to the trail page */
+        .trail-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .trail-stats span {
+            padding: 6px 12px;
+            border-radius: 16px;
+            background-color: var(--gray-100);
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+        
+        .difficulty {
+            font-weight: 600;
+        }
+        
+        .difficulty.easy {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--primary);
+        }
+        
+        .difficulty.moderate {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #e0a800;
+        }
+        
+        .difficulty.hard {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: var(--error);
+        }
+        
+        .section {
+            margin-top: 40px;
+        }
+        
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--gray-800);
+        }
+        
+        .safety-info {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: var(--gray-700);
+        }
+        
+        .narrative-toggle {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .narrative-btn {
+            padding: 8px 16px;
+            background-color: var(--gray-200);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .narrative-btn:first-child {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .narrative-btn:last-of-type {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .narrative-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .preview-btn {
+            margin-left: 16px;
+            padding: 8px 12px;
+            background-color: transparent;
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        
+        .preview-btn.active {
+            background-color: var(--gray-200);
+        }
+        
+        .eye-icon {
+            font-size: 1.125rem;
+        }
+        
+        .narratives {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .narrative-card {
+            padding: 20px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+        }
+        
+        .narrative-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--gray-800);
+        }
+        
+        .narrative-story {
+            color: var(--gray-700);
+            margin-bottom: 16px;
+        }
+        
+        .narrative-facts {
+            margin-top: 16px;
+        }
+        
+        .narrative-facts h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--gray-700);
+        }
+        
+        .narrative-facts ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+        }
+        
+        .preview-info {
+            background-color: rgba(33, 150, 243, 0.1);
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .preview-info h3 {
+            color: #0277bd;
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+        }
+        
+        .preview-info p {
+            color: #0277bd;
+            font-size: 0.875rem;
+            margin-bottom: 12px;
+        }
+        
+        .preview-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .preview-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+        }
+        
+        .green {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .educational-value {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 6px;
+        }
+        
+        .educational-value h4 {
+            font-size: 0.75rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .educational-value p {
+            font-size: 0.875rem;
+            color: var(--primary);
+        }
+        
+        .fantasy-elements {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: rgba(255, 193, 7, 0.1);
+            border-radius: 6px;
+        }
+        
+        .fantasy-elements h4 {
+            font-size: 0.75rem;
+            color: #e0a800;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .fantasy-elements p {
+            font-size: 0.875rem;
+            color: #e0a800;
+        }
+        
+        .encounters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        
+        .encounter-card {
+            padding: 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            background-color: white;
+        }
+        
+        .encounter-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+            color: var(--gray-800);
+        }
+        
+        .encounter-card p {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            margin-bottom: 12px;
+        }
+        
+        .encounter-type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .encounter-type.treasure {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #e0a800;
+        }
+        
+        .encounter-type.landmark {
+            background-color: rgba(33, 150, 243, 0.1);
+            color: #0277bd;
+        }
+        
+        .encounter-type.character {
+            background-color: rgba(156, 39, 176, 0.1);
+            color: #7b1fa2;
+        }
+        
+        .cta-box {
+            margin-top: 48px;
+            background-color: var(--primary);
+            color: white;
+            padding: 32px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .cta-box h2 {
+            color: white;
+            margin-bottom: 12px;
+        }
+        
+        .cta-box p {
+            margin-bottom: 20px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray-500);
+        }
+        
+        .error {
+            text-align: center;
+            padding: 20px;
+            color: var(--error);
+        }
+        
+        .message {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Trail Tail Logo">
+                    <h1>Trail Tail</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="explore.html">Explore</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="trail-page">
+        <div class="container">
+            <div class="back-link">
+                <a href="explore.html">← Back to Explore</a>
+            </div>
+
+            <div id="trail-content" class="trail-content card">
+                <!-- Trail content will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Trail Tail</h4>
+                    <p>
+                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="explore.html">Explore</a></li>
+                        <li><a href="safety.html">Safety Features</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        Have questions? Reach out to our support team.
+                    </p>
+                    <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/map-interaction.js"></script>
+</body>
+</html>

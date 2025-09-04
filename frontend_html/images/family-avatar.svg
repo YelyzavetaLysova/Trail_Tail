@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="#E8F5E9"/>
+  
+  <!-- Nature Background -->
+  <path d="M0 150C0 150 30 120 60 130C90 140 100 110 130 120C160 130 200 110 200 110V200H0V150Z" fill="#81C784"/>
+  <path d="M0 170C0 170 30 150 70 160C110 170 140 150 170 160C200 170 200 170 200 170V200H0V170Z" fill="#4CAF50"/>
+  
+  <!-- Stylized Mountain -->
+  <path d="M40 110L100 50L160 110L170 160H30L40 110Z" fill="#78909C"/>
+  <path d="M70 110L100 70L130 110L140 160H60L70 110Z" fill="#90A4AE"/>
+  
+  <!-- Sun -->
+  <circle cx="160" cy="40" r="20" fill="#FFC107"/>
+  <circle cx="160" cy="40" r="25" stroke="#FFEB3B" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- Trees -->
+  <path d="M50 120L60 100L70 120H50Z" fill="#388E3C"/>
+  <path d="M55 130L65 110L75 130H55Z" fill="#388E3C"/>
+  <path d="M60 140L70 120L80 140H60Z" fill="#388E3C"/>
+  <rect x="62" y="140" width="8" height="20" fill="#795548"/>
+  
+  <path d="M130 120L140 100L150 120H130Z" fill="#388E3C"/>
+  <path d="M135 130L145 110L155 130H135Z" fill="#388E3C"/>
+  <path d="M140 140L150 120L160 140H140Z" fill="#388E3C"/>
+  <rect x="145" y="140" width="8" height="20" fill="#795548"/>
+  
+  <!-- Stylized Family Figures -->
+  <circle cx="100" cy="130" r="15" fill="#FFEB3B" stroke="#FF9800" stroke-width="2"/>
+  <circle cx="80" cy="145" r="10" fill="#FFEB3B" stroke="#FF9800" stroke-width="2"/>
+  <circle cx="120" cy="145" r="10" fill="#FFEB3B" stroke="#FF9800" stroke-width="2"/>
+  
+  <!-- Simple Face Features -->
+  <circle cx="95" cy="125" r="2" fill="#795548"/>
+  <circle cx="105" cy="125" r="2" fill="#795548"/>
+  <path d="M95 135C95 135 100 138 105 135" stroke="#795548" stroke-width="2" stroke-linecap="round"/>
+</svg>

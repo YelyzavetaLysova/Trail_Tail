@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Trail Tail</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.svg" alt="Trail Tail Logo">
+                <h1>Trail Tail</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-box">
+                    <h2>Welcome Back</h2>
+                    <p class="auth-subtitle">Sign in to continue your family adventures</p>
+                    
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">Log In</button>
+                    </form>
+                    
+                    <div class="auth-alt">
+                        <p>Don't have an account? <a href="register.html">Create Family Account</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Trail Tail</h4>
+                    <p>
+                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="explore.html">Explore Trails</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="safety.html">Safety Features</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        Have questions? Reach out to our support team.
+                    </p>
+                    <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    © <span id="current-year"></span> Trail Tail. All rights reserved. Non-functional prototype.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Handle form submission (non-functional prototype)
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Show a mock login success message
+            alert('Login functionality would connect to the backend in a real application. Redirecting to dashboard...');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

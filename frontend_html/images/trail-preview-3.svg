@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <!-- Background -->
+  <rect width="300" height="200" fill="#FFF3E0" />
+  
+  <!-- Sky -->
+  <rect width="300" height="70" fill="#FFE0B2" />
+  
+  <!-- Sun -->
+  <circle cx="50" cy="30" r="15" fill="#FFB74D" />
+  
+  <!-- Mountains -->
+  <polygon points="0,70 30,30 60,60 90,20 120,50 150,15 180,55 210,25 240,45 270,10 300,70" fill="#A1887F" />
+  
+  <!-- Desert foreground -->
+  <rect x="0" y="70" width="300" height="130" fill="#FFCC80" />
+  
+  <!-- Cacti -->
+  <g transform="translate(50, 100)">
+    <rect x="-5" y="-20" width="10" height="30" fill="#4CAF50" />
+    <rect x="-12" y="-10" width="7" height="5" fill="#4CAF50" />
+    <rect x="5" y="-15" width="7" height="5" fill="#4CAF50" />
+  </g>
+  
+  <g transform="translate(200, 110)">
+    <rect x="-6" y="-25" width="12" height="35" fill="#4CAF50" />
+    <rect x="-15" y="-15" width="9" height="6" fill="#4CAF50" />
+    <rect x="6" y="-20" width="9" height="6" fill="#4CAF50" />
+    <rect x="-13" y="-5" width="7" height="5" fill="#4CAF50" />
+  </g>
+  
+  <!-- Trail -->
+  <path d="M0,150 C50,140 100,160 150,145 S200,155 250,140 S300,150 300,145" stroke="#E65100" stroke-width="5" fill="none" />
+  
+  <!-- Hikers -->
+  <circle cx="120" cy="145" r="5" fill="#5D4037" />
+  <circle cx="135" cy="143" r="4" fill="#5D4037" />
+  
+  <!-- Trail Name -->
+  <rect x="20" y="160" width="260" height="30" rx="5" fill="rgba(255,255,255,0.7)" />
+  <text x="150" y="180" font-family="Arial" font-size="14" text-anchor="middle" fill="#E65100">Desert Canyon Trail</text>
+</svg>
