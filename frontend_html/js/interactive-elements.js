@@ -112,6 +112,15 @@ class InteractiveElements {
             });
         }
         
+        // Set up nature element interactions
+        this.setupNatureElementInteractions();
+        
+        // Initialize testimonial carousel
+        this.initTestimonialCarousel();
+        
+        // Add parallax scrolling effect
+        this.setupParallaxEffect();
+        
         // Add interactive steps in "How It Works" section
         const steps = document.querySelectorAll('.step');
         if (steps.length) {
@@ -135,95 +144,885 @@ class InteractiveElements {
                 });
             });
         }
+        
+        // Initialize age selector functionality
+        this.initAgeSelector();
+        
+        // Add map marker interactivity
+        this.setupMapMarkerInteractions();
+    }
+    
+    /**
+     * Set up interactive nature elements
+     */
+    setupNatureElementInteractions() {
+        const natureElements = document.querySelectorAll('.nature-element');
+        if (natureElements) {
+            natureElements.forEach(element => {
+                // Show tooltip on hover
+                const tooltip = element.dataset.tooltip;
+                if (tooltip) {
+                    // Create tooltip element
+                    const tooltipEl = document.createElement('div');
+                    tooltipEl.className = 'tooltip';
+                    tooltipEl.textContent = tooltip;
+                    element.appendChild(tooltipEl);
+                }
+                
+                // Add click interaction
+                element.addEventListener('click', (e) => {
+                    const type = element.classList[1]; // tree, mountain, compass, or path
+                    
+                    // Play a fun animation
+                    element.classList.add('animate-pop');
+                    setTimeout(() => {
+                        element.classList.remove('animate-pop');
+                    }, 1000);
+                    
+                    // Show a toast with a fun fact based on the element type
+                    let fact = '';
+                    switch(type) {
+                        case 'tree':
+                            fact = 'Did you know? Trees communicate with each other through an underground network called the "Wood Wide Web"!';
+                            break;
+                        case 'mountain':
+                            fact = 'Fun fact: The tallest mountain in our solar system is on Mars! It\'s called Olympus Mons.';
+                            break;
+                        case 'compass':
+                            fact = 'Explorer tip: A compass always points to magnetic north, not true north!';
+                            break;
+                        case 'path':
+                            fact = 'Trail fact: Some hiking trails in the US are over 2,000 miles long!';
+                            break;
+                    }
+                    
+                    feedbackManager.toast(fact, `${type.charAt(0).toUpperCase() + type.slice(1)} Fact`, 5000);
+                });
+            });
+        }
+    }
+    
+    /**
+     * Initialize the testimonial carousel
+     */
+    initTestimonialCarousel() {
+        const carousel = document.querySelector('.testimonial-carousel');
+        if (!carousel) return;
+        
+        const track = carousel.querySelector('.carousel-track');
+        const slides = carousel.querySelectorAll('.testimonial-card');
+        const dots = carousel.querySelectorAll('.dot');
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        
+        if (!track || !slides.length) return;
+        
+        let currentIndex = 0;
+        const slideWidth = slides[0].offsetWidth + parseInt(window.getComputedStyle(slides[0]).marginLeft) * 2;
+        
+        // Set initial position
+        updateCarousel();
+        
+        // Add event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentIndex = Math.max(0, currentIndex - 1);
+                updateCarousel();
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = Math.min(slides.length - 1, currentIndex + 1);
+                updateCarousel();
+            });
+        }
+        
+        // Add dot navigation
+        if (dots.length) {
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+        }
+        
+        // Update carousel position
+        function updateCarousel() {
+            const offset = -currentIndex * slideWidth;
+            track.style.transform = `translateX(${offset}px)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+            
+            // Update button states
+            if (prevBtn) prevBtn.disabled = currentIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentIndex === slides.length - 1;
+        }
+        
+        // Auto-advance carousel every 5 seconds
+        let autoplayInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }, 5000);
+        
+        // Pause autoplay when user interacts
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }, 5000);
+        });
+    }
+    
+    /**
+     * Setup parallax scrolling effect
+     */
+    setupParallaxEffect() {
+        const parallaxContainers = document.querySelectorAll('.parallax-container');
+        if (!parallaxContainers.length) return;
+        
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            
+            parallaxContainers.forEach(container => {
+                const containerOffset = container.offsetTop;
+                const containerHeight = container.offsetHeight;
+                
+                if (scrollPosition + window.innerHeight >= containerOffset && 
+                    scrollPosition <= containerOffset + containerHeight) {
+                    
+                    const background = container.querySelector('.hero-background, .cta-background');
+                    if (background) {
+                        const speed = 0.5;
+                        const yPos = (scrollPosition - containerOffset) * speed;
+                        background.style.transform = `translateY(${yPos}px)`;
+                    }
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initialize positions
+    }
+    
+    /**
+     * Initialize age selector functionality
+     */
+    initAgeSelector() {
+        const ageBadges = document.querySelectorAll('.age-badge');
+        if (!ageBadges.length) return;
+        
+        ageBadges.forEach(badge => {
+            badge.addEventListener('click', () => {
+                // Toggle selection
+                const wasSelected = badge.classList.contains('selected');
+                
+                // Clear all selections first
+                ageBadges.forEach(b => b.classList.remove('selected'));
+                
+                // If it wasn't already selected, select it
+                if (!wasSelected) {
+                    badge.classList.add('selected');
+                    
+                    // Show a toast notification
+                    const age = badge.dataset.age;
+                    feedbackManager.toast(`Stories and trails will be tailored for ${age} year olds!`, 'Age Preference Set', 3000);
+                    
+                    // Example: Update recommendations based on age
+                    this.updateRecommendationsForAge(age);
+                }
+            });
+        });
+    }
+    
+    /**
+     * Update recommendations based on selected age
+     * @param {string} ageRange - The selected age range
+     */
+    updateRecommendationsForAge(ageRange) {
+        // This would connect to an API in a real implementation
+        console.log(`Updating recommendations for age range: ${ageRange}`);
+        
+        // Simulate recommendation update with status indicator
+        feedbackManager.showStatus('Updating trail recommendations...', 'info');
+        
+        setTimeout(() => {
+            feedbackManager.hideStatus();
+            // Here we would update UI elements with new recommendations
+        }, 1500);
+    }
+    
+    /**
+     * Show detailed step information
+     * @param {number} stepNumber - The step number (1-indexed)
+     */
+    showStepDetail(stepNumber) {
+        console.log(`Showing detail for step ${stepNumber}`);
+        
+        // In a real implementation, this could slide out a panel with more information
+        // or show a modal with detailed content about the step
+        
+        const stepElement = document.querySelector(`.step[data-step="${stepNumber}"]`);
+        if (stepElement) {
+            // Highlight the selected step
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            stepElement.classList.add('active');
+            
+            // Show the step details
+            const detail = stepElement.querySelector('.step-detail');
+            if (detail) {
+                // Toggle visibility with animation
+                if (detail.style.maxHeight !== '300px') {
+                    detail.style.maxHeight = '300px';
+                } else {
+                    detail.style.maxHeight = '0';
+                }
+            }
+        }
+    }
+    
+    /**
+     * Setup map marker interactions
+     */
+    setupMapMarkerInteractions() {
+        const mapMarkers = document.querySelectorAll('.map-marker');
+        if (!mapMarkers.length) return;
+        
+        mapMarkers.forEach(marker => {
+            marker.addEventListener('click', () => {
+                const trailId = marker.dataset.trail;
+                
+                // Show a preview of the trail
+                this.showTrailPreview(trailId);
+                
+                // Add a pulse animation to the clicked marker
+                marker.classList.add('animate-pulse');
+                setTimeout(() => {
+                    marker.classList.remove('animate-pulse');
+                }, 2000);
+            });
+            
+            // Add hover effect with tooltip
+            marker.addEventListener('mouseenter', () => {
+                const trailId = marker.dataset.trail;
+                const trailName = this.getTrailName(trailId);
+                
+                const tooltip = document.createElement('div');
+                tooltip.className = 'map-tooltip';
+                tooltip.textContent = trailName;
+                marker.appendChild(tooltip);
+            });
+            
+            marker.addEventListener('mouseleave', () => {
+                const tooltip = marker.querySelector('.map-tooltip');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+        });
+    }
+    
+    /**
+     * Get trail name from trail ID
+     * @param {string} trailId - The trail identifier
+     * @returns {string} The formatted trail name
+     */
+    getTrailName(trailId) {
+        // Convert slug to title case
+        const words = trailId.split('-');
+        const title = words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        return title;
+    }
+    
+    /**
+     * Show a preview of a trail
+     * @param {string} trailId - The trail identifier
+     */
+    showTrailPreview(trailId) {
+        console.log(`Showing preview for trail: ${trailId}`);
+        
+        // In a real implementation, this would fetch trail data from an API
+        const trailName = this.getTrailName(trailId);
+        
+        // Create a trail preview card
+        const previewCard = document.createElement('div');
+        previewCard.className = 'trail-preview-card animate-fade-in';
+        
+        // Add some placeholder content
+        previewCard.innerHTML = `
+            <div class="preview-header">
+                <h4>${trailName}</h4>
+                <span class="material-symbols-rounded preview-close">close</span>
+            </div>
+            <div class="preview-image">
+                <img src="images/trail-preview-1.svg" alt="${trailName}" />
+            </div>
+            <div class="preview-details">
+                <div class="preview-stat">
+                    <span class="material-symbols-rounded">straighten</span>
+                    <span>3.2 miles</span>
+                </div>
+                <div class="preview-stat">
+                    <span class="material-symbols-rounded">trending_up</span>
+                    <span>350 ft</span>
+                </div>
+                <div class="preview-stat">
+                    <span class="material-symbols-rounded">schedule</span>
+                    <span>2.5 hours</span>
+                </div>
+            </div>
+            <a href="trail.html?id=${trailId}" class="btn btn-primary btn-sm">View Trail</a>
+        `;
+        
+        // Add the preview to the map container
+        const mapContainer = document.querySelector('.map-container');
+        if (mapContainer) {
+            // Remove any existing previews
+            const existingPreview = document.querySelector('.trail-preview-card');
+            if (existingPreview) {
+                existingPreview.remove();
+            }
+            
+            mapContainer.appendChild(previewCard);
+            
+            // Add close functionality
+            const closeBtn = previewCard.querySelector('.preview-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    previewCard.classList.add('animate-fade-out');
+                    setTimeout(() => {
+                        previewCard.remove();
+                    }, 300);
+                });
+            }
+        }
     }
     
     /**
      * Enhance explore page with interactive elements
      */
     enhanceExplorePage() {
-        // Add trail card interactions
-        const trailCards = document.querySelectorAll('.trail-card');
+        console.log("Enhancing explore page with interactive elements");
         
-        if (trailCards.length) {
-            trailCards.forEach((card, index) => {
-                // Add interactive hover effect
-                card.classList.add('interactive-card');
+        // Initialize interactive map
+        this.initInteractiveMap();
+        
+        // Initialize trail markers
+        this.initTrailMarkers();
+        
+        // Setup interactive filters
+        this.setupInteractiveFilters();
+        
+        // Initialize range sliders
+        this.initRangeSliders();
+        
+        // Setup trail card interactions
+        this.setupTrailCardInteractions();
+        
+        // Initialize filter tags
+        this.initFilterTags();
+        
+        // Add animation to trail cards when they enter viewport
+        this.setupCardAnimations();
+    }
+    
+    /**
+     * Initialize the interactive map on the explore page
+     */
+    initInteractiveMap() {
+        const mapContainer = document.querySelector('.map-container');
+        if (!mapContainer) return;
+        
+        // Set up zoom controls
+        const zoomIn = mapContainer.querySelector('.zoom-in');
+        const zoomOut = mapContainer.querySelector('.zoom-out');
+        const map = mapContainer.querySelector('.interactive-map');
+        
+        let scale = 1;
+        
+        if (zoomIn) {
+            zoomIn.addEventListener('click', () => {
+                scale *= 1.2;
+                map.style.transform = `scale(${scale})`;
                 
-                // Add focus event for accessibility
-                if (!card.getAttribute('tabindex')) {
-                    card.setAttribute('tabindex', '0');
-                }
+                // Show toast notification
+                feedbackManager.toast("Zoomed in", null, 1000);
+            });
+        }
+        
+        if (zoomOut) {
+            zoomOut.addEventListener('click', () => {
+                scale = Math.max(1, scale / 1.2);
+                map.style.transform = `scale(${scale})`;
                 
-                // Add animation with staggered delay
-                if (this.animationsEnabled) {
-                    card.style.animationDelay = `${index * 0.1}s`;
-                    card.classList.add('animate-in');
-                }
+                // Show toast notification
+                feedbackManager.toast("Zoomed out", null, 1000);
+            });
+        }
+        
+        // Toggle terrain view
+        const terrainBtn = mapContainer.querySelector('.toggle-terrain');
+        if (terrainBtn) {
+            terrainBtn.addEventListener('click', () => {
+                map.classList.toggle('terrain-view');
                 
-                // Add interactive difficulty meter if it exists
-                const difficultyMeter = card.querySelector('.difficulty-meter');
-                if (difficultyMeter) {
-                    this.enhanceDifficultyMeter(difficultyMeter);
-                }
+                const isTerrainView = map.classList.contains('terrain-view');
+                terrainBtn.setAttribute('aria-pressed', isTerrainView);
                 
-                // Add age recommendation badge if not present
-                if (!card.querySelector('.age-recommendation')) {
-                    const ageRec = document.createElement('div');
-                    ageRec.className = 'age-recommendation';
+                feedbackManager.toast(
+                    isTerrainView ? "Switched to terrain view" : "Switched to standard view",
+                    null,
+                    2000
+                );
+            });
+        }
+        
+        // Family mode toggle
+        const familyBtn = mapContainer.querySelector('.family-mode');
+        if (familyBtn) {
+            familyBtn.addEventListener('click', () => {
+                mapContainer.classList.toggle('family-mode-active');
+                
+                const isFamilyMode = mapContainer.classList.contains('family-mode-active');
+                familyBtn.setAttribute('aria-pressed', isFamilyMode);
+                
+                feedbackManager.toast(
+                    isFamilyMode ? "Family mode activated" : "Family mode deactivated",
+                    null,
+                    2000
+                );
+                
+                // Update visible markers based on family mode
+                this.updateTrailMarkersVisibility();
+            });
+        }
+        
+        // Family filter toggle
+        const filterToggle = document.querySelector('.family-filter-toggle');
+        if (filterToggle) {
+            filterToggle.addEventListener('click', () => {
+                const expanded = filterToggle.getAttribute('aria-expanded') === 'true';
+                filterToggle.setAttribute('aria-expanded', !expanded);
+                
+                const filterOptions = document.querySelector('.family-filter-options');
+                if (filterOptions) {
+                    filterOptions.style.display = !expanded ? 'block' : 'none';
                     
-                    // Generate random age recommendation for demo
-                    const minAge = Math.floor(Math.random() * 5) + 3;
-                    const maxAge = minAge + Math.floor(Math.random() * 6) + 2;
-                    
-                    ageRec.innerHTML = `
-                        <span class="material-symbols-rounded">family_restroom</span>
-                        <span>Ages ${minAge}-${maxAge}</span>
-                    `;
-                    
-                    // Add to card
-                    const cardFooter = card.querySelector('.card-footer');
-                    if (cardFooter) {
-                        cardFooter.appendChild(ageRec);
-                    } else {
-                        card.appendChild(ageRec);
+                    if (!expanded) {
+                        // Add animation
+                        filterOptions.classList.add('animate-fade-in');
                     }
                 }
             });
         }
+    }
+    
+    /**
+     * Initialize interactive trail markers
+     */
+    initTrailMarkers() {
+        const markers = document.querySelectorAll('.trail-marker');
+        if (!markers.length) return;
         
-        // Add filter animation
-        const filterToggle = document.querySelector('.filter-toggle');
-        const filterPanel = document.querySelector('.filter-panel');
-        
-        if (filterToggle && filterPanel) {
-            filterToggle.addEventListener('click', () => {
-                filterPanel.classList.toggle('active');
+        markers.forEach(marker => {
+            marker.addEventListener('click', () => {
+                const trailId = marker.dataset.trailId;
+                this.showTrailPreview(trailId);
                 
-                // Announce to screen readers
-                const isActive = filterPanel.classList.contains('active');
-                feedbackManager.announceForScreenReader(
-                    isActive ? 'Filters panel opened' : 'Filters panel closed'
-                );
+                // Add pulse animation
+                const markerIcon = marker.querySelector('.marker-icon');
+                if (markerIcon) {
+                    markerIcon.classList.add('animate-pulse');
+                    setTimeout(() => {
+                        markerIcon.classList.remove('animate-pulse');
+                    }, 2000);
+                }
             });
             
-            // Add filter tag interactions
-            const filterTags = filterPanel.querySelectorAll('.filter-tag');
-            filterTags.forEach(tag => {
-                tag.addEventListener('click', () => {
-                    tag.classList.toggle('active');
+            // Create hover tooltip
+            marker.addEventListener('mouseenter', () => {
+                const trailId = marker.dataset.trailId;
+                const trailName = this.formatTrailName(trailId);
+                
+                const tooltip = document.createElement('div');
+                tooltip.className = 'marker-tooltip';
+                tooltip.textContent = trailName;
+                marker.appendChild(tooltip);
+            });
+            
+            marker.addEventListener('mouseleave', () => {
+                const tooltip = marker.querySelector('.marker-tooltip');
+                if (tooltip) {
+                    tooltip.remove();
+                }
+            });
+        });
+    }
+    
+    /**
+     * Format trail name from ID
+     * @param {string} id - The trail ID
+     * @returns {string} Formatted trail name
+     */
+    formatTrailName(id) {
+        return id.split('-').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+    }
+    
+    /**
+     * Show a preview of the trail when marker is clicked
+     * @param {string} trailId - The ID of the trail to preview
+     */
+    showTrailPreview(trailId) {
+        const mapContainer = document.querySelector('.map-container');
+        if (!mapContainer) return;
+        
+        // Remove any existing previews
+        const existingPreview = document.querySelector('.trail-marker-preview');
+        if (existingPreview) {
+            existingPreview.remove();
+        }
+        
+        const trailName = this.formatTrailName(trailId);
+        
+        // Create preview element
+        const preview = document.createElement('div');
+        preview.className = 'trail-marker-preview animate-fade-in';
+        preview.innerHTML = `
+            <div class="preview-header">
+                <h3>${trailName}</h3>
+                <button class="preview-close" aria-label="Close preview">×</button>
+            </div>
+            <div class="preview-content">
+                <img src="images/trail-preview-1.svg" alt="${trailName}" class="preview-image">
+                <div class="preview-stats">
+                    <div class="stat">
+                        <span class="material-symbols-rounded">straighten</span>
+                        <span>3.2 km</span>
+                    </div>
+                    <div class="stat">
+                        <span class="material-symbols-rounded">schedule</span>
+                        <span>45 min</span>
+                    </div>
+                    <div class="stat">
+                        <span class="material-symbols-rounded">terrain</span>
+                        <span>Easy</span>
+                    </div>
+                </div>
+                <p class="preview-description">
+                    A scenic trail perfect for families with beautiful views and wildlife.
+                </p>
+                <div class="preview-actions">
+                    <button class="btn btn-outline btn-sm">Quick View</button>
+                    <a href="trail.html?id=${trailId}" class="btn btn-primary btn-sm">Full Details</a>
+                </div>
+            </div>
+        `;
+        
+        mapContainer.appendChild(preview);
+        
+        // Add close functionality
+        const closeBtn = preview.querySelector('.preview-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                preview.classList.add('animate-fade-out');
+                setTimeout(() => {
+                    preview.remove();
+                }, 300);
+            });
+        }
+    }
+    
+    /**
+     * Update trail markers visibility based on filters
+     */
+    updateTrailMarkersVisibility() {
+        const mapContainer = document.querySelector('.map-container');
+        if (!mapContainer) return;
+        
+        const isFamilyMode = mapContainer.classList.contains('family-mode-active');
+        const markers = document.querySelectorAll('.trail-marker');
+        
+        markers.forEach(marker => {
+            // In a real app, we would check if this trail is family-friendly
+            // For now, let's just hide markers with "difficult" class in family mode
+            const markerIcon = marker.querySelector('.marker-icon');
+            if (isFamilyMode && markerIcon && markerIcon.classList.contains('difficult')) {
+                marker.style.opacity = '0.3';
+            } else {
+                marker.style.opacity = '1';
+            }
+        });
+    }
+    
+    /**
+     * Setup interactive filters
+     */
+    setupInteractiveFilters() {
+        // Filter tabs functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        if (filterTabs.length) {
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.filter-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
                     
-                    // Show feedback
-                    feedbackManager.showToast({
-                        type: 'info',
-                        title: 'Filter Updated',
-                        message: tag.classList.contains('active') 
-                            ? `Added filter: ${tag.textContent}`
-                            : `Removed filter: ${tag.textContent}`,
-                        duration: 2000
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding panel
+                    const targetPanel = tab.dataset.tab;
+                    document.querySelectorAll('.filter-panel').forEach(panel => {
+                        panel.classList.remove('active');
+                        if (panel.dataset.panel === targetPanel) {
+                            panel.classList.add('active');
+                            panel.classList.add('animate-fade-in');
+                        }
                     });
                 });
             });
         }
+        
+        // Apply filters button
+        const applyBtn = document.querySelector('.btn-filter.apply');
+        if (applyBtn) {
+            applyBtn.addEventListener('click', () => {
+                // In a real app, this would apply the filters
+                feedbackManager.toast("Filters applied", "Updating trails...", 2000);
+                
+                // Add loading state to trails section
+                const trailsSection = document.querySelector('.trails-section');
+                if (trailsSection) {
+                    trailsSection.classList.add('loading');
+                    
+                    setTimeout(() => {
+                        trailsSection.classList.remove('loading');
+                        
+                        // Update filter result count
+                        const countElement = document.querySelector('.count-number');
+                        if (countElement) {
+                            // This would be calculated from actual filtered results
+                            countElement.textContent = '8';
+                        }
+                        
+                        // Create new filter tags
+                        this.createFilterTag('Easy difficulty');
+                        this.createFilterTag('Under 5km');
+                    }, 1000);
+                }
+            });
+        }
+        
+        // Reset filters button
+        const resetBtn = document.querySelector('.btn-filter.reset');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                // Reset all selects to first option
+                document.querySelectorAll('.filter-panel select').forEach(select => {
+                    select.selectedIndex = 0;
+                });
+                
+                // Reset all checkboxes
+                document.querySelectorAll('.filter-panel input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // Reset all range sliders
+                document.querySelectorAll('.interactive-range').forEach(range => {
+                    range.value = range.defaultValue;
+                    const rangeValue = range.parentElement.querySelector('.range-value');
+                    if (rangeValue) {
+                        rangeValue.textContent = `${range.value} km`;
+                    }
+                });
+                
+                // Clear filter tags
+                const filterTags = document.querySelector('.filter-tags');
+                if (filterTags) {
+                    filterTags.innerHTML = '';
+                }
+                
+                feedbackManager.toast("Filters reset", null, 2000);
+            });
+        }
+    }
+    
+    /**
+     * Initialize range sliders
+     */
+    initRangeSliders() {
+        const rangeSliders = document.querySelectorAll('.interactive-range');
+        if (!rangeSliders.length) return;
+        
+        rangeSliders.forEach(slider => {
+            const valueDisplay = slider.parentElement.querySelector('.range-value');
+            
+            // Set initial value
+            if (valueDisplay) {
+                valueDisplay.textContent = `${slider.value} km`;
+            }
+            
+            // Update on input
+            slider.addEventListener('input', () => {
+                if (valueDisplay) {
+                    valueDisplay.textContent = `${slider.value} km`;
+                }
+            });
+            
+            // Add visual feedback on interaction
+            slider.addEventListener('mousedown', () => {
+                slider.classList.add('active');
+            });
+            
+            slider.addEventListener('mouseup', () => {
+                slider.classList.remove('active');
+            });
+            
+            // Ensure touch devices work too
+            slider.addEventListener('touchstart', () => {
+                slider.classList.add('active');
+            });
+            
+            slider.addEventListener('touchend', () => {
+                slider.classList.remove('active');
+            });
+        });
+    }
+    
+    /**
+     * Create a filter tag
+     * @param {string} text - The text for the filter tag
+     */
+    createFilterTag(text) {
+        const filterTags = document.querySelector('.filter-tags');
+        if (!filterTags) return;
+        
+        const tag = document.createElement('span');
+        tag.className = 'filter-tag animate-fade-in';
+        tag.innerHTML = `${text} <button class="remove-tag">×</button>`;
+        
+        // Add remove functionality
+        const removeBtn = tag.querySelector('.remove-tag');
+        if (removeBtn) {
+            removeBtn.addEventListener('click', () => {
+                tag.classList.add('animate-fade-out');
+                setTimeout(() => {
+                    tag.remove();
+                }, 300);
+            });
+        }
+        
+        filterTags.appendChild(tag);
+    }
+    
+    /**
+     * Initialize filter tags
+     */
+    initFilterTags() {
+        const filterTags = document.querySelectorAll('.filter-tag');
+        if (!filterTags.length) return;
+        
+        filterTags.forEach(tag => {
+            const removeBtn = tag.querySelector('.remove-tag');
+            if (removeBtn) {
+                removeBtn.addEventListener('click', () => {
+                    tag.classList.add('animate-fade-out');
+                    setTimeout(() => {
+                        tag.remove();
+                    }, 300);
+                });
+            }
+        });
+    }
+    
+    /**
+     * Setup trail card interactions
+     */
+    setupTrailCardInteractions() {
+        const trailCards = document.querySelectorAll('.trail-card');
+        if (!trailCards.length) return;
+        
+        trailCards.forEach(card => {
+            // Add hover animation
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('expanded');
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('expanded');
+            });
+            
+            // 360 view toggle
+            const viewToggle = card.querySelector('.view-360-toggle');
+            if (viewToggle) {
+                viewToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    
+                    const trailImage = card.querySelector('.trail-image img');
+                    if (trailImage) {
+                        trailImage.classList.toggle('view-360');
+                        
+                        if (trailImage.classList.contains('view-360')) {
+                            feedbackManager.toast("360° view active", "Drag to look around", 3000);
+                        }
+                    }
+                });
+            }
+            
+            // Handle card click to navigate to trail page
+            card.addEventListener('click', () => {
+                const trailLink = card.querySelector('a.btn-primary');
+                if (trailLink) {
+                    trailLink.click();
+                }
+            });
+            
+            // Prevent navigation when clicking on interactive elements within the card
+            const interactiveElements = card.querySelectorAll('.story-preview, .ar-preview, .view-360-toggle, a.btn-primary');
+            interactiveElements.forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            });
+        });
+    }
+    
+    /**
+     * Setup card animations when they enter viewport
+     */
+    setupCardAnimations() {
+        const cards = document.querySelectorAll('.animate-in');
+        if (!cards.length) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
     }
     
     /**

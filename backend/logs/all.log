@@ -139,3 +139,163 @@
 {"timestamp": "2025-09-04T15:00:17.484523", "level": "INFO", "message": "Registering users provider: MockUsersProvider", "module": "provider_factory", "function": "register_users_provider", "line": 57}
 {"timestamp": "2025-09-04T15:00:17.484540", "level": "INFO", "message": "All providers registered successfully!", "module": "provider_setup", "function": "register_providers", "line": 39}
 {"timestamp": "2025-09-04T15:00:17.484557", "level": "INFO", "message": "Application started in development mode", "module": "main", "function": "startup_event", "line": 58}
+2025-09-08 14:51:44,697 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:51:44,782 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:51:44,813 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:51:44,813 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:51:44,813 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:51:44,813 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:51:44,813 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:51:44,813 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:51:44,813 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:51:44,813 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:51:44,813 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:51:44,813 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:51:44,813 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:51:44,813 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:51:44,813 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:52:30,418 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:52:30,436 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:52:30,438 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:52:30,438 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:52:30,438 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:52:30,438 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:52:30,438 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:52:30,438 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:52:30,438 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:52:30,438 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:52:30,438 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:52:30,438 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:52:30,438 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:52:30,438 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:52:30,438 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:52:49,640 - trail_tail.middleware - INFO - logger:77 - Request started
+2025-09-08 14:52:49,641 - trail_tail.middleware - INFO - logger:95 - Request completed
+2025-09-08 14:53:41,936 - trail_tail.middleware - INFO - logger:77 - Request started
+2025-09-08 14:53:41,937 - trail_tail.app.routes.routes - INFO - routes:44 - Route generation requested: lat=47.6062, lng=-122.3321, distance=2.5
+2025-09-08 14:53:41,956 - trail_tail.MockRoutesProvider - ERROR - base_provider:53 - Provider error in MockRoutesProvider._generate_route_impl: "Attempt to overwrite 'args' in LogRecord"
+2025-09-08 14:53:41,956 - trail_tail.app.routes.routes - ERROR - routes:98 - Provider error in route generation: Error in MockRoutesProvider provider: "Attempt to overwrite 'args' in LogRecord"
+2025-09-08 14:53:41,956 - trail_tail - ERROR - handlers:26 - TrailTailException: Error in MockRoutesProvider provider: "Attempt to overwrite 'args' in LogRecord"
+2025-09-08 14:53:41,956 - trail_tail.middleware - INFO - logger:95 - Request completed
+2025-09-08 14:54:16,872 - trail_tail.main - INFO - main:68 - Shutting down Trail Tail API
+2025-09-08 14:54:16,880 - trail_tail.main - INFO - main:68 - Shutting down Trail Tail API
+2025-09-08 14:54:17,278 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:54:17,278 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:54:17,297 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:54:17,297 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:54:17,300 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:54:17,300 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:54:17,300 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:54:17,300 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:54:17,300 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:54:17,300 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:54:17,300 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:54:17,300 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:54:17,300 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:54:17,301 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:54:17,301 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:54:17,301 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:54:17,301 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:54:17,301 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:54:17,301 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:54:17,301 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:54:17,301 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:54:17,301 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:54:28,511 - trail_tail.main - INFO - main:68 - Shutting down Trail Tail API
+2025-09-08 14:54:28,511 - trail_tail.main - INFO - main:68 - Shutting down Trail Tail API
+2025-09-08 14:54:28,877 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:54:28,877 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:54:28,894 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:54:28,894 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:54:28,897 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:54:28,897 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:54:28,897 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:54:28,897 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:54:28,897 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:54:28,897 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:54:28,897 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:54:28,897 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:54:28,897 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:54:28,897 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:54:28,898 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:54:28,898 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:54:28,898 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:54:28,898 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:54:28,898 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:54:28,898 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:54:56,051 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:54:56,065 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:54:56,066 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:54:56,066 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:54:56,066 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:54:56,066 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:54:56,066 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:54:56,066 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:54:56,066 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:54:56,066 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:54:56,066 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:54:56,066 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:54:56,066 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:54:56,066 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:54:56,066 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:55:11,226 - trail_tail.middleware - INFO - logger:77 - Request started
+2025-09-08 14:55:11,226 - trail_tail.app.routes.routes - INFO - routes:44 - Route generation requested: lat=47.6062, lng=-122.3321, distance=2.5
+2025-09-08 14:55:11,226 - trail_tail.MockRoutesProvider - DEBUG - base_provider:86 - Executing MockRoutesProvider._generate_route_impl
+2025-09-08 14:55:11,226 - trail_tail.app.routes.routes - INFO - routes:87 - Route generated successfully for 'Family-friendly Easy Adventure Trail'
+2025-09-08 14:55:11,227 - trail_tail.middleware - INFO - logger:95 - Request completed
+2025-09-08 14:55:23,887 - trail_tail.middleware - INFO - logger:77 - Request started
+2025-09-08 14:55:23,887 - trail_tail.app.routes.narratives - INFO - narratives:39 - Narrative generation requested for route_id=route_12345, mode=NarrativeMode.FANTASY
+2025-09-08 14:55:23,887 - trail_tail.MockNarrativesProvider - DEBUG - base_provider:86 - Executing MockNarrativesProvider._generate_narrative_impl
+2025-09-08 14:55:23,887 - trail_tail.app.routes.narratives - INFO - narratives:64 - Generated 4 narratives successfully
+2025-09-08 14:55:23,887 - trail_tail.middleware - INFO - logger:95 - Request completed
+2025-09-08 14:58:31,967 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:58:32,000 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:58:32,009 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:58:32,009 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:58:32,009 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:58:32,009 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:58:32,009 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:58:32,009 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:58:32,009 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:58:32,009 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:58:32,009 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:58:32,009 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:58:32,009 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:58:32,009 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:58:32,009 - trail_tail.main - INFO - main:58 - Application started in development mode
+2025-09-08 14:58:51,939 - trail_tail.middleware - INFO - logger:77 - Request started
+2025-09-08 14:58:51,939 - trail_tail.middleware - INFO - logger:95 - Request completed
+2025-09-08 14:59:02,535 - trail_tail.main - INFO - main:68 - Shutting down Trail Tail API
+2025-09-08 14:59:02,957 - trail_tail - INFO - logger:171 - Logging initialized at level DEBUG
+2025-09-08 14:59:02,977 - trail_tail.main - INFO - main:52 - Starting Trail Tail API application
+2025-09-08 14:59:02,979 - trail_tail.app.providers.provider_setup - INFO - provider_setup:26 - Registering providers in environment: development
+2025-09-08 14:59:02,980 - trail_tail.MockRoutesProvider - INFO - base_provider:30 - Initializing provider: MockRoutesProvider
+2025-09-08 14:59:02,980 - trail_tail.app.providers.provider_factory - INFO - provider_factory:33 - Registering routes provider: MockRoutesProvider
+2025-09-08 14:59:02,980 - trail_tail.MockNarrativesProvider - INFO - base_provider:30 - Initializing provider: MockNarrativesProvider
+2025-09-08 14:59:02,980 - trail_tail.app.providers.provider_factory - INFO - provider_factory:39 - Registering narratives provider: MockNarrativesProvider
+2025-09-08 14:59:02,980 - trail_tail.MockAREncountersProvider - INFO - base_provider:30 - Initializing provider: MockAREncountersProvider
+2025-09-08 14:59:02,980 - trail_tail.app.providers.provider_factory - INFO - provider_factory:45 - Registering AR encounters provider: MockAREncountersProvider
+2025-09-08 14:59:02,980 - trail_tail.MockSafetyProvider - INFO - base_provider:30 - Initializing provider: MockSafetyProvider
+2025-09-08 14:59:02,980 - trail_tail.app.providers.provider_factory - INFO - provider_factory:51 - Registering safety provider: MockSafetyProvider
+2025-09-08 14:59:02,980 - trail_tail.MockUsersProvider - INFO - base_provider:30 - Initializing provider: MockUsersProvider
+2025-09-08 14:59:02,980 - trail_tail.app.providers.provider_factory - INFO - provider_factory:57 - Registering users provider: MockUsersProvider
+2025-09-08 14:59:02,980 - trail_tail.app.providers.provider_setup - INFO - provider_setup:39 - All providers registered successfully!
+2025-09-08 14:59:02,980 - trail_tail.main - INFO - main:58 - Application started in development mode

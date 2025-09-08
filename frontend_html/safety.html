@@ -6,14 +6,17 @@
     <title>Safety Features - Trail Tale</title>
     
     <!-- Core styles -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- Enhanced UI Components -->
-    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/component-styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/guidance.css">
-    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/theme-switcher.css">
+    <link rel="stylesheet" href="css/pages/safety.css">
+    <link rel="stylesheet" href="css/cross-browser.css">
     
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
@@ -22,6 +25,38 @@
 <body>
     <!-- Skip link for keyboard users -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Theme switcher -->
+    <div class="theme-switcher" aria-label="Theme options">
+        <button class="theme-switcher-toggle" aria-label="Toggle theme menu" aria-haspopup="true" aria-expanded="false">
+            <span class="material-symbols-rounded">palette</span>
+        </button>
+        <div class="theme-switcher-panel">
+            <h3 class="theme-switcher-title">Choose Theme</h3>
+            <div class="theme-options">
+                <button class="theme-option active" data-theme="nature" aria-label="Nature theme">
+                    <span class="theme-color-preview nature"></span>
+                    <span>Nature</span>
+                </button>
+                <button class="theme-option" data-theme="ocean" aria-label="Ocean theme">
+                    <span class="theme-color-preview ocean"></span>
+                    <span>Ocean</span>
+                </button>
+                <button class="theme-option" data-theme="mountain" aria-label="Mountain theme">
+                    <span class="theme-color-preview mountain"></span>
+                    <span>Mountain</span>
+                </button>
+                <button class="theme-option" data-theme="dark" aria-label="Dark theme">
+                    <span class="theme-color-preview dark"></span>
+                    <span>Dark</span>
+                </button>
+                <button class="theme-option" data-theme="high-contrast" aria-label="High contrast theme">
+                    <span class="theme-color-preview high-contrast"></span>
+                    <span>High Contrast</span>
+                </button>
+            </div>
+        </div>
+    </div>
     
     <!-- Accessibility controls -->
     <div id="accessibility-controls" class="accessibility-controls" aria-label="Accessibility options">
@@ -73,19 +108,19 @@
     <main id="main-content">
         <section class="page-hero safety-hero">
             <div class="container">
-                <h2>Safety Features</h2>
-                <p>Trail Tale prioritizes your family's safety with advanced features designed for worry-free hiking adventures</p>
+                <h2 class="animate-in">Safety Features</h2>
+                <p class="animate-in animate-delay-100">Trail Tale prioritizes your family's safety with advanced features designed for worry-free hiking adventures</p>
                 
                 <!-- Status indicators for safety features -->
-                <div class="status-indicators">
-                    <div class="status-pill active" aria-live="polite">
+                <div class="status-indicators stagger-fade-in">
+                    <div class="status-pill active shimmer" aria-live="polite">
                         <span class="status-icon">
                             <span class="material-symbols-rounded">wifi</span>
                         </span>
                         <span class="status-text">Safety Services: Online</span>
                     </div>
                     
-                    <div class="status-pill info" aria-live="polite">
+                    <div class="status-pill info shimmer" aria-live="polite">
                         <span class="status-icon">
                             <span class="material-symbols-rounded">shield</span>
                         </span>
@@ -101,13 +136,13 @@
                 <p class="section-subtitle">Click on any feature to see interactive demonstrations and learn more</p>
                 
                 <div class="feature-grid">
-                    <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
+                    <div class="feature-card card card-hover-glow" tabindex="0" role="button" aria-expanded="false">
                         <div class="feature-icon">
                             <span class="material-symbols-rounded">family_lock</span>
                         </div>
                         <h3>Parental Content Controls</h3>
                         <p>Preview all AI-generated stories and AR encounters before your children access them. Set age-appropriate filters and content preferences based on your family values.</p>
-                        <div class="feature-badge family-friendly">Family-Friendly</div>
+                        <div class="badge badge-primary">Family-Friendly</div>
                     </div>
                     
                     <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
@@ -116,7 +151,7 @@
                         </div>
                         <h3>Real-time Location Tracking</h3>
                         <p>Always know where your family members are on the trail. Set boundaries and receive alerts if anyone wanders too far from the designated path.</p>
-                        <div class="feature-badge safety-critical">Safety Critical</div>
+                        <div class="badge badge-danger">Safety Critical</div>
                     </div>
                     
                     <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
@@ -125,7 +160,7 @@
                         </div>
                         <h3>Trail Safety Ratings</h3>
                         <p>All trails are rated for difficulty, terrain safety, and suitability for children of different ages. Weather alerts and trail condition updates ensure you're always prepared.</p>
-                        <div class="feature-badge age-appropriate">Age Appropriate</div>
+                        <div class="badge badge-success">Age Appropriate</div>
                     </div>
                     
                     <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
@@ -134,7 +169,7 @@
                         </div>
                         <h3>Offline Mode</h3>
                         <p>All essential safety features and trail navigation work offline, ensuring you're never without guidance even in areas with poor cell coverage.</p>
-                        <div class="feature-badge essential">Essential</div>
+                        <div class="badge badge-info">Essential</div>
                     </div>
                     
                     <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
@@ -143,7 +178,7 @@
                         </div>
                         <h3>Emergency Assistance</h3>
                         <p>One-touch SOS button connects you with emergency services and shares your precise location coordinates. Automatic check-in prompts ensure someone is always monitoring your status.</p>
-                        <div class="feature-badge safety-critical">Safety Critical</div>
+                        <div class="badge badge-danger">Safety Critical</div>
                     </div>
                     
                     <div class="feature-card" tabindex="0" role="button" aria-expanded="false">
@@ -152,7 +187,7 @@
                         </div>
                         <h3>Weather & Environmental Alerts</h3>
                         <p>Receive real-time alerts about changing weather conditions, potential hazards, or wildlife activity that might affect your hiking experience.</p>
-                        <div class="feature-badge essential">Essential</div>
+                        <div class="badge badge-info">Essential</div>
                     </div>
                 </div>
             </div>
@@ -244,7 +279,7 @@
                 </div>
                 
                 <!-- Interactive safety checklist -->
-                <div class="safety-checklist animate-in" style="animation-delay: 0.3s;">
+                <div class="safety-checklist animate-in animate-delay-300">
                     <h4>Family Safety Checklist</h4>
                     <p>Use this interactive checklist to prepare for your next family adventure</p>
                     
@@ -273,7 +308,7 @@
                     
                     <div class="checklist-progress">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%"></div>
+                            <div class="progress-fill progress-0"></div>
                         </div>
                         <div class="progress-text">0 of 5 completed</div>
                     </div>
@@ -356,22 +391,36 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-container">
                 <div class="footer-section">
                     <h4>Trail Tale</h4>
                     <p>
-                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                        Making family hiking adventures educational and magical.
                     </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <span class="material-symbols-rounded">facebook</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <span class="material-symbols-rounded">flutter_dash</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <span class="material-symbols-rounded">photo_camera</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <span class="material-symbols-rounded">smart_display</span>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="explore.html">Explore Trails</a></li>
+                    <h4>Explore</h4>
+                    <ul class="footer-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="explore.html">Find Trails</a></li>
                         <li><a href="how-it-works.html">How It Works</a></li>
-                        <li><a href="safety.html">Safety Features</a></li>
                     </ul>
                 </div>
                 
@@ -434,5 +483,21 @@
     
     <script src="js/main.js"></script>
     <script src="js/safety.js"></script>
+    <script src="js/theme-switcher.js"></script>
+    
+    <script>
+        // Initialize header scroll effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply scrolled class to header when page scrolls
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

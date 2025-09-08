@@ -1,28 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYP    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/component-styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/theme-switcher.css">
+    <link rel="stylesheet" href="css/pages/explore.css">
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/cross-browser.css">ml lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Trails - Trail Tale</title>
     
     <!-- Core styles -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/additional-fixed.css">
-    <link rel="stylesheet" href="css/explore-enhancements.css">
-    
-    <!-- Enhanced UI Components -->
-    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/component-styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/guidance.css">
-    <link rel="stylesheet" href="css/interactive.css">
     <link rel="stylesheet" href="css/map.css">
-    
-    <!-- Enhanced UI Components -->
-    <link rel="stylesheet" href="css/status-indicators.css">
-    <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/guidance.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages/explore.css">
+    <link rel="stylesheet" href="css/theme-switcher.css">
     
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
@@ -54,6 +58,38 @@
                 <span class="material-symbols-rounded">visibility</span>
                 <span>Improved Readability</span>
             </button>
+        </div>
+    </div>
+    
+    <!-- Theme switcher -->
+    <div class="theme-switcher" aria-label="Theme options">
+        <button class="theme-switcher-toggle" aria-label="Toggle theme menu" aria-haspopup="true" aria-expanded="false">
+            <span class="material-symbols-rounded">palette</span>
+        </button>
+        <div class="theme-switcher-panel">
+            <h3 class="theme-switcher-title">Choose Theme</h3>
+            <div class="theme-options">
+                <button class="theme-option active" data-theme="nature" aria-label="Nature theme">
+                    <span class="theme-color-preview nature"></span>
+                    <span>Nature</span>
+                </button>
+                <button class="theme-option" data-theme="ocean" aria-label="Ocean theme">
+                    <span class="theme-color-preview ocean"></span>
+                    <span>Ocean</span>
+                </button>
+                <button class="theme-option" data-theme="mountain" aria-label="Mountain theme">
+                    <span class="theme-color-preview mountain"></span>
+                    <span>Mountain</span>
+                </button>
+                <button class="theme-option" data-theme="dark" aria-label="Dark theme">
+                    <span class="theme-color-preview dark"></span>
+                    <span>Dark</span>
+                </button>
+                <button class="theme-option" data-theme="high-contrast" aria-label="High contrast theme">
+                    <span class="theme-color-preview high-contrast"></span>
+                    <span>High Contrast</span>
+                </button>
+            </div>
         </div>
     </div>
     
@@ -114,7 +150,31 @@
             
             <!-- Interactive Map -->
             <div class="map-container" id="explore-map">
+                <div class="map-loading-overlay">
+                    <div class="loading-animation">
+                        <span class="material-symbols-rounded">map</span>
+                        <div class="loading-text">Loading trails near you...</div>
+                    </div>
+                </div>
+                
                 <img src="images/interactive-map.svg" alt="Interactive Trail Map" class="interactive-map" />
+                
+                <!-- Interactive Trail Markers -->
+                <div class="trail-markers">
+                    <div class="trail-marker" data-trail-id="woodland-wonder">
+                        <span class="marker-icon easy"></span>
+                    </div>
+                    <div class="trail-marker" data-trail-id="mountain-explorer">
+                        <span class="marker-icon moderate"></span>
+                    </div>
+                    <div class="trail-marker" data-trail-id="desert-canyon">
+                        <span class="marker-icon difficult"></span>
+                    </div>
+                    <div class="trail-marker" data-trail-id="lakeside-loop">
+                        <span class="marker-icon easy accessible"></span>
+                    </div>
+                </div>
+                
                 <div class="map-overlay">
                     <div class="map-controls">
                         <button class="map-btn zoom-in" title="Zoom In" aria-label="Zoom in on map">+</button>
@@ -189,19 +249,22 @@
                     </div>
                     
                     <!-- Progress and Achievements -->
-                    <div class="family-progress">
-                        <div class="achievement-badge" title="Family Explorer Badge">
+                    <div class="family-progress stagger-fade-in">
+                        <div class="achievement-badge shimmer" title="Family Explorer Badge">
                             <span class="material-symbols-rounded">emoji_events</span>
                             <div class="progress-circle" data-progress="35"></div>
                         </div>
-                        <div class="achievement-badge" title="Nature Photographer Badge">
+                        <div class="achievement-badge shimmer" title="Nature Photographer Badge">
                             <span class="material-symbols-rounded">photo_camera</span>
                             <div class="progress-circle" data-progress="60"></div>
                         </div>
                     </div>
                     
                     <div class="map-markers" aria-live="polite">
-                        <!-- Markers will be added by JavaScript -->
+                        <!-- Example static markers with animation - dynamic markers will be added by JavaScript -->
+                        <div class="map-marker trail-marker" style="top: 30%; left: 40%;" title="Forest Loop Trail"></div>
+                        <div class="map-marker trail-marker" style="top: 45%; left: 60%;" title="Mountain View Path"></div>
+                        <div class="map-marker trail-marker" style="top: 60%; left: 25%;" title="River Adventure Trail"></div>
                     </div>
                     
                     <!-- Interactive map features status -->
@@ -215,12 +278,27 @@
             </div>
             
             <!-- Filters -->
-            <div class="filters card animate-in" style="animation-delay: 0.1s;">
+            <div class="filters card animate-in animate-delay-100">
                 <h2>Filter Trails</h2>
-                <div class="filter-tabs">
-                    <button class="filter-tab active" data-tab="basic">Basic Filters</button>
-                    <button class="filter-tab" data-tab="family">Family Options</button>
-                    <button class="filter-tab" data-tab="accessibility">Accessibility</button>
+                
+                <!-- Visual Filter Summary -->
+                <div class="filter-summary">
+                    <div class="active-filters">
+                        <span class="active-filter-label">Active filters:</span>
+                        <div class="filter-tags">
+                            <span class="tag tag-primary">Family-friendly <button class="tag-close">×</button></span>
+                            <span class="tag tag-primary">Under 5km <button class="tag-close">×</button></span>
+                        </div>
+                    </div>
+                    <div class="filter-results-count">
+                        <span class="count-number">12</span> trails match your criteria
+                    </div>
+                </div>
+                
+                <div class="filter-tabs nav nav-pills">
+                    <button class="filter-tab nav-link active" data-tab="basic">Basic Filters</button>
+                    <button class="filter-tab nav-link" data-tab="family">Family Options</button>
+                    <button class="filter-tab nav-link" data-tab="accessibility">Accessibility</button>
                 </div>
                 
                 <div class="filter-panels">
@@ -232,16 +310,19 @@
                                     <span class="material-symbols-rounded">straighten</span>
                                     Distance
                                 </label>
-                                <select id="distance" aria-label="Select trail distance">
-                                    <option>Any distance</option>
-                                    <option>Under 2 km</option>
-                                    <option>2-5 km</option>
-                                    <option>5-10 km</option>
-                                    <option>Over 10 km</option>
-                                </select>
-                                <div class="filter-help" tabindex="0" role="button" aria-label="Help with distance filter">
+                                <div class="range-slider-container">
+                                    <input type="range" id="distance" min="0" max="15" value="5" step="0.5" class="interactive-range" aria-label="Select trail distance">
+                                    <div class="range-value" aria-live="polite">5 km</div>
+                                    <div class="range-labels">
+                                        <span>0</span>
+                                        <span>5</span>
+                                        <span>10</span>
+                                        <span>15+ km</span>
+                                    </div>
+                                </div>
+                                <div class="filter-help tooltip" tabindex="0" role="button" aria-label="Help with distance filter">
                                     <span class="material-symbols-rounded">help</span>
-                                    <div class="tooltip">Choose a distance range that fits your family's walking ability</div>
+                                    <div class="tooltip-text">Choose a distance range that fits your family's walking ability</div>
                                 </div>
                             </div>
                             
@@ -256,9 +337,9 @@
                                     <option>Moderate</option>
                                     <option>Hard</option>
                                 </select>
-                                <div class="filter-help" tabindex="0" role="button" aria-label="Help with difficulty filter">
+                                <div class="filter-help tooltip" tabindex="0" role="button" aria-label="Help with difficulty filter">
                                     <span class="material-symbols-rounded">help</span>
-                                    <div class="tooltip">Easy trails are flat with even surfaces, moderate have some hills, and hard trails have steep sections</div>
+                                    <div class="tooltip-text">Easy trails are flat with even surfaces, moderate have some hills, and hard trails have steep sections</div>
                                 </div>
                             </div>
                             
@@ -442,6 +523,15 @@
                                     <span class="material-symbols-rounded">star_half</span>
                                 </div>
                             </div>
+                            <!-- Interactive 360 view toggle -->
+                            <button class="view-360-toggle" aria-label="View 360 preview">
+                                <span class="material-symbols-rounded">view_in_ar</span>
+                            </button>
+                            <!-- Weather indicator -->
+                            <div class="trail-weather">
+                                <span class="material-symbols-rounded">wb_sunny</span>
+                                <span class="weather-temp">24°</span>
+                            </div>
                         </div>
                         <div class="trail-details">
                             <h3>Woodland Wonder Trail</h3>
@@ -462,21 +552,41 @@
                                 <span class="feature">Shaded</span>
                             </div>
                             <p class="trail-description">Discover a magical woodland path perfect for families with young children. Keep an eye out for local wildlife!</p>
+                            
+                            <!-- Interactive completion meter -->
+                            <div class="trail-completion">
+                                <div class="completion-label">Families completed: <strong>87%</strong></div>
+                                <div class="progress-container">
+                                    <div class="progress progress-success" style="width: 87%"></div>
+                                </div>
+                            </div>
+                            
                             <div class="interactive-preview">
-                                <div class="story-preview">
+                                <div class="story-preview" tabindex="0">
                                     <span class="material-symbols-rounded">auto_stories</span>
                                     <span>5 stories</span>
+                                    <div class="story-preview-popup">
+                                        <h4>Trail Stories</h4>
+                                        <ul>
+                                            <li>"The Whispering Trees"</li>
+                                            <li>"Forest Friends Adventure"</li>
+                                            <li>"The Lost Compass"</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="ar-preview">
+                                <div class="ar-preview" tabindex="0">
                                     <span class="material-symbols-rounded">view_in_ar</span>
                                     <span>8 AR spots</span>
+                                    <div class="ar-preview-popup">
+                                        <img src="images/trail-preview-1.svg" alt="AR Preview" class="ar-thumbnail">
+                                    </div>
                                 </div>
                             </div>
                             <a href="trail.html?id=route_12345" class="btn btn-primary btn-sm">View Trail</a>
                         </div>
                     </div>
 
-                    <div class="trail-card interactive-card animate-in" tabindex="0" style="animation-delay: 0.1s;">
+                    <div class="trail-card interactive-card animate-in animate-delay-100" tabindex="0">
                         <div class="trail-image">
                             <img src="images/trail-preview-2.svg" alt="Mountain Explorer Path" />
                             <div class="trail-badge">
@@ -529,7 +639,7 @@
                         </div>
                     </div>
 
-                    <div class="trail-card interactive-card animate-in" tabindex="0" style="animation-delay: 0.2s;">
+                    <div class="trail-card interactive-card animate-in animate-delay-200" tabindex="0">
                         <div class="trail-image">
                             <img src="images/trail-preview-3.svg" alt="Desert Canyon Trail" />
                             <div class="family-rating">
@@ -576,7 +686,7 @@
                         </div>
                     </div>
                     
-                    <div class="trail-card interactive-card animate-in" tabindex="0" style="animation-delay: 0.3s;">
+                    <div class="trail-card interactive-card animate-in animate-delay-300" tabindex="0">
                         <div class="trail-image">
                             <img src="images/trail-preview-1.svg" alt="Lakeside Loop" />
                             <div class="trail-badge">
@@ -633,22 +743,45 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-container">
                 <div class="footer-section">
                     <h4>Trail Tale</h4>
                     <p>
-                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                        Making family hiking adventures educational and magical.
                     </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <span class="material-symbols-rounded">facebook</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <span class="material-symbols-rounded">flutter_dash</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <span class="material-symbols-rounded">photo_camera</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <span class="material-symbols-rounded">smart_display</span>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
+                    <h4>Explore</h4>
+                    <ul class="footer-nav">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="dashboard.html">Trail Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#">About Us</a></li>
                         <li><a href="safety.html">Safety Features</a></li>
+                        <li><a href="#">Our Mission</a></li>
                     </ul>
                 </div>
                 
@@ -694,13 +827,33 @@
     <div id="interactive-tooltip" class="interactive-tooltip" role="tooltip"></div>
 
     <!-- Scripts with ES modules -->
-    <script type="module" src="js/enhanced-main.js"></script>
     <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/map-enhancements.js"></script>
+    <script type="module" src="js/map-consolidated.js"></script>
     <script type="module" src="js/interactive-elements.js"></script>
     
     <!-- Utilities that may not be modules yet -->
     <script src="js/utils/ui.utils.js"></script>
+    <script src="js/enhanced-interactions.js"></script>
+    <script src="js/theme-switcher.js"></script>
     <script src="js/utils/map.utils.js"></script>
+    <script src="js/utils/accessibility-compliance.js"></script>
+    <script src="js/utils/automated-testing.js"></script>
+    <script src="js/enhanced-map-features.js"></script>
+    <script src="js/filter-animations.js"></script>
+    
+    <script>
+        // Initialize header scroll effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply scrolled class to header when page scrolls
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

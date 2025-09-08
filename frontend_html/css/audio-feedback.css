@@ -1,0 +1,122 @@
+/* Audio Feedback for Child-Friendly Interactions */
+
+.audio-feedback-controls {
+  display: flex;
+  align-items: center;
+  background: var(--color-neutral-100);
+  padding: var(--space-2);
+  border-radius: var(--border-radius-xl);
+  position: fixed;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  z-index: var(--z-overlay);
+  box-shadow: var(--shadow-md);
+  border: var(--border-width-2) solid var(--color-primary-200);
+  transition: all 0.3s ease;
+}
+
+.audio-feedback-controls.minimized {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.audio-feedback-controls .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary-300);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: var(--space-3);
+}
+
+.audio-feedback-controls .toggle:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+.audio-feedback-controls .options {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.audio-feedback-controls .audio-option {
+  display: flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--border-radius-lg);
+  background: white;
+  border: var(--border-width-1) solid var(--color-neutral-300);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-feedback-controls .audio-option:hover {
+  background: var(--color-primary-100);
+  border-color: var(--color-primary-400);
+}
+
+.audio-feedback-controls .audio-option.active {
+  background: var(--color-primary-200);
+  border-color: var(--color-primary-500);
+}
+
+/* Sound effect classes that will be applied to elements */
+.sound-click,
+.sound-hover,
+.sound-reward,
+.sound-discovery {
+  position: relative;
+}
+
+/* Visual indicator for elements with sound */
+.sound-enabled .sound-click::after,
+.sound-enabled .sound-hover::after,
+.sound-enabled .sound-reward::after,
+.sound-enabled .sound-discovery::after {
+  content: '🔊';
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  font-size: 12px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Hide sound indicators when sounds are disabled */
+.sound-disabled .sound-click::after,
+.sound-disabled .sound-hover::after,
+.sound-disabled .sound-reward::after,
+.sound-disabled .sound-discovery::after {
+  display: none;
+}
+
+/* Animation for sound feedback */
+@keyframes sound-wave {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.sound-wave-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.3);
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 100;
+  animation: sound-wave 0.6s ease-out forwards;
+}

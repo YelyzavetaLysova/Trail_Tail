@@ -1,0 +1,58 @@
+/* Custom Cursors for a more engaging child-friendly experience */
+
+/* Base body cursor - slightly larger and more rounded for better visibility for children */
+body {
+  cursor: url('../images/cursors/default-cursor.png'), auto;
+}
+
+/* Link cursor - hand with star effect */
+a, button, .interactive-card, .clickable, [role="button"] {
+  cursor: url('../images/cursors/pointer-cursor.png'), pointer;
+}
+
+/* Text selection cursor */
+input, textarea, [contenteditable="true"] {
+  cursor: url('../images/cursors/text-cursor.png'), text;
+}
+
+/* Map navigation cursors */
+.map-container {
+  cursor: url('../images/cursors/map-cursor.png'), move;
+}
+
+.map-btn.zoom-in {
+  cursor: url('../images/cursors/zoom-in-cursor.png'), zoom-in;
+}
+
+.map-btn.zoom-out {
+  cursor: url('../images/cursors/zoom-out-cursor.png'), zoom-out;
+}
+
+/* Trail cursor */
+.trail-item, .trail-selector {
+  cursor: url('../images/cursors/trail-cursor.png'), pointer;
+}
+
+/* Pointer events polyfill for older browsers */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* CSS-only custom cursor fallback */
+@supports not (cursor: url('../images/cursors/default-cursor.png')) {
+  body {
+    cursor: default;
+  }
+  
+  a, button, .interactive-card, .clickable, [role="button"] {
+    cursor: pointer;
+  }
+  
+  input, textarea, [contenteditable="true"] {
+    cursor: text;
+  }
+  
+  .map-container {
+    cursor: move;
+  }
+}

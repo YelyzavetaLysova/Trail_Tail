@@ -1,0 +1,274 @@
+/* Enhanced step elements for children */
+.journey-path {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.journey-line {
+  width: 100%;
+  height: 100px;
+}
+
+.journey-line-path {
+  fill: none;
+  stroke: var(--color-primary-300);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+/* Add playful decoration elements along the journey path */
+.journey-path::before,
+.journey-path::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.journey-path::before {
+  top: 10px;
+  left: 15%;
+  background-image: url('../images/element-tree.svg');
+  animation: float 3s ease-in-out infinite;
+}
+
+.journey-path::after {
+  bottom: 0;
+  right: 20%;
+  background-image: url('../images/element-mountain.svg');
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Step Action Buttons Enhancement */
+.step-action {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.step-action .btn {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-action .btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.step-action .btn:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+.step-action .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(76, 175, 80, 0.2);
+}
+
+.step-action .btn:active {
+  transform: translateY(1px);
+}
+
+/* Enhanced step styling */
+.step {
+  position: relative;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-4);
+  border: 3px solid var(--color-primary-100);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+}
+
+/* Playful number indicator */
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-heading);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 3px solid white;
+  z-index: 2;
+}
+
+/* Different colors for each step */
+.step[data-step="1"] .step-number {
+  background: linear-gradient(135deg, var(--color-accent-blue), #2196F3);
+}
+
+.step[data-step="2"] .step-number {
+  background: linear-gradient(135deg, var(--color-accent-purple), #9C27B0);
+}
+
+.step[data-step="3"] .step-number {
+  background: linear-gradient(135deg, var(--color-accent-pink), #E91E63);
+}
+
+.step[data-step="4"] .step-number {
+  background: linear-gradient(135deg, var(--color-accent-yellow), #FF9800);
+}
+
+/* Step hover effects */
+.step:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--color-primary-300);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.step:hover .step-illustration img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Step illustration */
+.step-illustration {
+  margin: var(--space-4) 0;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.step-illustration img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Feature list styling */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.feature-list .material-symbols-rounded {
+  color: var(--color-primary-500);
+  font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.staggered-animation .step {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: stepAppear 0.6s ease forwards;
+}
+
+.staggered-animation .step:nth-child(1) { animation-delay: 0.2s; }
+.staggered-animation .step:nth-child(2) { animation-delay: 0.4s; }
+.staggered-animation .step:nth-child(3) { animation-delay: 0.6s; }
+.staggered-animation .step:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes stepAppear {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.step-action .btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+}
+
+.step-action .btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.step-action .btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--gray-300);
+  color: var(--gray-800);
+}
+
+.step-action .btn-outline:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+.mode-demo {
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mode-demo:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-color: var(--primary);
+}
+
+.mode-demo::before {
+  font-family: 'Material Symbols Rounded';
+  font-size: 16px;
+}
+
+.mode-demo[data-mode="historical"]::before {
+  content: '\e8b7'; /* history icon */
+}
+
+.mode-demo[data-mode="fantasy"]::before {
+  content: '\e41d'; /* auto_stories icon */
+}
+
+.preview-demo::before {
+  content: '\e8f4'; /* visibility icon */
+  font-family: 'Material Symbols Rounded';
+  font-size: 16px;
+  margin-right: 5px;
+}

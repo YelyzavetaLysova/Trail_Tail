@@ -1,16 +1,24 @@
 {
-  "name": "trail-tail-frontend",
+  "name": "trail-tale-frontend",
   "version": "1.0.0",
-  "description": "Trail Tail - AI-Powered Family Hiking Adventures",
-  "main": "server.js",
+  "description": "Trail Tale - AI-Powered Family Hiking Adventures",
+  "main": "js/main.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "live-server --port=3000 --host=localhost --no-browser",
+    "start": "live-server --port=3000 --host=localhost",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "express": "^4.21.2"
-  },
+  "keywords": [
+    "hiking",
+    "family",
+    "trails",
+    "adventure",
+    "children",
+    "outdoors"
+  ],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "live-server": "^1.2.2"
   }
 }

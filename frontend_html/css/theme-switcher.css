@@ -1,0 +1,483 @@
+/**
+ * Trail Tale Theme Switcher
+ * 
+ * CSS file for theme customization options
+ * Provides different color schemes and visual themes for the website
+ */
+
+/* 
+* TABLE OF CONTENTS:
+* -----------------
+* 1. Theme Variables
+* 2. Theme Classes
+* 3. Theme Switcher UI
+* 4. Theme Transitions
+* 5. Theme-specific Overrides
+*/
+
+/*
+ * SECTION 1: THEME VARIABLES
+ */
+
+:root {
+  /* Default theme variables are in variables.css */
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Nature theme */
+.theme-nature {
+  --primary: #4CAF50;
+  --primary-light: #81C784;
+  --primary-dark: #388E3C;
+  --secondary: #FF9800;
+  --secondary-light: #FFB74D;
+  --secondary-dark: #F57C00;
+  --success: #4CAF50;
+  --info: #2196F3;
+  --warning: #FFC107;
+  --danger: #F44336;
+  --background: #FFFFFF;
+  --surface: #F8F9FA;
+  --text: #212121;
+  --text-light: #757575;
+  --border-color: #E0E0E0;
+}
+
+/* Ocean theme */
+.theme-ocean {
+  --primary: #03A9F4;
+  --primary-light: #4FC3F7;
+  --primary-dark: #0288D1;
+  --secondary: #009688;
+  --secondary-light: #4DB6AC;
+  --secondary-dark: #00796B;
+  --success: #009688;
+  --info: #03A9F4;
+  --warning: #FFC107;
+  --danger: #F44336;
+  --background: #FAFEFF;
+  --surface: #F0F7FA;
+  --text: #263238;
+  --text-light: #607D8B;
+  --border-color: #B0BEC5;
+}
+
+/* Mountain theme */
+.theme-mountain {
+  --primary: #795548;
+  --primary-light: #A1887F;
+  --primary-dark: #5D4037;
+  --secondary: #FF5722;
+  --secondary-light: #FF8A65;
+  --secondary-dark: #E64A19;
+  --success: #8BC34A;
+  --info: #2196F3;
+  --warning: #FFC107;
+  --danger: #F44336;
+  --background: #FFFBF5;
+  --surface: #F5F5F5;
+  --text: #3E2723;
+  --text-light: #6D4C41;
+  --border-color: #D7CCC8;
+}
+
+/* Dark theme */
+.theme-dark {
+  --primary: #4CAF50;
+  --primary-light: #81C784;
+  --primary-dark: #388E3C;
+  --secondary: #FF9800;
+  --secondary-light: #FFB74D;
+  --secondary-dark: #F57C00;
+  --success: #4CAF50;
+  --info: #2196F3;
+  --warning: #FFC107;
+  --danger: #F44336;
+  --background: #121212;
+  --surface: #212121;
+  --text: #FFFFFF;
+  --text-light: #BDBDBD;
+  --border-color: #424242;
+}
+
+/* High contrast theme for accessibility */
+.theme-high-contrast {
+  --primary: #FFFF00;
+  --primary-light: #FFFF8D;
+  --primary-dark: #FFD600;
+  --secondary: #40C4FF;
+  --secondary-light: #80D8FF;
+  --secondary-dark: #00B0FF;
+  --success: #00E676;
+  --info: #40C4FF;
+  --warning: #FFFF00;
+  --danger: #FF1744;
+  --background: #000000;
+  --surface: #121212;
+  --text: #FFFFFF;
+  --text-light: #E0E0E0;
+  --border-color: #FFFFFF;
+}
+
+/*
+ * SECTION 2: THEME CLASSES
+ */
+
+/* Apply transition to all elements when theme changes */
+body,
+button,
+input,
+select,
+textarea,
+a,
+.btn,
+.card,
+.panel,
+header,
+footer,
+.hero,
+.feature-cards,
+.filter-container,
+.trail-card {
+  transition: var(--theme-transition);
+}
+
+/* Adjust text color contrast based on theme */
+.theme-dark .text-dark,
+.theme-high-contrast .text-dark {
+  color: var(--text-light) !important;
+}
+
+.theme-dark .card,
+.theme-dark .panel,
+.theme-dark .filter-container,
+.theme-dark .trail-card {
+  background-color: var(--surface);
+  border-color: var(--border-color);
+}
+
+.theme-dark header,
+.theme-high-contrast header {
+  background-color: var(--surface);
+  border-color: var(--border-color);
+}
+
+/*
+ * SECTION 3: THEME SWITCHER UI
+ */
+
+.theme-switcher {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  background: linear-gradient(145deg, var(--surface), var(--surface-dark, #e6e6e6));
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), 
+              0 1px 5px rgba(0, 0, 0, 0.1),
+              inset 1px 1px 1px rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.theme-switcher::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.theme-switcher:hover {
+  transform: scale(1.12) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 
+              0 3px 6px rgba(0, 0, 0, 0.2),
+              inset 1px 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.theme-switcher:hover::before {
+  opacity: 0.8;
+  animation: rotate-glow 2s infinite linear;
+}
+
+@keyframes rotate-glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.theme-switcher-toggle {
+  border: none;
+  background: none;
+  color: var(--primary);
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.theme-switcher-toggle .material-symbols-rounded {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-switcher-toggle:hover .material-symbols-rounded {
+  transform: rotate(30deg) scale(1.1);
+}
+
+.theme-switcher-toggle:active .material-symbols-rounded {
+  transform: scale(0.9);
+  transition: transform 0.1s;
+}
+
+.theme-switcher-panel {
+  position: absolute;
+  right: 0;
+  bottom: 60px;
+  width: 250px;
+  background-color: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
+              0 5px 15px rgba(0, 0, 0, 0.1),
+              inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  transform: scale(0.8) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: bottom right;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1001;
+}
+
+.theme-switcher-panel.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.theme-switcher-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.theme-switcher-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--primary), transparent);
+  border-radius: 3px;
+}
+
+.theme-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.theme-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-option:hover {
+  background-color: rgba(128, 128, 128, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-option:hover::before {
+  opacity: 1;
+}
+
+.theme-option.active {
+  background-color: rgba(var(--primary-rgb, 76, 175, 80), 0.1);
+  color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 3px 10px rgba(var(--primary-rgb, 76, 175, 80), 0.2);
+}
+
+.theme-option.active::after {
+  content: '✓';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scale-in {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.theme-color-preview {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-option:hover .theme-color-preview {
+  transform: scale(1.1);
+}
+
+.theme-color-preview::after {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+  top: -25%;
+  left: -25%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.theme-option:hover .theme-color-preview::after {
+  opacity: 1;
+}
+
+.theme-option-nature .theme-color-preview {
+  background-color: #4CAF50;
+}
+
+.theme-option-ocean .theme-color-preview {
+  background-color: #03A9F4;
+}
+
+.theme-option-mountain .theme-color-preview {
+  background-color: #795548;
+}
+
+.theme-option-dark .theme-color-preview {
+  background-color: #121212;
+  border: 1px solid #666;
+}
+
+.theme-option-high-contrast .theme-color-preview {
+  background-color: #000000;
+  border: 1px solid #FFFF00;
+}
+
+/*
+ * SECTION 4: THEME TRANSITIONS
+ */
+
+/* Page transition on theme change */
+.theme-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-transition-active .theme-transition-overlay {
+  opacity: 1;
+}
+
+/*
+ * SECTION 5: THEME-SPECIFIC OVERRIDES
+ */
+
+/* Ocean theme specific styles */
+.theme-ocean .btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.theme-ocean .hero-background {
+  background-image: linear-gradient(135deg, rgba(3, 169, 244, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+/* Mountain theme specific styles */
+.theme-mountain .btn-primary {
+  background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+}
+
+.theme-mountain .hero-background {
+  background-image: linear-gradient(135deg, rgba(121, 85, 72, 0.05) 0%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+/* Dark theme specific styles */
+.theme-dark .btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.theme-dark .hero-background {
+  background-image: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(18, 18, 18, 0.95) 100%);
+}
+
+/* High contrast theme specific styles */
+.theme-high-contrast .btn-primary {
+  background-color: var(--primary);
+  color: #000000;
+}
+
+.theme-high-contrast .hero-background {
+  background-image: none;
+  background-color: #000000;
+}

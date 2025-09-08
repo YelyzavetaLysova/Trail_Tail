@@ -1,0 +1,368 @@
+/**
+ * Trail Tale Authentication Pages Styles
+ *
+ * Contains all styles specific to the login and registration pages.
+ */
+
+/* 
+* TABLE OF CONTENTS:
+* -----------------
+* 1. Auth Layout
+* 2. Auth Forms
+* 3. Social Login
+* 4. Form Validation
+* 5. Animations
+* 6. Responsive Adjustments
+*/
+
+/*==============================================
+  SECTION 1: AUTH LAYOUT
+==============================================*/
+
+.auth-page {
+  background-color: var(--background-alt);
+  min-height: 100vh;
+}
+
+.auth-container {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  min-height: 100vh;
+}
+
+.auth-image {
+  background-color: var(--primary-dark);
+  background-image: linear-gradient(
+    135deg,
+    rgba(46, 125, 50, 0.8),
+    rgba(76, 175, 80, 0.8)
+  ),
+  url("../images/trail-pattern.svg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  color: white;
+}
+
+.auth-image-content {
+  max-width: 500px;
+}
+
+.auth-image-title {
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--space-lg);
+  font-weight: 700;
+}
+
+.auth-image-text {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.auth-testimonial {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-md);
+  margin-top: var(--space-xl);
+}
+
+.auth-testimonial-text {
+  font-style: italic;
+  margin-bottom: var(--space-sm);
+}
+
+.auth-testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.auth-testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: var(--space-sm);
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-xl);
+  background-color: var(--background);
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.auth-logo img {
+  height: 50px;
+}
+
+/*==============================================
+  SECTION 2: AUTH FORMS
+==============================================*/
+
+.auth-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.auth-subtitle {
+  color: var(--text-light);
+  margin-bottom: var(--space-lg);
+}
+
+.auth-form {
+  margin-bottom: var(--space-lg);
+}
+
+.auth-form .form-group {
+  margin-bottom: var(--space-md);
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 500;
+}
+
+.auth-form .form-control {
+  width: 100%;
+  padding: 14px var(--space-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--background);
+  font-size: var(--font-size-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: var(--space-xs);
+}
+
+.forgot-password {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.auth-submit:hover {
+  background-color: var(--primary-dark);
+}
+
+.auth-alternate {
+  text-align: center;
+  margin-top: var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.auth-alternate a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-alternate a:hover {
+  text-decoration: underline;
+}
+
+/*==============================================
+  SECTION 3: SOCIAL LOGIN
+==============================================*/
+
+.social-login {
+  margin: var(--space-lg) 0;
+}
+
+.social-login-separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-md);
+}
+
+.social-login-separator::before,
+.social-login-separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.social-login-separator::before {
+  margin-right: var(--space-sm);
+}
+
+.social-login-separator::after {
+  margin-left: var(--space-sm);
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--background);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.social-button:hover {
+  background-color: var(--background-alt);
+}
+
+.social-icon {
+  margin-right: var(--space-sm);
+}
+
+/*==============================================
+  SECTION 4: FORM VALIDATION
+==============================================*/
+
+.auth-form .invalid-feedback {
+  color: var(--error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  display: none;
+}
+
+.auth-form .form-control.is-invalid {
+  border-color: var(--error);
+}
+
+.auth-form .form-control.is-invalid + .invalid-feedback {
+  display: block;
+}
+
+.auth-form .password-strength {
+  margin-top: var(--space-xs);
+  height: 4px;
+  background-color: var(--background-alt);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.auth-form .password-strength-bar {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.auth-form .password-strength-text {
+  font-size: var(--font-size-xs);
+  margin-top: var(--space-xs);
+  text-align: right;
+}
+
+/*==============================================
+  SECTION 5: ANIMATIONS
+==============================================*/
+
+.auth-form {
+  animation: fadeSlideUp 0.5s ease;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-logo {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*==============================================
+  SECTION 6: RESPONSIVE ADJUSTMENTS
+==============================================*/
+
+@media (max-width: 992px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .auth-image {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-form-container {
+    padding: var(--space-md);
+  }
+  
+  .social-buttons {
+    grid-template-columns: 1fr;
+  }
+}

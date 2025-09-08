@@ -39,9 +39,14 @@ class Settings(BaseSettings):
     
     # Logging
     LOG_LEVEL: str = Field(default="INFO")
+    LOG_FILE: Optional[str] = Field(default=None)
     
     # Feature flags
     ENABLE_MOCK_DATA: bool = Field(default=True)
+    ENABLE_MOCK_PROVIDERS: bool = Field(default=True)
+    ENABLE_ANALYTICS: bool = Field(default=False)
+    ENABLE_SOCIAL_FEATURES: bool = Field(default=True)
+    ENABLE_PARENTAL_CONTROLS: bool = Field(default=True)
     
     class Config:
         env_file = ".env"

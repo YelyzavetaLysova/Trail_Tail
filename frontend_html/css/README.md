@@ -9,15 +9,15 @@ These files form the foundation of the styling system:
 - **variables.css**: Contains all design tokens (colors, spacing, typography, etc.)
 - **styles.css**: Base styles, typography, and core element styling
 - **components.css**: Reusable UI components like buttons, cards, forms
-- **layouts.css**: Page layout structures and grid systems
+- **layout.css**: Consolidated page layout structures and component layouts
 - **utilities.css**: Utility classes for common styling needs
 
 ## Enhanced UI Components
 
 These files provide specialized styling for specific UI features:
 
-- **map.css**: Consolidated map styling for interactive maps and trails
-- **interactive.css**: Consolidated interactive elements and animations
+- **map.css**: Consolidated map styling for all interactive maps and map features
+- **interactive.css**: Consolidated interactive elements, animations, and filters
 - **status-indicators.css**: System status feedback elements
 - **accessibility.css**: Accessibility enhancements and controls
 - **guidance.css**: Help systems, tooltips, and guided tours
@@ -26,11 +26,9 @@ These files provide specialized styling for specific UI features:
 
 These files contain styles that are specific to individual pages:
 
-- **additional-fixed.css**: Additional global styles shared across pages
-- **dashboard-enhancements-fixed.css**: Dashboard-specific styles
+- **dashboard-specific.css**: Dashboard-specific styles
 - **explore-enhancements.css**: Explore page styles
 - **how-it-works.css**: How It Works page styles
-- **sidebar-animations.css**: Sidebar animation effects
 
 ## CSS Organization Guidelines
 
@@ -40,7 +38,9 @@ These files contain styles that are specific to individual pages:
    - Design tokens (variables.css)
    - Base styles (styles.css)
    - Components (components.css)
-   - Layout (layouts.css)
+   - Layout (layout.css)
+   - Interactive elements (interactive.css)
+   - Map features (map.css)
    - Page-specific styles
    - Utilities (utilities.css)
 
@@ -53,9 +53,34 @@ These files contain styles that are specific to individual pages:
    - New map features should go in map.css
    - Page-specific styles should go in page-specific files
 
+## Consolidated Structure
+
+The CSS has been consolidated for better maintainability and performance:
+
+1. **map.css**: All map-related styling including:
+   - Basic map layout
+   - Map controls
+   - Map markers
+   - Interactive elements
+   - Trail previews and filters
+
+2. **interactive.css**: All interactive UI elements including:
+   - Animations
+   - Interactive form elements
+   - Filter animations and styles
+   - Family-friendly interactive components
+
+3. **layout.css**: All layout structures including:
+   - Header and navigation
+   - Page layouts
+   - Grid and flexbox patterns
+   - Component layouts
+   - Sidebar structures
+
 ## Future Improvements
 
 - Consider implementing a CSS preprocessor (SASS/LESS) for better maintainability
 - Further consolidate page-specific CSS files
 - Improve responsive design patterns
 - Implement CSS custom properties for theme switching
+- Add CSS minification to the build process

@@ -6,20 +6,24 @@
     <title>Trail Tale - AI-Powered Family Hiking Adventures</title>
     
     <!-- CSS Structure -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/layouts.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/component-styles.css">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/utilities.css">
-    <!-- Enhanced UI Components -->
-    <link rel="stylesheet" href="css/status-indicators.css">
     <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/guidance.css">
-    <link rel="stylesheet" href="css/interactive.css">
     <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/pages/home.css">
+    <link rel="stylesheet" href="css/theme-switcher.css">
+    <link rel="stylesheet" href="css/cross-browser.css">
+    <link rel="stylesheet" href="css/child-friendly-elements.css">
+    <link rel="stylesheet" href="css/step-enhancements.css">
     
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap">
     <meta name="description" content="Discover family-friendly hiking trails with interactive AI-generated stories and AR experiences">
     
     <!-- Open Graph meta tags for better social sharing -->
@@ -58,37 +62,95 @@
         </div>
     </div>
     
+    <!-- Theme switcher -->
+    <div class="theme-switcher" aria-label="Theme options">
+        <button class="theme-switcher-toggle" aria-label="Toggle theme menu" aria-haspopup="true" aria-expanded="false">
+            <span class="material-symbols-rounded">palette</span>
+        </button>
+        <div class="theme-switcher-panel">
+            <h3 class="theme-switcher-title">Choose Theme</h3>
+            <div class="theme-options">
+                <button class="theme-option active" data-theme="nature" aria-label="Nature theme">
+                    <span class="theme-color-preview nature"></span>
+                    <span>Nature</span>
+                </button>
+                <button class="theme-option" data-theme="ocean" aria-label="Ocean theme">
+                    <span class="theme-color-preview ocean"></span>
+                    <span>Ocean</span>
+                </button>
+                <button class="theme-option" data-theme="mountain" aria-label="Mountain theme">
+                    <span class="theme-color-preview mountain"></span>
+                    <span>Mountain</span>
+                </button>
+                <button class="theme-option" data-theme="dark" aria-label="Dark theme">
+                    <span class="theme-color-preview dark"></span>
+                    <span>Dark</span>
+                </button>
+                <button class="theme-option" data-theme="high-contrast" aria-label="High contrast theme">
+                    <span class="theme-color-preview high-contrast"></span>
+                    <span>High Contrast</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <header>
         <div class="container">
             <div class="logo">
                 <img src="images/logo.svg" alt="Trail Tale Logo">
                 <h1>Trail Tale</h1>
             </div>
-            <nav>
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="explore.html" class="nav-icon-link"><span class="material-symbols-rounded">explore</span>Explore</a></li>
+                    <li><a href="how-it-works.html" class="nav-icon-link"><span class="material-symbols-rounded">help</span>How It Works</a></li>
+                    <li><a href="login.html" class="nav-icon-link"><span class="material-symbols-rounded">login</span>Login</a></li>
+                    <li><a href="register.html" class="nav-icon-link"><span class="material-symbols-rounded">person_add</span>Join Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
+        <!-- Hero Section with enhanced family-friendly elements -->
+        <section class="hero parallax-container">
+            <div class="hero-background"></div>
             <div class="container">
-                <div class="hero-content">
-                    <h2>Discover Adventures with <span>AI-Powered Stories</span></h2>
+                <div class="hero-content animate-slide-up">
+                    <h2>Discover Adventures with <span class="highlight-text animated pulse">AI-Powered Stories</span></h2>
                     <p>
                         Explore family-friendly hiking trails enhanced with interactive AI-generated narratives and augmented reality encounters. Make outdoor time educational and magical for your children!
                     </p>
-                    <div class="cta-buttons">
+                    
+                    <!-- Family-friendly age selector with enhanced UI -->
+                    <div class="family-age-selector interactive-panel">
+                        <label for="child-age-range">Adventure suitable for:</label>
+                        <div class="age-badge-container staggered-animation">
+                            <span class="age-badge child-friendly-element" data-age="5-7">5-7 years</span>
+                            <span class="age-badge child-friendly-element" data-age="8-10">8-10 years</span>
+                            <span class="age-badge child-friendly-element" data-age="11-13">11-13 years</span>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-buttons staggered-animation">
                         <a href="explore.html" class="btn btn-primary">Explore Trails</a>
                         <a href="how-it-works.html" class="btn btn-secondary">How It Works</a>
+                        <button class="btn btn-outline-primary child-friendly interactive" id="family-demo">
+                            <span class="material-symbols-rounded">family_star</span>
+                            Family Demo
+                        </button>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="map-container" id="home-map">
+                <div class="hero-image animate-fade-in">
+                    <!-- Enhanced Interactive nature elements that children can interact with -->
+                    <div class="nature-elements-container">
+                        <img src="images/element-tree.svg" alt="Interactive Tree" class="nature-element tree animate-bounce" tabindex="0" title="Discover forest creatures!" data-tooltip="Click me to find forest friends!" />
+                        <img src="images/element-mountain.svg" alt="Interactive Mountain" class="nature-element mountain animate-float" tabindex="0" title="Explore the mountain peaks!" data-tooltip="Click to see mountain adventures!" />
+                        <img src="images/element-compass.svg" alt="Interactive Compass" class="nature-element compass animate-rotate" tabindex="0" title="Find your way!" data-tooltip="I'll help you navigate!" />
+                        <img src="images/element-path.svg" alt="Interactive Path" class="nature-element path animate-pulse" tabindex="0" title="Follow the path!" data-tooltip="Where will this trail lead?" />
+                    </div>
+                    
+                    <div class="map-container interactive-card" id="home-map">
                         <img src="images/interactive-map.svg" alt="Interactive Trail Map" class="interactive-map" />
                         <div class="map-overlay">
                             <div class="map-controls">
@@ -101,43 +163,88 @@
                                 </button>
                             </div>
                             <div class="map-markers">
-                                <!-- Markers will be added by JavaScript -->
+                                <!-- Markers with positions defined in CSS -->
+                                <div class="map-marker" data-trail="forest-adventure"></div>
+                                <div class="map-marker" data-trail="mountain-explorer"></div>
+                                <div class="map-marker" data-trail="riverside-trek"></div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick start adventure panel -->
+            <div class="quick-start-panel">
+                <div class="container">
+                    <div class="quick-start-content">
+                        <h4>Start a Quick Adventure</h4>
+                        <div class="location-search">
+                            <input type="text" placeholder="Enter your location" class="search-input" id="location-search">
+                            <button class="btn btn-small btn-primary">Find Trails</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features">
+        <!-- Features Section with animated cards -->
+        <section class="features section-wave">
             <div class="container">
-                <h3>Key Features</h3>
+                <h3 class="section-title with-underline">Key Features</h3>
                 
-                <div class="feature-cards">
-                    <div class="card">
-                        <div class="icon icon-stories"></div>
-                        <h4>AI-Generated Stories</h4>
-                        <p>
-                            Choose between historical facts or fantasy adventures, all tailored to your child's age and interests.
-                        </p>
+                <div class="feature-cards staggered-animation">
+                    <div class="card interactive-card card-hover-glow" tabindex="0">
+                        <div class="card-content">
+                            <div class="icon icon-stories"></div>
+                            <h4>AI-Generated Stories</h4>
+                            <p>
+                                Choose between historical facts or fantasy adventures, all tailored to your child's age and interests.
+                            </p>
+                            <div class="card-hover-content">
+                                <span class="material-symbols-rounded">auto_stories</span>
+                                <p>Stories adapt as children learn and grow</p>
+                                <button class="btn btn-small btn-primary">Learn More</button>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="card">
-                        <div class="icon icon-ar"></div>
-                        <h4>AR Encounters</h4>
-                        <p>
-                            Discover interactive augmented reality treasures, animals, and characters along your hiking route.
-                        </p>
+                    <div class="card interactive-card" tabindex="0">
+                        <div class="card-content">
+                            <div class="icon icon-ar"></div>
+                            <h4>AR Encounters</h4>
+                            <p>
+                                Discover interactive augmented reality treasures, animals, and characters along your hiking route.
+                            </p>
+                            <div class="card-hover-content">
+                                <span class="material-symbols-rounded">view_in_ar</span>
+                                <p>Magical creatures and educational encounters await!</p>
+                                <button class="btn btn-small btn-primary">See Examples</button>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="card">
-                        <div class="icon icon-parental"></div>
-                        <h4>Parental Controls</h4>
-                        <p>
-                            Preview content, set filters, and ensure all stories are appropriate for your family values.
-                        </p>
+                    <div class="card interactive-card" tabindex="0">
+                        <div class="card-content">
+                            <div class="icon icon-parental"></div>
+                            <h4>Parental Controls</h4>
+                            <p>
+                                Preview content, set filters, and ensure all stories are appropriate for your family values.
+                            </p>
+                            <div class="card-hover-content">
+                                <span class="material-symbols-rounded">family_history</span>
+                                <p>Full control over the content your family experiences</p>
+                                <button class="btn btn-small btn-primary">Safety Features</button>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="feature-highlight">
+                    <div class="highlight-badge">
+                        <span class="material-symbols-rounded">favorite</span>
+                        Families Love Us
+                    </div>
+                    <p class="highlight-text">96% of families report more enjoyable hiking experiences with Trail Tale!</p>
                 </div>
             </div>
         </section>
@@ -145,90 +252,254 @@
         <!-- How It Works Section -->
         <section class="how-it-works">
             <div class="container">
-                <h3>How It Works</h3>
+                <h3 class="section-title with-underline">How It Works</h3>
+                <div class="journey-visualization">
+                    <div class="journey-path">
+                        <svg class="journey-line" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                            <path class="journey-line-path" d="M0,50 C150,20 250,80 500,50 S750,20 1000,50" stroke-dasharray="5,5" />
+                        </svg>
+                    </div>
+                    <div class="steps staggered-animation">
+                        <div class="step interactive-step" tabindex="0" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Select a Trail</h4>
+                                <p>Choose from AI-generated trails based on your location and preferences.</p>
+                                <div class="step-illustration">
+                                    <img src="images/step1-illustration.svg" alt="Trail selection illustration">
+                                </div>
+                                <div class="step-detail">
+                                    <ul class="feature-list">
+                                        <li><span class="material-symbols-rounded">location_on</span> Trails nearby your location</li>
+                                        <li><span class="material-symbols-rounded">family_restroom</span> Family-friendly options</li>
+                                        <li><span class="material-symbols-rounded">filter_alt</span> Filter by difficulty</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step interactive-step" tabindex="0" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Pick a Story Mode</h4>
+                                <p>Choose between historical facts or fantasy adventures for your journey.</p>
+                                <div class="step-illustration">
+                                    <img src="images/step2-illustration.svg" alt="Story mode selection illustration">
+                                </div>
+                                <div class="step-detail">
+                                    <ul class="feature-list">
+                                        <li><span class="material-symbols-rounded">history_edu</span> Historical adventures</li>
+                                        <li><span class="material-symbols-rounded">auto_stories</span> Fantasy tales</li>
+                                        <li><span class="material-symbols-rounded">science</span> Educational themes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step interactive-step" tabindex="0" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Hike & Discover</h4>
+                                <p>Follow the trail and encounter AR experiences at waypoints along the route.</p>
+                                <div class="step-illustration">
+                                    <img src="images/step3-illustration.svg" alt="Hiking illustration">
+                                </div>
+                                <div class="step-detail">
+                                    <ul class="feature-list">
+                                        <li><span class="material-symbols-rounded">view_in_ar</span> AR encounters</li>
+                                        <li><span class="material-symbols-rounded">visibility</span> Hidden treasures</li>
+                                        <li><span class="material-symbols-rounded">park</span> Nature discoveries</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step interactive-step" tabindex="0" data-step="4">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Earn Badges</h4>
+                                <p>Complete challenges to earn family badges and build your adventure journal.</p>
+                                <div class="step-illustration">
+                                    <img src="images/achievement-badge.svg" alt="Badge illustration">
+                                </div>
+                                <div class="step-detail">
+                                    <ul class="feature-list">
+                                        <li><span class="material-symbols-rounded">military_tech</span> Family achievements</li>
+                                        <li><span class="material-symbols-rounded">book</span> Digital memory book</li>
+                                        <li><span class="material-symbols-rounded">share</span> Share adventures</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h4>Select a Trail</h4>
-                        <p>
-                            Choose from AI-generated trails based on your location and preferences.
-                        </p>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h4>Pick a Story Mode</h4>
-                        <p>
-                            Choose between historical facts or fantasy adventures for your journey.
-                        </p>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h4>Hike & Discover</h4>
-                        <p>
-                            Follow the trail and encounter AR experiences at waypoints along the route.
-                        </p>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h4>Earn Badges</h4>
-                        <p>
-                            Complete challenges to earn family badges and build your adventure journal.
-                        </p>
-                    </div>
+                <div class="see-more-container text-center mt-lg">
+                    <a href="how-it-works.html" class="btn btn-outline">See Detailed Guide</a>
                 </div>
             </div>
         </section>
         
-        <!-- Call to Action -->
-        <section class="cta">
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
             <div class="container">
-                <h3>Ready to Start Your Adventure?</h3>
-                <p>
-                    Join thousands of families creating magical outdoor memories with Trail Tale. Your next adventure is just a click away!
-                </p>
-                <a href="register.html" class="btn btn-white">Create Family Account</a>
+                <h3 class="section-title with-underline">Family Experiences</h3>
+                <p class="section-subtitle">Hear what other families are saying about their Trail Tale adventures</p>
+                
+                <div class="testimonial-container">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card hover-lift">
+                        <div class="testimonial-text">
+                            "Our kids were completely mesmerized by the dragon story at Redwood Trail. They've never been so excited about hiking before! Now they ask to go every weekend."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/family-avatar.svg" alt="Johnson Family">
+                            <div class="author-details">
+                                <div class="author-name">Johnson Family</div>
+                                <div class="author-info">Redwood Forest Trail</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card hover-lift">
+                        <div class="testimonial-text">
+                            "As a parent, I appreciate the educational value. My daughter learned about local geology during our hike, and she was so engaged because of how it was presented."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/family-avatar.svg" alt="Martinez Family">
+                            <div class="author-details">
+                                <div class="author-name">Martinez Family</div>
+                                <div class="author-info">Mountain View Trail</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card hover-lift">
+                        <div class="testimonial-text">
+                            "We have a child with ADHD who typically struggles with long walks. Trail Tale kept him engaged and excited the entire 3-mile hike. It's been a game-changer for our family outings!"
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="images/family-avatar.svg" alt="Thompson Family">
+                            <div class="author-details">
+                                <div class="author-name">Thompson Family</div>
+                                <div class="author-info">Lakeside Nature Trail</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-lg">
+                    <a href="#" class="btn btn-outline btn-ripple">Read More Stories</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Call to Action with enhanced visual appeal -->
+        <section class="cta parallax-container">
+            <div class="cta-background"></div>
+            <div class="container">
+                <div class="cta-content animate-fade-in">
+                    <h3>Ready to Start Your Adventure?</h3>
+                    <p class="mb-lg">
+                        Join thousands of families creating magical outdoor memories with Trail Tale. Your next adventure is just a click away!
+                    </p>
+                    <div class="cta-buttons staggered-animation">
+                        <a href="register.html" class="btn btn-white btn-large btn-ripple">Create Family Account</a>
+                        <a href="explore.html" class="btn btn-outline-white">Browse Trails</a>
+                    </div>
+                    <div class="cta-features">
+                        <div class="cta-feature">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Free Trial</span>
+                        </div>
+                        <div class="cta-feature">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>No Credit Card</span>
+                        </div>
+                        <div class="cta-feature">
+                            <span class="material-symbols-rounded">verified</span>
+                            <span>Cancel Anytime</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-container">
                 <div class="footer-section">
                     <h4>Trail Tale</h4>
                     <p>
-                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                        Making family hiking adventures educational and magical.
                     </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <span class="material-symbols-rounded">facebook</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <span class="material-symbols-rounded">flutter_dash</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <span class="material-symbols-rounded">photo_camera</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <span class="material-symbols-rounded">smart_display</span>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="explore.html">Explore Trails</a></li>
+                    <h4>Explore</h4>
+                    <ul class="footer-nav">
+                        <li><a href="explore.html">Find Trails</a></li>
                         <li><a href="how-it-works.html">How It Works</a></li>
-                        <li><a href="safety.html">Safety Features</a></li>
+                        <li><a href="dashboard.html">Trail Dashboard</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Contact</h4>
+                    <h4>Company</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="safety.html">Safety Features</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
                     <p>
-                        Have questions? Reach out to our support team.
+                        Subscribe to get updates on new trails and features.
                     </p>
-                    <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
+                    <div class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="newsletter-input" placeholder="Your email address">
+                            <button type="button" class="newsletter-btn">Subscribe</button>
+                        </div>
+                    </div>
+                    <p class="mt-sm">
+                        <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
+                    </p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>
+                <p class="copyright">
                     © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
                 </p>
+                <div class="footer-secondary-nav">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
             </div>
         </div>
+        <div class="footer-decoration footer-decoration-1"></div>
+        <div class="footer-decoration footer-decoration-2"></div>
     </footer>
 
     <!-- System status indicator -->
@@ -253,11 +524,30 @@
     </div>
 
     <!-- Scripts with ES modules -->
-    <script type="module" src="js/enhanced-main.js"></script>
     <script type="module" src="js/main.js"></script>
     
     <!-- Utilities that may not be modules yet -->
     <script src="js/utils/ui.utils.js"></script>
-    <script src="js/utils/map.utils.js"></script>
+    
+    <!-- Enhanced interactions -->
+    <script src="js/enhanced-interactions.js"></script>
+    
+    <!-- Theme switcher -->
+    <script src="js/theme-switcher.js"></script>
+    
+    <script>
+        // Initialize header scroll effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply scrolled class to header when page scrolls
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,466 @@
+/**
+ * Trail Tale Trail Details Page Specific Styles
+ *
+ * Contains all styles specific to the trail details page.
+ * Includes trail-specific enhancements and features.
+ */
+
+/* 
+* TABLE OF CONTENTS:
+* -----------------
+* 1. Trail Header
+* 2. Trail Details
+* 3. Trail Map
+* 4. Trail Story
+* 5. Trail Photos
+* 6. Trail Reviews
+* 7. Related Trails
+*/
+
+/*==============================================
+  SECTION 1: TRAIL HEADER
+==============================================*/
+
+.trail-header {
+  position: relative;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+}
+
+.trail-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.7)
+  );
+  z-index: 1;
+}
+
+.trail-header-content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-lg);
+  width: 100%;
+}
+
+.trail-title {
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--space-xs);
+  font-weight: 700;
+}
+
+.trail-location {
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-md);
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.trail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.trail-badge {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.trail-badge-icon {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.trail-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/*==============================================
+  SECTION 2: TRAIL DETAILS
+==============================================*/
+
+.trail-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: var(--space-lg);
+  background-color: var(--background);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card {
+  flex: 1 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-md);
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius-md);
+}
+
+.stat-value {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+}
+
+.trail-description {
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.trail-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.trail-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius-md);
+}
+
+.feature-icon {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 50%;
+}
+
+.feature-text {
+  font-size: var(--font-size-sm);
+}
+
+/*==============================================
+  SECTION 3: TRAIL MAP
+==============================================*/
+
+.trail-map-container {
+  height: 500px;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-xl);
+}
+
+.trail-map {
+  height: 100%;
+  width: 100%;
+}
+
+.elevation-chart {
+  height: 150px;
+  background-color: var(--background);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+/*==============================================
+  SECTION 4: TRAIL STORY
+==============================================*/
+
+.trail-story {
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.story-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-md);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.story-content {
+  line-height: 1.7;
+}
+
+.story-waypoints {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.waypoint {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.waypoint:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.waypoint-number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+.waypoint-content {
+  flex-grow: 1;
+}
+
+.waypoint-title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.waypoint-description {
+  font-size: var(--font-size-sm);
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.waypoint-images {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  padding-bottom: var(--space-sm);
+}
+
+.waypoint-image {
+  width: 150px;
+  height: 100px;
+  border-radius: var(--border-radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/*==============================================
+  SECTION 6: TRAIL REVIEWS
+==============================================*/
+
+.trail-reviews {
+  margin-bottom: var(--space-xl);
+}
+
+.review-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--background);
+  border-radius: var(--border-radius-md);
+}
+
+.review-average {
+  text-align: center;
+}
+
+.review-average-value {
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.review-stars {
+  color: var(--secondary);
+  font-size: var(--font-size-md);
+}
+
+.review-count {
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+}
+
+.review-distribution {
+  flex-grow: 1;
+}
+
+.review-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.review-bar-label {
+  width: 15px;
+  text-align: right;
+  font-size: var(--font-size-sm);
+}
+
+.review-bar-track {
+  flex-grow: 1;
+  height: 8px;
+  background-color: var(--background-alt);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.review-bar-fill {
+  height: 100%;
+  background-color: var(--primary);
+}
+
+.review-bar-value {
+  width: 30px;
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.review-card {
+  background-color: var(--background);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-sm);
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviewer-name {
+  font-weight: 600;
+}
+
+.review-date {
+  font-size: var(--font-size-sm);
+  color: var(--text-light);
+}
+
+.review-rating {
+  color: var(--secondary);
+}
+
+.review-text {
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+
+.review-photos {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.review-photo {
+  width: 80px;
+  height: 60px;
+  border-radius: var(--border-radius-sm);
+  object-fit: cover;
+}
+
+/*==============================================
+  SECTION 7: RELATED TRAILS
+==============================================*/
+
+.related-trails {
+  margin-bottom: var(--space-xl);
+}
+
+.related-trails-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .trail-header {
+    height: 300px;
+  }
+  
+  .trail-title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .trail-map-container {
+    height: 400px;
+  }
+  
+  .waypoint {
+    flex-direction: column;
+  }
+  
+  .waypoint-number {
+    margin-bottom: var(--space-xs);
+  }
+}

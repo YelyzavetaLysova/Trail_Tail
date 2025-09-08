@@ -1,21 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYP    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/component-styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/theme-switcher.css">
+    <link rel="stylesheet" href="css/pages/how-it-works.css">
+    <link rel="stylesheet" href="css/cross-browser.css">tml lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How It Works - Trail Tale</title>
     
     <!-- Core styles -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/additional-fixed.css">
-    <link rel="stylesheet" href="css/how-it-works.css">
-    
-    <!-- Enhanced UI Components -->
-    <link rel="stylesheet" href="css/status-indicators.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/core.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/component-styles.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/utilities.css">
     <link rel="stylesheet" href="css/accessibility.css">
-    <link rel="stylesheet" href="css/guidance.css">
-    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/pages/how-it-works.css">
+    <link rel="stylesheet" href="css/step-enhancements.css">
+    <link rel="stylesheet" href="css/theme-switcher.css">
     
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
@@ -47,6 +57,38 @@
                 <span class="material-symbols-rounded">visibility</span>
                 <span>Improved Readability</span>
             </button>
+        </div>
+    </div>
+    
+    <!-- Theme switcher -->
+    <div class="theme-switcher" aria-label="Theme options">
+        <button class="theme-switcher-toggle" aria-label="Toggle theme menu" aria-haspopup="true" aria-expanded="false">
+            <span class="material-symbols-rounded">palette</span>
+        </button>
+        <div class="theme-switcher-panel">
+            <h3 class="theme-switcher-title">Choose Theme</h3>
+            <div class="theme-options">
+                <button class="theme-option active" data-theme="nature" aria-label="Nature theme">
+                    <span class="theme-color-preview nature"></span>
+                    <span>Nature</span>
+                </button>
+                <button class="theme-option" data-theme="ocean" aria-label="Ocean theme">
+                    <span class="theme-color-preview ocean"></span>
+                    <span>Ocean</span>
+                </button>
+                <button class="theme-option" data-theme="mountain" aria-label="Mountain theme">
+                    <span class="theme-color-preview mountain"></span>
+                    <span>Mountain</span>
+                </button>
+                <button class="theme-option" data-theme="dark" aria-label="Dark theme">
+                    <span class="theme-color-preview dark"></span>
+                    <span>Dark</span>
+                </button>
+                <button class="theme-option" data-theme="high-contrast" aria-label="High contrast theme">
+                    <span class="theme-color-preview high-contrast"></span>
+                    <span>High Contrast</span>
+                </button>
+            </div>
         </div>
     </div>
     
@@ -91,7 +133,7 @@
         <section class="process-overview">
             <div class="container">
                 <div class="process-steps">
-                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.1s;">
+                    <div class="process-step interactive-step animate-in animate-delay-100" tabindex="0">
                         <div class="step-number">1</div>
                         <div class="step-content">
                             <h3>Create Your Family Profile</h3>
@@ -106,7 +148,7 @@
                         </div>
                     </div>
                     
-                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.2s;">
+                    <div class="process-step interactive-step animate-in animate-delay-200" tabindex="0">
                         <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Discover or Generate Trails</h3>
@@ -121,7 +163,7 @@
                         </div>
                     </div>
                     
-                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.3s;">
+                    <div class="process-step interactive-step animate-in animate-delay-300" tabindex="0">
                         <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Choose Your Narrative Mode</h3>
@@ -137,7 +179,7 @@
                         </div>
                     </div>
                     
-                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.4s;">
+                    <div class="process-step interactive-step animate-in animate-delay-400" tabindex="0">
                         <div class="step-number">4</div>
                         <div class="step-content">
                             <h3>Preview and Customize Content</h3>
@@ -152,7 +194,7 @@
                         </div>
                     </div>
                     
-                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.5s;">
+                    <div class="process-step interactive-step animate-in animate-delay-500" tabindex="0">
                         <div class="step-number">5</div>
                         <div class="step-content">
                             <h3>Embark on Your Adventure</h3>
@@ -167,7 +209,7 @@
                         </div>
                     </div>
                     
-                    <div class="process-step interactive-step animate-in" tabindex="0" style="animation-delay: 0.6s;">
+                    <div class="process-step interactive-step animate-in animate-delay-600" tabindex="0">
                         <div class="step-number">6</div>
                         <div class="step-content">
                             <h3>Collect Memories and Achievements</h3>
@@ -212,7 +254,7 @@
                         </div>
                     </div>
                     
-                    <div class="tech-feature interactive-card animate-in" tabindex="0" style="animation-delay: 0.1s;">
+                    <div class="tech-feature interactive-card animate-in animate-delay-100" tabindex="0">
                         <div class="tech-icon ar-icon">
                             <span class="material-symbols-rounded">view_in_ar</span>
                         </div>
@@ -234,7 +276,7 @@
                         </div>
                     </div>
                     
-                    <div class="tech-feature interactive-card animate-in" tabindex="0" style="animation-delay: 0.2s;">
+                    <div class="tech-feature interactive-card animate-in animate-delay-200" tabindex="0">
                         <div class="tech-icon routes-icon">
                             <span class="material-symbols-rounded">map</span>
                         </div>
@@ -385,22 +427,45 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-container">
                 <div class="footer-section">
                     <h4>Trail Tale</h4>
                     <p>
-                        Making family hikes magical through AI-generated stories and augmented reality experiences.
+                        Making family hiking adventures educational and magical.
                     </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <span class="material-symbols-rounded">facebook</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <span class="material-symbols-rounded">flutter_dash</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <span class="material-symbols-rounded">photo_camera</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <span class="material-symbols-rounded">smart_display</span>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="explore.html">Explore Trails</a></li>
-                        <li><a href="how-it-works.html">How It Works</a></li>
+                    <h4>Explore</h4>
+                    <ul class="footer-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="explore.html">Find Trails</a></li>
+                        <li><a href="dashboard.html">Trail Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#">About Us</a></li>
                         <li><a href="safety.html">Safety Features</a></li>
+                        <li><a href="#">Our Mission</a></li>
                     </ul>
                 </div>
                 
@@ -411,6 +476,12 @@
                     </p>
                     <a href="mailto:support@trailtail.example.com">support@trailtail.example.com</a>
                 </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    © <span id="current-year"></span> Trail Tale. All rights reserved. Non-functional prototype.
+                </p>
             </div>
             
             <div class="footer-bottom">
@@ -474,28 +545,32 @@
     <div id="interactive-tooltip" class="interactive-tooltip" role="tooltip"></div>
     
     <!-- Demo modal for interactive features -->
-    <div id="demo-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close demo">
-                <span class="material-symbols-rounded">close</span>
-            </button>
-            <div class="modal-header">
-                <h2 id="demo-title">Feature Demo</h2>
-            </div>
-            <div class="modal-body" id="demo-content">
-                <!-- Content will be dynamically inserted based on demo type -->
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary close-demo">Close Demo</button>
+    <div id="demo-modal" class="modal modal-zoom">
+        <div class="modal-backdrop"></div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Close demo">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+                <div class="modal-header">
+                    <h2 id="demo-title" class="modal-title">Feature Demo</h2>
+                </div>
+                <div class="modal-body" id="demo-content">
+                    <!-- Content will be dynamically inserted based on demo type -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary close-demo">Close Demo</button>
+                </div>
             </div>
         </div>
     </div>
     
     <!-- Scripts -->
-    <script type="module" src="js/enhanced-main.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/interactive-elements.js"></script>
     <script src="js/how-it-works.js"></script>
+    <script src="js/enhanced-interactions.js"></script>
+    <script src="js/theme-switcher.js"></script>
     
     <script>
         // Simple testimonial slider functionality
@@ -536,6 +611,16 @@
                 document.getElementById('help-overlay').classList.toggle('active');
             });
         }
+        
+        // Apply scrolled class to header when page scrolls
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
     </script>
 </body>
 </html>

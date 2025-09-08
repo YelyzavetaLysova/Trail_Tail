@@ -1,0 +1,365 @@
+/**
+ * Trail Tale Accessibility and Status Indicators
+ *
+ * A comprehensive CSS file for accessibility features and status indicators
+ * Combines:
+ * - accessibility.css: Accessibility features and support
+ * - status-indicators.css: Status indicators, alerts, and notifications
+ */
+
+/* 
+* TABLE OF CONTENTS:
+* -----------------
+* 1. Focus States
+* 2. Screen Reader Support
+* 3. Keyboard Navigation
+* 4. Color Contrast
+* 5. Text Sizing
+* 6. Motion Sensitivity
+* 7. Status Indicators
+* 8. Alerts and Notifications
+* 9. Loading States
+* 10. Success/Error States
+*/
+
+/*==============================================
+  SECTION 1: FOCUS STATES
+==============================================*/
+
+/* Enhanced focus styles for keyboard navigation */
+:focus {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+/* Different focus style for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+/* Focus state for interactive elements */
+.btn:focus,
+.button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+[role="button"]:focus,
+.interactive-element:focus {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+}
+
+/*==============================================
+  SECTION 2: SCREEN READER SUPPORT
+==============================================*/
+
+/* Hide content visually but keep it accessible for screen readers */
+.sr-only,
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Make the element visible when it receives focus */
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  z-index: 10000;
+  padding: 10px 15px;
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 0 0 5px 5px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline-offset: 0;
+}
+
+/*==============================================
+  SECTION 7: STATUS INDICATORS
+==============================================*/
+
+/* Base status indicator */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  line-height: 1;
+  margin-right: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  user-select: none;
+}
+
+.status-indicator::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: var(--space-xs);
+  background-color: currentColor;
+}
+
+/* Status types */
+.status-active,
+.status-online {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--primary);
+}
+
+.status-pending,
+.status-in-progress {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--secondary);
+}
+
+.status-error,
+.status-offline,
+.status-closed {
+  background-color: rgba(211, 47, 47, 0.1);
+  color: #d32f2f; /* red */
+}
+
+.status-info,
+.status-neutral {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #2196f3; /* blue */
+}
+
+.status-success,
+.status-completed {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--primary);
+}
+
+.status-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107; /* amber */
+}
+
+/*==============================================
+  SECTION 8: ALERTS AND NOTIFICATIONS
+==============================================*/
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--space-md);
+  border-left: 4px solid transparent;
+}
+
+.alert-icon {
+  margin-right: var(--space-md);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-title {
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.alert-message {
+  line-height: 1.5;
+}
+
+.alert-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.alert-close:hover {
+  opacity: 1;
+}
+
+/* Alert variations */
+.alert-success {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+.alert-info {
+  background-color: rgba(33, 150, 243, 0.1);
+  border-left-color: #2196f3;
+  color: #0d47a1;
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  border-left-color: #ffc107;
+  color: #ff8f00;
+}
+
+.alert-error {
+  background-color: rgba(211, 47, 47, 0.1);
+  border-left-color: #d32f2f;
+  color: #b71c1c;
+}
+
+/* Notification toast */
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-md);
+  width: 300px;
+  max-width: 90vw;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toast-notification.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/*==============================================
+  SECTION 9: LOADING STATES
+==============================================*/
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-dots {
+  display: inline-flex;
+  align-items: center;
+}
+
+.loading-dots::after {
+  content: ".";
+  animation: dots 1.5s steps(3, end) infinite;
+  width: 0.75em;
+  overflow: hidden;
+  display: inline-block;
+}
+
+@keyframes dots {
+  0% {
+    content: ".";
+  }
+  33% {
+    content: "..";
+  }
+  66% {
+    content: "...";
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loading-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-text {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.loading-text .loading-spinner,
+.loading-text .loading-dots {
+  margin-right: var(--space-xs);
+}
+
+/* Skeleton loading placeholders */
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    rgba(220, 220, 220, 0.7),
+    rgba(240, 240, 240, 0.9),
+    rgba(220, 220, 220, 0.7)
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--border-radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

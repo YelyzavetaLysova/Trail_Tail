@@ -1,0 +1,152 @@
+/**
+ * Trail Tale Home Page Specific Styles
+ *
+ * Contains all styles specific to the home page.
+ * Includes home page enhancements and features.
+ */
+
+/* 
+* TABLE OF CONTENTS:
+* -----------------
+* 1. Hero Section
+* 2. Feature Highlights
+* 3. How It Works Section
+* 4. Family Section
+* 5. CTA Section
+* 6. Home Footer Enhancements
+*/
+
+/*==============================================
+  SECTION 1: HERO SECTION
+==============================================*/
+/* From home-enhancements.css */
+
+.hero-section {
+  position: relative;
+  padding: var(--space-xl) 0;
+  background-image: linear-gradient(
+    135deg,
+    rgba(46, 125, 50, 0.7),
+    rgba(76, 175, 80, 0.7)
+  ), 
+  url("../images/trail-pattern.svg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../images/element-tree.svg"), url("../images/element-mountain.svg");
+  background-position: bottom left, bottom right;
+  background-repeat: no-repeat;
+  background-size: 120px, 180px;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: var(--font-size-xxxl);
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.hero-decoration {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.1;
+}
+
+.hero-decoration-compass {
+  top: 5%;
+  right: 10%;
+  width: 120px;
+  height: 120px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-decoration-path {
+  bottom: 5%;
+  left: 5%;
+  width: 150px;
+  height: 80px;
+  animation: float 8s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/*==============================================
+  SECTION 6: HOME FOOTER ENHANCEMENTS
+==============================================*/
+/* From footer-enhancements.css */
+
+.home-footer {
+  position: relative;
+  background-color: var(--background-alt);
+  padding-top: var(--space-xxl);
+  margin-top: var(--space-xxl);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  overflow: hidden;
+}
+
+.home-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: linear-gradient(
+    to right,
+    var(--primary-light),
+    var(--primary),
+    var(--primary-dark)
+  );
+}

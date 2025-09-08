@@ -1,381 +1,951 @@
-/* 
-* Trail Tale Map Styles
-* Consolidated map styling for Trail Tale
-*
-* TABLE OF CONTENTS:
-* -----------------
-* 1. Basic Map Layout
-* 2. Map Controls
-* 3. Map Legend
-* 4. Map Markers
-* 5. Family-Friendly Features
-* 6. Responsive Adjustments
-*/
-
-/* 
-* SECTION 1: BASIC MAP LAYOUT
-*/
-
-/* Enhanced map container */
-.map-container {
-  height: 65vh !important;
-  min-height: 450px !important;
-  max-height: 800px !important;
-  width: 100% !important;
-  transition: height 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-}
-
-@media (max-width: 768px) {
-  .map-container {
-    height: 50vh !important;
-    min-height: 350px !important;
-  }
-}
-
-.interactive-map, .trail-map {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-  transition: all 0.5s ease;
-}
-
-/* 
-* SECTION 2: MAP CONTROLS
-*/
-
-.map-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.map-controls {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/** * Trail Tale Map Features - Consolidated *  * A comprehensive CSS file for all map-related components and features * Implements family-friendly interactive map elements and animations * Follows accessibility guidelines with support for reduced motion *//* * TABLE OF CONTENTS:* -----------------* 1. Basic Map Layout* 2. Map Controls* 3. Map Markers* 4. Interactive Elements* 5. Progress and Status Indicators* 6. Animations and Floating Elements* 7. Tooltips* 8. Trail Preview Cards* 9. Map Filters* 10. Interactive Trail Cards* 11. Accessibility Features* 12. Responsive Adjustments*//** SECTION 1: BASIC MAP LAYOUT*/.map-container {  height: 65vh !important;  min-height: 450px !important;  max-height: 800px !important;  width: 100% !important;  transition: all 0.5s ease;  position: relative;  overflow: hidden;  border-radius: var(--border-radius-lg);  box-shadow: var(--shadow-lg);  background-color: #f4f8f4;  border: 1px solid rgba(76, 175, 80, 0.1);}/* Map image with transform capabilities */.interactive-map {  height: 100% !important;  width: 100% !important;  object-fit: cover !important;  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);  transform-origin: center center;}.map-section {  margin-bottom: var(--space-2xl);  position: relative;}/* Map overlay for loading and information display */.map-overlay {  position: absolute;  top: 0;  left: 0;  right: 0;  bottom: 0;  background-color: rgba(255, 255, 255, 0.8);  display: flex;  flex-direction: column;  justify-content: center;  align-items: center;  z-index: 10;  opacity: 0;  pointer-events: none;  transition: opacity 0.3s ease;  text-align: center;  padding: var(--space-md);}.map-overlay.visible {  opacity: 1;  pointer-events: all;}.map-loading-overlay {  position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;  background-color: rgba(255, 255, 255, 0.9);  display: flex;  flex-direction: column;  justify-content: center;  align-items: center;  z-index: 100;  transition: opacity 0.4s ease-out;}.map-loading-overlay.hidden {  opacity: 0;  pointer-events: none;}.loading-spinner {  width: 40px;  height: 40px;  border: 3px solid var(--gray-200);  border-radius: 50%;  border-top-color: var(--primary);  animation: spin 1s linear infinite;  margin-bottom: var(--space-sm);}@keyframes spin {  0% { transform: rotate(0deg); }  100% { transform: rotate(360deg); }}/** SECTION 2: MAP CONTROLS*/.map-controls {  position: absolute;  bottom: var(--space-md);  right: var(--space-md);  display: flex;  flex-direction: column;  gap: 8px;  z-index: 5;}.map-control {  width: 36px;  height: 36px;  border-radius: 50%;  background: white;  border: none;  box-shadow: var(--shadow-md);  display: flex;  align-items: center;  justify-content: center;  cursor: pointer;  transition: all 0.2s ease;}.map-control:hover {  transform: scale(1.1);  box-shadow: var(--shadow-lg);}.map-control:active,.map-control.active {  background-color: var(--primary-50);  color: var(--primary);  transform: scale(0.95);}.map-control:focus {  outline: none;  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);}.map-legend {  position: absolute;  bottom: var(--space-md);  left: var(--space-md);  background: white;  border-radius: var(--border-radius-md);  padding: var(--space-xs) var(--space-sm);  box-shadow: var(--shadow-md);  font-size: 0.875rem;  max-width: calc(100% - 120px);  z-index: 5;}.legend-title {  font-weight: 600;  margin-bottom: var(--space-xs);  font-size: 0.8125rem;}.legend-items {  display: flex;  flex-wrap: wrap;  gap: var(--space-xs);}.legend-item {  display: flex;  align-items: center;  gap: 4px;  font-size: 0.75rem;  color: var(--gray-700);}.legend-color {  width: 8px;  height: 8px;  border-radius: 50%;}/** SECTION 3: MAP MARKERS*/.map-markers-container {  position: absolute;  top: 0;  left: 0;  right: 0;  bottom: 0;  pointer-events: none;  z-index: 2;}.trail-marker {  position: absolute;  width: 24px;  height: 24px;  transform: translate(-50%, -50%);  cursor: pointer;  pointer-events: auto;  transition: all 0.3s ease;}.trail-marker::before {  content: '';  position: absolute;  width: 12px;  height: 12px;  background-color: var(--primary);  border-radius: 50%;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);  transition: all 0.3s ease;}.trail-marker:hover::before,.trail-marker.active::before,.trail-marker.highlighted::before {  width: 16px;  height: 16px;  background-color: var(--primary-dark);}.trail-marker .pulse-effect {  position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);  width: 24px;  height: 24px;  border-radius: 50%;  background-color: rgba(76, 175, 80, 0.4);  opacity: 0;  animation: pulse 2s infinite;}@keyframes pulse {  0% {    transform: translate(-50%, -50%) scale(0.5);    opacity: 0.8;  }  70% {    transform: translate(-50%, -50%) scale(1.5);    opacity: 0;  }  100% {    transform: translate(-50%, -50%) scale(0.5);    opacity: 0;  }}.trail-marker.active .pulse-effect {  animation: pulse 1.5s infinite;}.marker-tooltip {  position: absolute;  bottom: calc(100% + 8px);  left: 50%;  transform: translateX(-50%);  background: white;  padding: var(--space-xs) var(--space-sm);  border-radius: var(--border-radius-md);  box-shadow: var(--shadow-md);  width: max-content;  max-width: 200px;  min-width: 120px;  z-index: 10;  opacity: 0;  pointer-events: none;  transition: all 0.2s ease;}.marker-tooltip::after {  content: '';  position: absolute;  top: 100%;  left: 50%;  transform: translateX(-50%);  width: 0;  height: 0;  border-left: 6px solid transparent;  border-right: 6px solid transparent;  border-top: 6px solid white;}.marker-tooltip.visible {  opacity: 1;  transform: translateX(-50%) translateY(-4px);}.marker-tooltip h4 {  margin: 0 0 4px 0;  font-size: 0.875rem;  color: var(--gray-800);}.difficulty-badge {  font-size: 0.6875rem;  padding: 2px 6px;  border-radius: var(--border-radius-full);  font-weight: 600;}.difficulty-badge.easy {  background-color: rgba(76, 175, 80, 0.1);  color: var(--primary);}.difficulty-badge.moderate {  background-color: rgba(255, 193, 7, 0.1);  color: #f57c00;}.difficulty-badge.difficult {  background-color: rgba(244, 67, 54, 0.1);  color: #d32f2f;}.distance {  font-size: 0.6875rem;  color: var(--gray-700);  margin-left: 4px;}/** SECTION 4: INTERACTIVE ELEMENTS*/.map-container.grabbing,.map-container.grabbing .interactive-map {  cursor: grabbing !important;}.interactive-map {  cursor: grab;}/* Map zooming effects */.map-container.zooming .interactive-map {  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);}.map-pin-detail {  position: absolute;  z-index: 10;  background: white;  border-radius: var(--border-radius-md);  box-shadow: var(--shadow-lg);  padding: var(--space-md);  width: 280px;  max-width: 80%;  transform: translate(-50%, -100%) scale(0.9);  opacity: 0;  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);  pointer-events: none;}.map-pin-detail.active {
+  transform: translate(-50%, -100%) scale(1);
+  opacity: 1;
   pointer-events: auto;
 }
 
-.map-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--border-radius-circle);
+.map-pin-detail::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+
+/*
+* SECTION 5: PROGRESS AND STATUS INDICATORS
+*/
+
+.map-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.progress-value {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.map-status-indicator {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
   background: white;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-full);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  box-shadow: var(--shadow-md);
+  z-index: 5;
+}
+
+.map-status-indicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-active span {
+  background-color: var(--primary);
+}
+
+.status-loading span {
+  background-color: var(--primary);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/*
+* SECTION 6: ANIMATIONS AND FLOATING ELEMENTS
+*/
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating-indicator {
+  animation: float 4s ease-in-out infinite;
+}
+
+.map-info-panel {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  background: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-sm);
+  max-width: 280px;
+  z-index: 4;
+  transition: all 0.3s ease;
+}
+
+.map-info-panel.collapsed {
+  width: auto;
+  max-width: 40px;
+  overflow: hidden;
+}
+
+.info-toggle {
+  background: none;
   border: none;
-  box-shadow: var(--shadow-sm);
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  color: var(--primary);
+}
+
+.map-info-content {
+  margin-top: var(--space-sm);
+  font-size: 0.875rem;
+  transition: opacity 0.2s ease;
+}
+
+.collapsed .map-info-content {
+  opacity: 0;
+  height: 0;
+  margin-top: 0;
+}
+
+/*
+* SECTION 7: INTERACTIVE MAP TOOLTIPS
+*/
+
+.interactive-tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: 280px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 0.875rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
   transition: all 0.2s ease;
+  border: 1px solid var(--gray-100);
 }
 
-.map-btn:hover {
-  background-color: var(--primary-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.map-btn:active {
+.interactive-tooltip.visible {
+  opacity: 1;
   transform: translateY(0);
 }
 
-.map-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px var(--primary-light), var(--shadow-sm);
-}
-
-/* 
-* SECTION 3: MAP LEGEND
-*/
-
-.map-legend {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  background-color: white;
-  padding: 12px;
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-sm);
-  max-width: 180px;
-  pointer-events: auto;
-}
-
-.legend-title {
+.interactive-tooltip-title {
   font-weight: 600;
-  font-size: var(--font-size-sm);
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2xs);
+  color: var(--gray-800);
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 6px;
-  font-size: var(--font-size-xs);
+.interactive-tooltip-content {
+  color: var(--gray-700);
+  line-height: 1.4;
 }
 
-.legend-color {
-  width: 16px;
-  height: 4px;
-  margin-right: 8px;
-  border-radius: 2px;
-}
-
-.legend-color.easy { background-color: var(--success); }
-.legend-color.moderate { background-color: var(--warning); }
-.legend-color.difficult { background-color: var(--error); }
-
-.legend-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  border-radius: var(--border-radius-circle);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-}
-
-.legend-icon.story-point {
-  background-color: var(--accent);
-  color: white;
-}
-
-.legend-icon.ar-experience {
-  background-color: var(--primary);
-  color: white;
-}
-
-.legend-icon.amenity {
-  background-color: var(--info);
-  color: white;
-}
-
-/* 
-* SECTION 4: MAP MARKERS
+/*
+* SECTION 8: TRAIL PREVIEW CARDS
 */
 
-.map-marker {
+.trail-preview-card {
   position: absolute;
-  width: 32px;
-  height: 32px;
-  background: var(--primary);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 300px;
+  max-width: 90%;
+  z-index: 50;
+  transform: translateY(20px);
+  opacity: 0;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 10;
-  pointer-events: auto;
-}
-
-.map-marker:hover {
-  transform: translate(-50%, -50%) scale(1.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.map-marker.selected {
-  transform: translate(-50%, -50%) scale(1.4);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-  z-index: 20;
-}
-
-.map-marker.story-point {
-  background-color: var(--accent);
-}
-
-.map-marker.ar-experience {
-  background-color: var(--primary);
-}
-
-.map-marker.amenity {
-  background-color: var(--info);
-}
-
-.map-marker.family {
-  background-color: #FFA726;
-}
-
-/* 
-* SECTION 5: FAMILY-FRIENDLY FEATURES
-*/
-
-.family-filter-container {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  pointer-events: auto;
-}
-
-.family-filter-toggle {
-  background-color: white;
-  border: none;
-  border-radius: var(--border-radius-md);
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: var(--font-size-sm);
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
-}
-
-.family-filter-toggle:hover {
-  background-color: var(--primary-light);
-  box-shadow: var(--shadow-md);
-}
-
-.family-filter-options {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 8px;
-  background-color: white;
-  border-radius: var(--border-radius-md);
-  padding: 12px;
-  box-shadow: var(--shadow-md);
-  width: 220px;
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.family-filter-container[data-open="true"] .family-filter-options {
-  display: flex;
-}
-
-.filter-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-}
-
-.family-progress {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  display: flex;
-  gap: 12px;
-  pointer-events: auto;
-}
-
-.achievement-badge {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--border-radius-circle);
-  background-color: white;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.achievement-badge:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.progress-circle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
   overflow: hidden;
 }
 
-.progress-circle::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 3px solid transparent;
-  border-top: 3px solid var(--primary);
-  border-right: 3px solid var(--primary);
-  border-radius: 50%;
-  transform: rotate(calc(var(--progress, 0) * 3.6deg));
-  transform-origin: center;
-  box-sizing: border-box;
+.trail-preview-card.visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
-.map-status {
-  position: absolute;
-  bottom: 100px;
-  left: 16px;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 6px 12px;
-  border-radius: var(--border-radius-md);
+.preview-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  font-size: var(--font-size-xs);
-  pointer-events: auto;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--gray-100);
 }
 
-.status-icon {
+.preview-header h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.close-preview {
+  background: none;
+  border: none;
+  color: var(--gray-500);
+  cursor: pointer;
+  padding: var(--space-xs);
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
 }
 
-.status-icon.online {
-  color: var(--success);
+.close-preview:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
 }
 
-.status-icon.offline {
-  color: var(--error);
+.preview-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
 }
 
-/* Responsive adjustments */
+.preview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.trail-preview-card:hover .preview-image img {
+  transform: scale(1.05);
+}
+
+.preview-details {
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.preview-button {
+  display: block;
+  text-align: center;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.preview-button:hover {
+  background-color: var(--primary-dark);
+}
+
+/*
+* SECTION 9: MAP FILTERS
+*/
+
+.family-filter-toggle {
+  position: absolute;
+  top: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: var(--border-radius-full);
+  padding: var(--space-xs) var(--space-sm);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  color: var(--gray-800);
+  z-index: 5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.family-filter-toggle:hover {
+  box-shadow: var(--shadow-lg);
+  background-color: var(--gray-50);
+}
+
+.family-filter-toggle.active {
+  background-color: var(--primary-50);
+  color: var(--primary);
+}
+
+.family-filter-toggle .icon {
+  transition: transform 0.3s ease;
+}
+
+.family-filter-toggle.active .icon {
+  transform: rotate(180deg);
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: calc(var(--space-md) + 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-sm);
+  width: 280px;
+  max-width: 90%;
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.filter-dropdown.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.2s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.filter-option.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.filter-option:hover {
+  background-color: var(--gray-50);
+}
+
+.filter-option.selected {
+  background-color: var(--primary-50);
+  color: var(--primary-dark);
+}
+
+.filter-option .checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--border-radius-xs);
+  border: 2px solid var(--gray-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.filter-option.selected .checkbox {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.filter-option.selected .checkbox::after {
+  content: '';
+  width: 8px;
+  height: 4px;
+  border: 2px solid white;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: var(--border-radius-full);
+  font-size: 0.75rem;
+  padding: 0 6px;
+  margin-left: auto;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(76, 175, 80, 0.2);
+  transform: scale(0);
+  animation: ripple 0.8s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Map filters panel */
+.map-filters-panel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-sm);
+  z-index: 10;
+  width: 280px;
+  max-height: calc(100% - 20px);
+  overflow-y: auto;
+  transform: translateX(-110%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.map-filters-panel.visible {
+  transform: translateX(0);
+}
+
+.filters-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 11;
+  transition: all 0.2s ease;
+}
+
+.filters-toggle:hover {
+  background: var(--gray-50);
+  transform: scale(1.05);
+}
+
+.filters-toggle .icon {
+  transition: transform 0.3s ease;
+}
+
+.filters-toggle.active .icon {
+  transform: rotate(180deg);
+}
+
+.map-filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.map-filters-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.map-filters-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gray-700);
+  transition: all 0.2s ease;
+}
+
+.map-filters-close:hover {
+  background: var(--gray-200);
+  color: var(--gray-800);
+}
+
+.map-filter-group {
+  margin-bottom: var(--space-sm);
+}
+
+.map-filter-group-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  color: var(--gray-700);
+}
+
+.map-filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+/*
+* SECTION 10: INTERACTIVE TRAIL CARDS
+*/
+
+.interactive-trail-card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.interactive-trail-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.interactive-trail-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.interactive-trail-card:hover .interactive-trail-image {
+  transform: scale(1.05);
+}
+
+.interactive-trail-content {
+  padding: var(--space-md);
+}
+
+.interactive-trail-title {
+  margin: 0 0 var(--space-xs);
+  font-size: 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.interactive-trail-card:hover .interactive-trail-title {
+  color: var(--primary);
+}
+
+.interactive-trail-meta {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.interactive-trail-meta span {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: var(--border-radius-full);
+  background: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.interactive-trail-meta span.difficulty {
+  font-weight: 600;
+}
+
+.interactive-trail-meta span.difficulty.easy {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--primary);
+}
+
+.interactive-trail-meta span.difficulty.moderate {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #f57c00;
+}
+
+.interactive-trail-meta span.difficulty.difficult {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #d32f2f;
+}
+
+.interactive-trail-description {
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.interactive-trail-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.interactive-trail-button {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--primary);
+  color: white;
+  border-radius: var(--border-radius-full);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.interactive-trail-button:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.interactive-trail-saved {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gray-600);
+  transition: all 0.2s ease;
+}
+
+.interactive-trail-saved:hover {
+  background: var(--gray-200);
+  color: var(--gray-800);
+}
+
+.interactive-trail-saved.active {
+  background: var(--primary-50);
+  color: var(--primary);
+}
+
+.interactive-trail-badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--border-radius-full);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  z-index: 2;
+}
+
+/* Trail point info panels */
+.trail-point-info {
+  position: absolute;
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-md);
+  width: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.trail-point-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.trail-point-close {
+  position: absolute;
+  top: var(--space-xs);
+  right: var(--space-xs);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gray-700);
+  transition: all 0.2s ease;
+}
+
+.trail-point-close:hover {
+  background: var(--gray-200);
+  color: var(--gray-800);
+  transform: scale(1.1);
+}
+
+.trail-point-image {
+  width: 100%;
+  height: 140px;
+  border-radius: var(--border-radius-md);
+  object-fit: cover;
+  margin-bottom: var(--space-sm);
+}
+
+.trail-point-title {
+  margin: 0 0 var(--space-xs);
+  font-size: 1.125rem;
+  padding-right: var(--space-lg);
+}
+
+.trail-point-meta {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.trail-point-meta span {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: var(--border-radius-full);
+  background: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.trail-point-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--gray-700);
+  margin-bottom: var(--space-sm);
+}
+
+/*
+* SECTION 11: ACCESSIBILITY FEATURES
+*/
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .trail-marker .pulse-effect,
+  .map-status-indicator span,
+  .floating-indicator,
+  .loading-spinner {
+    animation: none !important;
+  }
+
+  .trail-preview-card,
+  .trail-point-info,
+  .trail-marker,
+  .marker-tooltip,
+  .interactive-tooltip,
+  .map-pin-detail,
+  .filter-option,
+  .interactive-trail-card,
+  .interactive-trail-image,
+  .filter-dropdown {
+    transition: none !important;
+  }
+  
+  .ripple-effect {
+    display: none !important;
+  }
+}
+
+/* Class-based reduced motion for manual toggling */
+.reduced-motion .trail-marker .pulse-effect,
+.reduced-motion .map-status-indicator span,
+.reduced-motion .floating-indicator,
+.reduced-motion .loading-spinner {
+  animation: none !important;
+}
+
+.reduced-motion .trail-preview-card,
+.reduced-motion .trail-point-info,
+.reduced-motion .trail-marker,
+.reduced-motion .marker-tooltip,
+.reduced-motion .interactive-tooltip,
+.reduced-motion .map-pin-detail,
+.reduced-motion .filter-option,
+.reduced-motion .interactive-trail-card,
+.reduced-motion .interactive-trail-image,
+.reduced-motion .filter-dropdown {
+  transition: none !important;
+}
+
+.reduced-motion .ripple-effect {
+  display: none !important;
+}
+
+/* Focus styles for keyboard navigation */
+.trail-marker:focus-visible,
+.map-control:focus-visible,
+.filter-option:focus-visible,
+.family-filter-toggle:focus-visible,
+.preview-button:focus-visible,
+.close-preview:focus-visible,
+.interactive-trail-button:focus-visible,
+.interactive-trail-saved:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/*
+* SECTION 12: RESPONSIVE ADJUSTMENTS
+*/
+
 @media (max-width: 768px) {
-  .map-controls {
-    top: 8px;
-    right: 8px;
+  .map-container {
+    height: 55vh !important;
+    min-height: 350px !important;
   }
   
   .map-legend {
-    bottom: 8px;
-    left: 8px;
-    max-width: 160px;
-    padding: 8px;
+    max-width: 140px;
+    font-size: 0.75rem;
   }
   
-  .family-filter-container {
-    top: 8px;
-    left: 8px;
+  .trail-preview-card {
+    width: 260px;
   }
   
-  .family-progress {
-    bottom: 8px;
-    right: 8px;
+  .preview-image {
+    height: 130px;
   }
   
-  .achievement-badge {
-    width: 40px;
-    height: 40px;
+  .map-info-panel {
+    max-width: 200px;
   }
+  
+  .map-filters-panel {
+    width: calc(100% - 20px);
+    max-width: 320px;
+  }
+  
+  .trail-point-info {
+    width: calc(100% - 20px);
+    max-width: 320px;
+    max-height: 60vh;
+  }
+  
+  .interactive-trail-image {
+    height: 140px;
+  }
+  
+  .family-filter-toggle {
+    font-size: 0.8125rem;
+    padding: var(--space-2xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 576px) {
+  .map-container {
+    height: 45vh !important;
+    min-height: 300px !important;
+  }
+  
+  .map-legend {
+    bottom: var(--space-sm);
+    left: var(--space-sm);
+  }
+  
+  .map-controls {
+    bottom: var(--space-sm);
+    right: var(--space-sm);
+  }
+  
+  .map-control {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .family-filter-toggle {
+    top: var(--space-sm);
+  }
+  
+  .filter-dropdown {
+    top: calc(var(--space-sm) + 36px);
+    width: 240px;
+  }
+}
+
+/* Base marker styles */
+.map-marker,
+.trail-marker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+/* Specific trail marker positions */
+.trail-marker[data-trail-id="woodland-wonder"] {
+  top: 35%;
+  left: 25%;
+}
+
+.trail-marker[data-trail-id="mountain-explorer"] {
+  top: 45%;
+  left: 55%;
+}
+
+.trail-marker[data-trail-id="desert-canyon"] {
+  top: 65%;
+  left: 70%;
+}
+
+.trail-marker[data-trail-id="lakeside-loop"] {
+  top: 55%;
+  left: 35%;
+}
+
+/* Specific map marker positions */
+.map-marker[data-trail="forest-adventure"] {
+  top: 30%;
+  left: 40%;
+}
+
+.map-marker[data-trail="mountain-explorer"] {
+  top: 50%;
+  left: 65%;
+}
+
+.map-marker[data-trail="riverside-trek"] {
+  top: 70%;
+  left: 25%;
+}
+
+.trail-marker::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
 }

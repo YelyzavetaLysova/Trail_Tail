@@ -42,6 +42,12 @@ class BaseProvider(ABC):
             ProviderError: A standardized error with details
         """
         error_details = details or {}
+        # Avoid using reserved keys in LogRecord
+        if "args" in error_details:
+            error_details["method_args"] = error_details.pop("args")
+        if "kwargs" in error_details:
+            error_details["method_kwargs"] = error_details.pop("kwargs")
+            
         error_details.update({
             "provider": self.name,
             "method": method_name,
@@ -79,11 +85,11 @@ class BaseProvider(ABC):
         try:
             self.logger.debug(
                 f"Executing {self.name}.{method_name}",
-                extra={"args": args, "kwargs": kwargs}
+                extra={"method_args": args, "method_kwargs": kwargs}
             )
             return await method(*args, **kwargs)
         except Exception as e:
-            self._handle_provider_error(method_name, e, {"args": args, "kwargs": kwargs})
+            self._handle_provider_error(method_name, e, {"method_args": args, "method_kwargs": kwargs})
             
     def __repr__(self) -> str:
         return f"<{self.name}>"
